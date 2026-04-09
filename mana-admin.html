@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ManaPantry — Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f0c09; --bg2: #171210; --surface: #231c15; --border: #2e2318;
+            --tan: #9a7c5e; --gold: #c9952a; --ocean: #1e5f6e; --cream: #f0e6d6;
+            --text: #e8ddd0; --text-muted: #8a7060; --green: #3a7a3a; --red: #8b2020;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg); color: var(--text); font-family: 'Jost', sans-serif; font-weight: 300; min-height: 100vh; }
+        h1,h2,h3 { font-family: 'Cormorant Garamond', serif; font-weight: 600; }
+
+        /* LOGIN */
+        #login-screen { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem; background: radial-gradient(ellipse at center, #1a1208 0%, #0f0c09 70%); }
+        .login-box { width: 100%; max-width: 380px; background: var(--surface); border: 1px solid var(--border); padding: 3rem; }
+        .login-logo { text-align: center; margin-bottom: 2rem; }
+        .login-logo .mana { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--cream); }
+        .login-logo .sub { font-size: 0.55rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--tan); display: block; margin-top: 2px; }
+        .login-label { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.5rem; }
+        .login-input { width: 100%; background: var(--bg); border: 1px solid var(--border); padding: 0.85rem 1rem; color: var(--text); font-family: 'Jost', sans-serif; font-size: 0.9rem; outline: none; transition: border-color 0.2s; margin-bottom: 1.25rem; }
+        .login-input:focus { border-color: var(--gold); }
+        .login-btn { width: 100%; background: var(--gold); color: var(--bg); border: none; padding: 0.9rem; font-family: 'Jost', sans-serif; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; margin-top: 0.5rem; }
+        .login-btn:hover { background: #b8841f; }
+        .login-err { color: #e55; font-size: 0.75rem; text-align: center; margin-top: 0.75rem; display: none; }
+
+        /* ADMIN */
+        #admin-screen { display: none; }
+
+        .admin-nav { background: var(--bg2); border-bottom: 1px solid var(--border); padding: 0 2rem; height: 64px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 10; }
+        .admin-nav .brand { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--cream); }
+        .admin-nav .brand span { font-size: 0.5rem; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: var(--tan); margin-left: 0.75rem; }
+        .logout-btn { background: none; border: 1px solid var(--border); color: var(--text-muted); padding: 0.5rem 1rem; font-family: 'Jost', sans-serif; font-size: 0.6rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; }
+        .logout-btn:hover { border-color: var(--tan); color: var(--cream); }
+
+        .admin-body { max-width: 1100px; margin: 0 auto; padding: 2.5rem 2rem; }
+
+        /* STATS */
+        .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); margin-bottom: 2.5rem; }
+        .stat-card { background: var(--surface); padding: 1.5rem; }
+        .stat-label { font-size: 0.55rem; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.5rem; }
+        .stat-val { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--cream); }
+        .stat-val.gold { color: var(--gold); }
+
+        /* ADD PRODUCT FORM */
+        .section-title-sm { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: var(--tan); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem; }
+        .section-title-sm::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+        .add-form { background: var(--surface); border: 1px solid var(--border); padding: 2rem; margin-bottom: 2.5rem; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem; }
+        .form-grid-wide { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem; }
+
+        .field { display: flex; flex-direction: column; gap: 0.4rem; }
+        .field label { font-size: 0.55rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); }
+        .field input, .field select { background: var(--bg); border: 1px solid var(--border); padding: 0.75rem 0.9rem; color: var(--text); font-family: 'Jost', sans-serif; font-size: 0.85rem; outline: none; transition: border-color 0.2s; width: 100%; }
+        .field input:focus, .field select:focus { border-color: var(--gold); }
+        .field select option { background: var(--bg2); }
+
+        .add-btn { background: var(--gold); color: var(--bg); border: none; padding: 0.85rem 2rem; font-family: 'Jost', sans-serif; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
+        .add-btn:hover { background: #b8841f; }
+
+        /* PRODUCT TABLE */
+        .products-table { background: var(--surface); border: 1px solid var(--border); overflow: hidden; }
+        .table-header { display: grid; grid-template-columns: 50px 1fr 120px 100px 100px 90px 100px; gap: 0; background: var(--bg2); border-bottom: 1px solid var(--border); padding: 0.75rem 1rem; }
+        .table-header span { font-size: 0.5rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); }
+        .table-row { display: grid; grid-template-columns: 50px 1fr 120px 100px 100px 90px 100px; gap: 0; border-bottom: 1px solid var(--border); padding: 0.9rem 1rem; align-items: center; transition: background 0.15s; }
+        .table-row:last-child { border-bottom: none; }
+        .table-row:hover { background: rgba(255,255,255,0.02); }
+        .table-row .emoji { font-size: 1.4rem; }
+        .table-row .prod-name { font-size: 0.85rem; color: var(--cream); }
+        .table-row .prod-cat { font-size: 0.7rem; color: var(--text-muted); margin-top: 0.2rem; }
+        .price-input { background: var(--bg); border: 1px solid var(--border); padding: 0.4rem 0.6rem; color: var(--cream); font-family: 'Jost', sans-serif; font-size: 0.85rem; outline: none; width: 80px; }
+        .price-input:focus { border-color: var(--gold); }
+
+        .toggle { position: relative; display: inline-block; width: 40px; height: 22px; }
+        .toggle input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; inset: 0; background: var(--border); transition: .3s; border-radius: 22px; }
+        .slider:before { position: absolute; content: ""; height: 16px; width: 16px; left: 3px; bottom: 3px; background: var(--text-muted); transition: .3s; border-radius: 50%; }
+        input:checked + .slider { background: var(--green); }
+        input:checked + .slider:before { transform: translateX(18px); background: white; }
+
+        .del-btn { background: none; border: 1px solid var(--border); color: var(--text-muted); padding: 0.4rem 0.75rem; font-size: 0.6rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; font-family: 'Jost', sans-serif; }
+        .del-btn:hover { border-color: #e55; color: #e55; }
+
+        .save-bar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg2); border-top: 1px solid var(--border); padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; z-index: 50; transform: translateY(100%); transition: transform 0.3s; }
+        .save-bar.visible { transform: translateY(0); }
+        .save-bar p { font-size: 0.75rem; color: var(--text-muted); }
+        .save-bar p strong { color: var(--gold); }
+        .save-btn { background: var(--gold); color: var(--bg); border: none; padding: 0.75rem 2rem; font-family: 'Jost', sans-serif; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
+        .save-btn:hover { background: #b8841f; }
+
+        /* TOAST */
+        .toast { position: fixed; top: 80px; right: 2rem; background: var(--surface); color: var(--cream); padding: 0.85rem 1.5rem; font-size: 0.75rem; font-weight: 500; border: 1px solid var(--border); border-left: 3px solid var(--gold); z-index: 300; transform: translateX(120%); transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1); }
+        .toast.show { transform: translateX(0); }
+
+        .empty-products { text-align: center; padding: 3rem; color: var(--text-muted); font-size: 0.85rem; }
+
+        @media (max-width: 768px) {
+            .stats-row { grid-template-columns: 1fr 1fr; }
+            .form-grid, .form-grid-wide { grid-template-columns: 1fr; }
+            .table-header, .table-row { grid-template-columns: 40px 1fr 80px 80px; }
+            .table-header span:nth-child(n+5), .table-row > *:nth-child(n+5) { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="toast" id="toast"></div>
+
+<!-- LOGIN -->
+<div id="login-screen">
+    <div class="login-box">
+        <div class="login-logo">
+            <div class="mana">ManaPantry</div>
+            <span class="sub">Admin Portal</span>
+        </div>
+        <label class="login-label">Password</label>
+        <input class="login-input" type="password" id="pw-input" placeholder="Enter admin password" onkeydown="if(event.key==='Enter') doLogin()">
+        <button class="login-btn" onclick="doLogin()">Access Dashboard</button>
+        <div class="login-err" id="login-err">Incorrect password. Try again.</div>
+    </div>
+</div>
+
+<!-- ADMIN DASHBOARD -->
+<div id="admin-screen">
+    <nav class="admin-nav">
+        <div class="brand">ManaPantry <span>Admin Dashboard</span></div>
+        <div style="display:flex;gap:1rem;align-items:center;">
+            <a href="manapantry.html" target="_blank" style="font-size:0.6rem;color:var(--text-muted);text-decoration:none;letter-spacing:0.2em;text-transform:uppercase;">View Store ↗</a>
+            <button class="logout-btn" onclick="logout()">Log Out</button>
+        </div>
+    </nav>
+
+    <div class="admin-body">
+
+        <!-- STATS -->
+        <div class="stats-row" id="stats-row">
+            <div class="stat-card"><div class="stat-label">Total Products</div><div class="stat-val gold" id="stat-total">0</div></div>
+            <div class="stat-card"><div class="stat-label">Active</div><div class="stat-val" id="stat-active">0</div></div>
+            <div class="stat-card"><div class="stat-label">Hidden</div><div class="stat-val" id="stat-hidden">0</div></div>
+            <div class="stat-card"><div class="stat-label">Avg Price</div><div class="stat-val" id="stat-avg">$0</div></div>
+        </div>
+
+        <!-- ADD PRODUCT -->
+        <div class="section-title-sm">Add New Product</div>
+        <div class="add-form">
+            <div class="form-grid-wide">
+                <div class="field">
+                    <label>Product Name</label>
+                    <input type="text" id="new-name" placeholder="e.g. Fijian Kava 250g">
+                </div>
+                <div class="field">
+                    <label>Category</label>
+                    <select id="new-cat">
+                        <option>Kava</option>
+                        <option>Clothing</option>
+                        <option>Pantry Goods</option>
+                        <option>Gift Sets</option>
+                        <option>Accessories</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Price ($)</label>
+                    <input type="number" id="new-price" placeholder="0.00" step="0.01" min="0">
+                </div>
+                <div class="field">
+                    <label>Sale Price (optional)</label>
+                    <input type="number" id="new-old-price" placeholder="0.00" step="0.01" min="0">
+                </div>
+            </div>
+            <div class="form-grid">
+                <div class="field">
+                    <label>Description</label>
+                    <input type="text" id="new-desc" placeholder="Short product description...">
+                </div>
+                <div class="field">
+                    <label>Emoji Icon</label>
+                    <input type="text" id="new-emoji" placeholder="🌿" maxlength="4">
+                </div>
+                <div class="field">
+                    <label>Badge</label>
+                    <select id="new-badge">
+                        <option value="">None</option>
+                        <option value="new">New</option>
+                        <option value="popular">Popular</option>
+                        <option value="sale">Sale</option>
+                    </select>
+                </div>
+            </div>
+            <button class="add-btn" onclick="addProduct()">+ Add Product to Store</button>
+        </div>
+
+        <!-- PRODUCT LIST -->
+        <div class="section-title-sm">Manage Products</div>
+        <div class="products-table">
+            <div class="table-header">
+                <span>Icon</span>
+                <span>Product</span>
+                <span>Category</span>
+                <span>Price</span>
+                <span>Sale Price</span>
+                <span>Visible</span>
+                <span>Actions</span>
+            </div>
+            <div id="product-list"></div>
+        </div>
+
+    </div>
+</div>
+
+<!-- SAVE BAR -->
+<div class="save-bar" id="save-bar">
+    <p>You have <strong id="unsaved-count">0</strong> unsaved changes.</p>
+    <button class="save-btn" onclick="saveProducts()">Save & Publish to Store</button>
+</div>
+
+<script>
+// ─── CONFIG ───
+const ADMIN_PASSWORD = 'mana2024'; // Change this to your own password!
+const STORAGE_KEY = 'manapantry-products';
+
+let products = [];
+let unsaved = false;
+
+// ─── AUTH ───
+function doLogin() {
+    const pw = document.getElementById('pw-input').value;
+    if (pw === ADMIN_PASSWORD) {
+        document.getElementById('login-screen').style.display = 'none';
+        document.getElementById('admin-screen').style.display = 'block';
+        loadProducts();
+    } else {
+        document.getElementById('login-err').style.display = 'block';
+        document.getElementById('pw-input').value = '';
+        document.getElementById('pw-input').focus();
+    }
+}
+
+function logout() {
+    document.getElementById('login-screen').style.display = 'flex';
+    document.getElementById('admin-screen').style.display = 'none';
+    document.getElementById('pw-input').value = '';
+}
+
+// ─── DEFAULT PRODUCTS ───
+const DEFAULT_PRODUCTS = [
+    { id: 1, name: 'Fiji Noble Kava — 250g', category: 'Kava', price: 34.99, emoji: '🌿', bg: 'product-img-kava', badge: 'popular', desc: 'Stone-ground premium noble variety. Smooth, traditional, authentic.', active: true },
+    { id: 2, name: 'Polynesian Wave Tee', category: 'Clothing', price: 29.99, emoji: '👕', bg: 'product-img-brown', badge: 'new', desc: 'Soft cotton, traditional wave print. S–3XL available.', active: true },
+    { id: 3, name: 'Pacific Candy Mix — 1lb', category: 'Pantry Goods', price: 13.99, oldPrice: 18.99, emoji: '🍬', bg: 'product-img-gold', badge: 'sale', desc: 'A mix of island favorites. Li Hing, guava, and more.', active: true },
+    { id: 4, name: 'Vanuatu Kava — 500g', category: 'Kava', price: 59.99, emoji: '🥥', bg: 'product-img-kava', badge: 'new', desc: 'Stronger, earthy, traditional. For the experienced kava drinker.', active: true },
+    { id: 5, name: 'Hibiscus Print Hoodie', category: 'Clothing', price: 54.99, emoji: '🌺', bg: 'product-img-green', badge: '', desc: 'Island vibes for cooler days. Heavyweight fleece, pullover.', active: true },
+    { id: 6, name: 'Coconut Jam — 12oz', category: 'Pantry Goods', price: 11.99, emoji: '🫙', bg: 'product-img-gold', badge: '', desc: 'Traditional Pacific coconut spread. Perfect on toast or taro.', active: true },
+    { id: 7, name: 'Mana Dad Hat', category: 'Clothing', price: 24.99, emoji: '🧢', bg: 'product-img-brown', badge: 'popular', desc: 'Embroidered logo cap. One size fits most. Adjustable strap.', active: true },
+    { id: 8, name: 'Mana Starter Bundle', category: 'Gift Sets', price: 69.99, oldPrice: 89.99, emoji: '🎁', bg: 'product-img-kava', badge: 'sale', desc: 'Kava sampler + candy mix + tee. Perfect gift for first-timers.', active: true },
+];
+
+// ─── LOAD ───
+async function loadProducts() {
+    try {
+        const result = await window.storage.get(STORAGE_KEY, true);
+        if (result && result.value) {
+            products = JSON.parse(result.value);
+        } else {
+            products = JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
+        }
+    } catch(e) {
+        products = JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
+    }
+    renderTable();
+    updateStats();
+}
+
+// ─── SAVE ───
+async function saveProducts() {
+    try {
+        await window.storage.set(STORAGE_KEY, JSON.stringify(products), true);
+        unsaved = false;
+        document.getElementById('save-bar').classList.remove('visible');
+        showToast('✓ Products saved and published to store!');
+    } catch(e) {
+        showToast('⚠ Save failed. Try again.');
+    }
+}
+
+// ─── ADD PRODUCT ───
+function addProduct() {
+    const name = document.getElementById('new-name').value.trim();
+    const price = parseFloat(document.getElementById('new-price').value);
+    const oldPrice = parseFloat(document.getElementById('new-old-price').value) || null;
+    const category = document.getElementById('new-cat').value;
+    const desc = document.getElementById('new-desc').value.trim();
+    const emoji = document.getElementById('new-emoji').value.trim() || '🌿';
+    const badge = document.getElementById('new-badge').value;
+
+    if (!name || isNaN(price) || price <= 0) {
+        showToast('⚠ Please enter a name and valid price.');
+        return;
+    }
+
+    const bgMap = { 'Kava': 'product-img-kava', 'Clothing': 'product-img-brown', 'Pantry Goods': 'product-img-gold', 'Gift Sets': 'product-img-kava', 'Accessories': 'product-img-green' };
+
+    products.push({
+        id: Date.now(),
+        name, category, price,
+        oldPrice: oldPrice && oldPrice > price ? oldPrice : null,
+        desc, emoji, badge,
+        bg: bgMap[category] || 'product-img-kava',
+        active: true
+    });
+
+    // Clear form
+    ['new-name','new-price','new-old-price','new-desc','new-emoji'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('new-badge').value = '';
+
+    markUnsaved();
+    renderTable();
+    updateStats();
+    showToast(`✓ "${name}" added! Save to publish.`);
+}
+
+// ─── DELETE ───
+function deleteProduct(id) {
+    if (!confirm('Delete this product?')) return;
+    products = products.filter(p => p.id !== id);
+    markUnsaved();
+    renderTable();
+    updateStats();
+    showToast('Product deleted.');
+}
+
+// ─── TOGGLE ACTIVE ───
+function toggleActive(id) {
+    const p = products.find(p => p.id === id);
+    if (p) p.active = !p.active;
+    markUnsaved();
+    updateStats();
+}
+
+// ─── PRICE EDIT ───
+function updatePrice(id, val) {
+    const p = products.find(p => p.id === id);
+    const price = parseFloat(val);
+    if (p && !isNaN(price) && price > 0) {
+        p.price = price;
+        markUnsaved();
+    }
+}
+
+function updateOldPrice(id, val) {
+    const p = products.find(p => p.id === id);
+    const price = parseFloat(val);
+    if (p) {
+        p.oldPrice = (!isNaN(price) && price > 0) ? price : null;
+        markUnsaved();
+    }
+}
+
+// ─── RENDER TABLE ───
+function renderTable() {
+    const el = document.getElementById('product-list');
+    if (!products.length) {
+        el.innerHTML = '<div class="empty-products">No products yet. Add one above!</div>';
+        return;
+    }
+    el.innerHTML = products.map(p => `
+        <div class="table-row">
+            <div class="emoji">${p.emoji || '🌿'}</div>
+            <div>
+                <div class="prod-name">${p.name}</div>
+                <div class="prod-cat">${p.badge ? `[${p.badge}] ` : ''}${p.desc ? p.desc.substring(0,45)+'...' : ''}</div>
+            </div>
+            <div style="font-size:0.75rem;color:var(--text-muted)">${p.category}</div>
+            <div>
+                <input class="price-input" type="number" value="${p.price.toFixed(2)}" step="0.01" min="0" onchange="updatePrice(${p.id}, this.value)" title="Price">
+            </div>
+            <div>
+                <input class="price-input" type="number" value="${p.oldPrice ? p.oldPrice.toFixed(2) : ''}" step="0.01" min="0" placeholder="—" onchange="updateOldPrice(${p.id}, this.value)" title="Original price (for sale badge)">
+            </div>
+            <div>
+                <label class="toggle">
+                    <input type="checkbox" ${p.active !== false ? 'checked' : ''} onchange="toggleActive(${p.id})">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div>
+                <button class="del-btn" onclick="deleteProduct(${p.id})">Delete</button>
+            </div>
+        </div>
+    `).join('');
+}
+
+// ─── STATS ───
+function updateStats() {
+    const active = products.filter(p => p.active !== false).length;
+    const avg = products.length ? (products.reduce((s,p) => s + p.price, 0) / products.length).toFixed(2) : 0;
+    document.getElementById('stat-total').textContent = products.length;
+    document.getElementById('stat-active').textContent = active;
+    document.getElementById('stat-hidden').textContent = products.length - active;
+    document.getElementById('stat-avg').textContent = `$${avg}`;
+}
+
+function markUnsaved() {
+    unsaved = true;
+    document.getElementById('unsaved-count').textContent = products.length;
+    document.getElementById('save-bar').classList.add('visible');
+}
+
+// ─── TOAST ───
+function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+}
+</script>
+</body>
+</html>
