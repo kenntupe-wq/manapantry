@@ -23,7 +23,7 @@
     --muted: #6B7280;
     --green: #108040;
     --green-light: #E6F4EA;
-    --exec-plat: #5B6770; /* Slate/silver color for Exec Plat */
+    --exec-plat: #5B6770; 
     --font-primary: 'Helvetica Neue', Arial, sans-serif;
   }
 
@@ -37,7 +37,7 @@
     min-height: 100vh;
   }
 
-  /* ── NAV ── */
+  /* NAV */
   nav {
     position: sticky;
     top: 0;
@@ -140,7 +140,7 @@
     color: var(--exec-plat);
   }
 
-  /* ── HERO / WELCOME BAR ── */
+  /* HERO / WELCOME BAR */
   .hero-bar {
     background: linear-gradient(135deg, var(--aa-dark-blue) 0%, var(--aa-blue) 100%);
     padding: 36px 40px 32px;
@@ -201,7 +201,7 @@
     align-self: stretch;
   }
 
-  /* ── LAYOUT ── */
+  /* LAYOUT */
   .main-layout {
     display: grid;
     grid-template-columns: 1fr 380px;
@@ -211,7 +211,7 @@
     margin: 0 auto;
   }
 
-  /* ── SECTION TITLES ── */
+  /* SECTION TITLES */
   .section-title {
     font-size: 18px;
     font-weight: 700;
@@ -222,7 +222,7 @@
     gap: 12px;
   }
 
-  /* ── UPCOMING TRIP CARD ── */
+  /* UPCOMING TRIP CARD */
   .trip-card {
     background: var(--card);
     border: 1px solid var(--border);
@@ -311,15 +311,15 @@
     margin: 10px 0;
   }
 
-  .leg-plane {
+  .leg-plane-node {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: var(--card);
-    padding: 0 8px;
-    color: var(--aa-blue);
-    font-size: 18px;
+    background: var(--aa-blue);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
   }
 
   .leg-duration { font-size: 12px; color: var(--muted); font-weight: 500; }
@@ -370,7 +370,7 @@
   }
   .btn-danger-outline:hover { background: #fdf2f2; }
 
-  /* ── FLIGHT TRACKER ── */
+  /* FLIGHT TRACKER */
   .tracker-card {
     background: var(--card);
     border: 1px solid var(--border);
@@ -449,11 +449,11 @@
   .map-route-line {
     position: absolute;
     top: 50%;
-    left: 10%;
-    right: 10%;
+    left: 15%;
+    right: 15%;
     height: 2px;
     background: var(--aa-blue);
-    transform: translateY(-50%) rotate(-8deg);
+    transform: translateY(-50%) rotate(-4deg);
   }
 
   .map-dot {
@@ -468,24 +468,15 @@
   }
 
   .map-dot.origin {
-    left: 10%;
+    left: 15%;
     background: var(--aa-blue);
-    margin-top: -6px;
+    margin-top: -3px;
   }
 
   .map-dot.dest {
-    right: 8%;
+    right: 15%;
     background: var(--aa-red);
-    margin-top: -6px;
-  }
-
-  .map-plane-icon {
-    position: absolute;
-    left: 35%;
-    top: 43%;
-    font-size: 22px;
-    color: var(--text-dark);
-    transform: rotate(35deg);
+    margin-top: -1px;
   }
 
   .map-label {
@@ -495,12 +486,10 @@
     color: var(--text-dark);
   }
 
-  .map-label.l-mem { left: 8%; bottom: 24px; }
-  .map-label.l-dfw { left: 28%; bottom: 34px; }
-  .map-label.l-mex { left: 50%; bottom: 26px; }
-  .map-label.l-syd { right: 6%; bottom: 24px; }
+  .map-label.l-mem { left: 13%; bottom: 40px; }
+  .map-label.l-dfw { right: 13%; bottom: 45px; }
 
-  /* ── TABS ── */
+  /* TABS */
   .tab-bar {
     display: flex;
     border-bottom: 2px solid var(--border);
@@ -528,7 +517,7 @@
   .tab-content { display: none; }
   .tab-content.active { display: block; }
 
-  /* ── UPCOMING TRIPS LIST ── */
+  /* UPCOMING TRIPS LIST */
   .trip-list-item {
     display: flex;
     align-items: center;
@@ -570,7 +559,7 @@
   .status-confirmed { background: var(--green-light); color: var(--green); }
   .status-upcoming { background: var(--aa-light-blue); color: var(--aa-blue); }
 
-  /* ── RIGHT SIDEBAR ── */
+  /* RIGHT SIDEBAR */
   .sidebar { display: flex; flex-direction: column; gap: 24px; }
 
   .sidebar-card {
@@ -640,8 +629,7 @@
     background: var(--border);
   }
 
-  .bp-icon { font-size: 20px; color: var(--aa-blue); }
-  .bp-dur { font-size: 11px; color: var(--muted); font-weight: 500; }
+  .bp-dur { font-size: 11px; color: var(--muted); font-weight: 500; margin-top: 4px; }
 
   .bp-details {
     display: grid;
@@ -712,13 +700,13 @@
   }
 
   .check-icon {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 700;
     flex-shrink: 0;
   }
@@ -756,7 +744,7 @@
 
   .input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 
-  /* ── CANCEL / REFUND MODAL ── */
+  /* CANCEL / REFUND MODAL */
   .modal-overlay {
     position: fixed;
     inset: 0;
@@ -807,7 +795,8 @@
     background: transparent;
     border: none;
     color: var(--muted);
-    font-size: 24px;
+    font-size: 16px;
+    font-weight: 700;
     cursor: pointer;
     transition: color 0.2s;
   }
@@ -824,11 +813,11 @@
     font-size: 14px;
     color: #991B1B;
     display: flex;
-    gap: 12px;
-    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
   }
 
-  .modal-warning-icon { font-size: 18px; font-weight: 700; flex-shrink: 0; }
+  .modal-warning-title { font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.5px; }
 
   .refund-breakdown {
     background: var(--card2);
@@ -864,7 +853,6 @@
 
   .modal-actions .btn { flex: 1; }
 
-  /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
     .main-layout { grid-template-columns: 1fr; }
     nav { padding: 0 20px; }
@@ -874,7 +862,6 @@
     .main-layout { padding: 24px 16px 40px; }
   }
 
-  /* ── UTILITIES ── */
   .mt-4 { margin-top: 4px; }
   .mt-8 { margin-top: 8px; }
   .mt-12 { margin-top: 12px; }
@@ -886,18 +873,18 @@
 </head>
 <body>
 
-<!-- ── NAV ── -->
+<!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">
     <div class="nav-logo-icon"></div>
-    American Airlines <span class="aa-badge">oneworld®</span>
+    American Airlines <span class="aa-badge">oneworld</span>
   </a>
   <ul class="nav-links">
     <li><a href="#" class="active">Manage trips</a></li>
     <li><a href="#">Book</a></li>
     <li><a href="#">Check in</a></li>
     <li><a href="#">Flight status</a></li>
-    <li><a href="#">AAdvantage®</a></li>
+    <li><a href="#">AAdvantage</a></li>
   </ul>
   <div class="nav-right">
     <div class="member-pill">
@@ -910,11 +897,11 @@
   </div>
 </nav>
 
-<!-- ── HERO BAR ── -->
+<!-- HERO BAR -->
 <div class="hero-bar">
   <div class="hero-greeting">Welcome back</div>
   <div class="hero-name">Kenneth Tupea</div>
-  <div class="hero-sub">AAdvantage® #<strong>7XP-441-KT</strong> &nbsp;·&nbsp; <strong>Executive Platinum</strong></div>
+  <div class="hero-sub">AAdvantage #<strong>7X3W4K2</strong> &nbsp;·&nbsp; <strong>Executive Platinum</strong></div>
   <div class="hero-stats">
     <div class="stat-item">
       <div class="stat-val">142,800</div>
@@ -938,7 +925,7 @@
   </div>
 </div>
 
-<!-- ── MAIN LAYOUT ── -->
+<!-- MAIN LAYOUT -->
 <div class="main-layout">
 
   <!-- LEFT COLUMN -->
@@ -949,75 +936,55 @@
     <div class="trip-card">
       <div class="trip-card-header">
         <div>
-          <div class="trip-flight-no">Confirmation: ABCDEF</div>
-          <div class="trip-route">MEM <span class="arrow">→</span> DFW <span class="arrow">→</span> MEX <span class="arrow">→</span> SYD</div>
-          <div class="text-muted mt-4">Tuesday, June 16 · Memphis to Sydney · 3 segments</div>
+          <div class="trip-flight-no">Record Locator: VNYZPT</div>
+          <div class="trip-route">MEM <span class="arrow">&rarr;</span> DFW <span class="arrow">&rarr;</span> SYD</div>
+          <div class="text-muted mt-4">Tuesday, June 16 · Memphis to Sydney · 2 segments</div>
         </div>
         <div class="trip-badge">ON TIME</div>
       </div>
 
       <div class="trip-legs">
 
-        <!-- Leg 1: MEM → DFW -->
+        <!-- Leg 1: MEM → DFW (American Eagle) -->
         <div class="leg">
           <div class="leg-airport">
             <div class="leg-code">MEM</div>
             <div class="leg-city">Memphis, TN</div>
-            <div class="leg-time">6:15 AM</div>
+            <div class="leg-time">4:10 PM</div>
             <div class="leg-date">Tue Jun 16</div>
           </div>
           <div class="leg-middle">
-            <div class="leg-line"><span class="leg-plane">✈</span></div>
+            <div class="leg-line"><span class="leg-plane-node"></span></div>
             <div class="leg-duration">1h 45m</div>
-            <div class="leg-airline">American Airlines 9412</div>
+            <div class="leg-airline">AA 3521 · Embraer E175</div>
+            <div class="leg-stop">Operated by Envoy Air as American Eagle</div>
           </div>
           <div class="leg-airport">
             <div class="leg-code">DFW</div>
             <div class="leg-city">Dallas/Fort Worth</div>
-            <div class="leg-time">7:55 AM</div>
+            <div class="leg-time">5:55 PM</div>
             <div class="leg-date">Tue Jun 16</div>
           </div>
         </div>
 
-        <!-- Leg 2: DFW → MEX -->
+        <!-- Leg 2: DFW → SYD (Qantas / Mainline Codeshare) -->
         <div class="leg">
           <div class="leg-airport">
             <div class="leg-code">DFW</div>
             <div class="leg-city">Dallas/Fort Worth</div>
-            <div class="leg-time">9:50 AM</div>
+            <div class="leg-time">10:15 PM</div>
             <div class="leg-date">Tue Jun 16</div>
           </div>
           <div class="leg-middle">
-            <div class="leg-line"><span class="leg-plane">✈</span></div>
-            <div class="leg-duration">2h 50m</div>
-            <div class="leg-airline">American Airlines 7231 · Boeing 737</div>
-          </div>
-          <div class="leg-airport">
-            <div class="leg-code">MEX</div>
-            <div class="leg-city">Mexico City</div>
-            <div class="leg-time">12:40 PM</div>
-            <div class="leg-date">Tue Jun 16</div>
-          </div>
-        </div>
-
-        <!-- Leg 3: MEX → SYD -->
-        <div class="leg">
-          <div class="leg-airport">
-            <div class="leg-code">MEX</div>
-            <div class="leg-city">Mexico City</div>
-            <div class="leg-time">3:15 PM</div>
-            <div class="leg-date">Tue Jun 16</div>
-          </div>
-          <div class="leg-middle">
-            <div class="leg-line"><span class="leg-plane">✈</span></div>
-            <div class="leg-duration">18h 20m</div>
-            <div class="leg-airline">Qantas Airways 8 · Boeing 787-9</div>
-            <div class="leg-stop">Qantas operated · AA codeshare</div>
+            <div class="leg-line"><span class="leg-plane-node"></span></div>
+            <div class="leg-duration">17h 00m</div>
+            <div class="leg-airline">QF 8 · Boeing 787-9</div>
+            <div class="leg-stop">Qantas operated · AA 7411 Codeshare</div>
           </div>
           <div class="leg-airport">
             <div class="leg-code">SYD</div>
             <div class="leg-city">Sydney, AU</div>
-            <div class="leg-time">9:35 AM</div>
+            <div class="leg-time">6:15 AM</div>
             <div class="leg-date">Thu Jun 18</div>
           </div>
         </div>
@@ -1028,7 +995,7 @@
         <button class="btn btn-danger-outline" onclick="openModal()">Cancel / Refund</button>
         <button class="btn btn-outline" onclick="alert('Boarding pass added to Apple Wallet')">Add to Wallet</button>
         <button class="btn btn-outline" onclick="alert('Seat change opens 24h before departure')">Change Seats</button>
-        <button class="btn btn-primary" onclick="alert('Check-in opens Jun 15 at 6:15 AM')">Check in</button>
+        <button class="btn btn-primary" onclick="alert('Check-in opens Jun 15 at 4:10 PM')">Check in</button>
       </div>
     </div>
 
@@ -1037,8 +1004,8 @@
     <div class="tracker-card">
       <div class="tracker-head">
         <div>
-          <div style="font-weight:700;color:var(--text-dark);font-size:16px;">AA 9412 &nbsp;·&nbsp; MEM → DFW</div>
-          <div class="text-muted mt-4">Departs in ~14 hours · Terminal B, Gate B22</div>
+          <div style="font-weight:700;color:var(--text-dark);font-size:16px;">AA 3521 &nbsp;·&nbsp; MEM &rarr; DFW</div>
+          <div class="text-muted mt-4">Departs in ~6 hours · Terminal B, Gate B22</div>
         </div>
         <div class="tracker-status">
           <div class="status-dot"></div>
@@ -1050,9 +1017,9 @@
         <div class="progress-fill" id="trackProgress"></div>
       </div>
       <div class="progress-labels">
-        <span>MEM · 6:15 AM</span>
+        <span>MEM · 4:10 PM</span>
         <span>Flight not yet departed</span>
-        <span>DFW · 7:55 AM</span>
+        <span>DFW · 5:55 PM</span>
       </div>
 
       <div class="map-placeholder">
@@ -1060,11 +1027,8 @@
         <div class="map-route-line"></div>
         <div class="map-dot origin"></div>
         <div class="map-dot dest"></div>
-        <div class="map-plane-icon">✈</div>
         <span class="map-label l-mem">MEM</span>
         <span class="map-label l-dfw">DFW</span>
-        <span class="map-label l-mex">MEX</span>
-        <span class="map-label l-syd">SYD</span>
       </div>
 
       <div class="flex items-center gap-8 mt-12" style="flex-wrap:wrap;gap:32px;margin-top:24px;">
@@ -1102,8 +1066,8 @@
           <div class="trip-list-month">Jun</div>
         </div>
         <div class="trip-list-info">
-          <div class="trip-list-route">Memphis to Sydney (via DFW, MEX)</div>
-          <div class="trip-list-detail">AA 9412 / AA 7231 / QF 8 · Business</div>
+          <div class="trip-list-route">Memphis to Sydney (via DFW)</div>
+          <div class="trip-list-detail">AA 3521 / QF 8 · First / Business</div>
         </div>
         <div class="trip-list-status status-confirmed">Confirmed</div>
       </div>
@@ -1118,17 +1082,6 @@
         <div class="trip-list-info">
           <div class="trip-list-route">Salt Lake City to Dallas</div>
           <div class="trip-list-detail">AA 1428 · Main Cabin · +4,210 miles earned</div>
-        </div>
-        <div class="trip-list-status status-upcoming">Completed</div>
-      </div>
-      <div class="trip-list-item">
-        <div class="trip-list-dates">
-          <div class="trip-list-day">18</div>
-          <div class="trip-list-month">May</div>
-        </div>
-        <div class="trip-list-info">
-          <div class="trip-list-route">Memphis to Salt Lake City</div>
-          <div class="trip-list-detail">AA 2891 · Main Cabin · +3,050 miles earned</div>
         </div>
         <div class="trip-list-status status-upcoming">Completed</div>
       </div>
@@ -1148,32 +1101,31 @@
     <div class="boarding-pass">
       <div class="bp-top">
         <div class="bp-airline">
-          <span class="bp-aa-logo">American Airlines</span>
+          <span class="bp-aa-logo">American Eagle</span>
         </div>
         <div class="bp-route">
           <div class="bp-airport">
             <div class="bp-code">MEM</div>
             <div class="bp-city">Memphis</div>
-            <div class="bp-time">6:15 AM</div>
+            <div class="bp-time">4:10 PM</div>
           </div>
           <div class="bp-line">
             <div class="bp-dashes"></div>
-            <div class="bp-icon">✈</div>
             <div class="bp-dashes"></div>
             <div class="bp-dur">1h 45m</div>
           </div>
           <div class="bp-airport">
             <div class="bp-code">DFW</div>
             <div class="bp-city">Dallas</div>
-            <div class="bp-time">7:55 AM</div>
+            <div class="bp-time">5:55 PM</div>
           </div>
         </div>
         <div class="bp-details">
           <div class="bp-field"><label>Passenger</label><span>Kenneth Tupea</span></div>
-          <div class="bp-field"><label>Flight</label><span>AA 9412</span></div>
+          <div class="bp-field"><label>Flight</label><span>AA 3521</span></div>
           <div class="bp-field"><label>Class</label><span>First</span></div>
           <div class="bp-field"><label>Date</label><span>Jun 16</span></div>
-          <div class="bp-field"><label>Boarding</label><span>5:45 AM</span></div>
+          <div class="bp-field"><label>Boarding</label><span>3:40 PM</span></div>
           <div class="bp-field"><label>Group</label><span>1 (Exec)</span></div>
         </div>
       </div>
@@ -1204,7 +1156,7 @@
 
     <!-- MILES CARD -->
     <div class="sidebar-card">
-      <div class="section-title">AAdvantage® account</div>
+      <div class="section-title">AAdvantage account</div>
       <div class="miles-amount">87,430</div>
       <div class="miles-sub">Available miles</div>
       <div class="miles-bar"><div class="miles-fill" id="milesFill"></div></div>
@@ -1224,19 +1176,19 @@
       <div class="section-title">Trip checklist</div>
       <div class="checklist">
         <div class="check-item">
-          <div class="check-icon done">✓</div>
+          <div class="check-icon done">Y</div>
           <div class="check-label done">Passport valid</div>
         </div>
         <div class="check-item">
-          <div class="check-icon done">✓</div>
+          <div class="check-icon done">Y</div>
           <div class="check-label done">Australia ETA approved</div>
         </div>
         <div class="check-item">
-          <div class="check-icon done">✓</div>
+          <div class="check-icon done">Y</div>
           <div class="check-label done">Seats selected</div>
         </div>
         <div class="check-item">
-          <div class="check-icon warn">!</div>
+          <div class="check-icon warn">P</div>
           <div class="check-label">Check in opens Jun 15</div>
         </div>
         <div class="check-item">
@@ -1244,55 +1196,22 @@
           <div class="check-label">Add Known Traveler Number</div>
           <div class="check-action">Add</div>
         </div>
-        <div class="check-item">
-          <div class="check-icon todo"></div>
-          <div class="check-label">Meal preference (MEX–SYD)</div>
-          <div class="check-action">Select</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- QUICK SEARCH -->
-    <div class="sidebar-card">
-      <div class="section-title">Book flights</div>
-      <div class="search-row">
-        <div class="input-row">
-          <div class="input-group">
-            <label>From</label>
-            <input class="input-field" type="text" placeholder="MEM">
-          </div>
-          <div class="input-group">
-            <label>To</label>
-            <input class="input-field" type="text" placeholder="SYD">
-          </div>
-        </div>
-        <div class="input-row">
-          <div class="input-group">
-            <label>Depart</label>
-            <input class="input-field" type="date" value="2026-06-20">
-          </div>
-          <div class="input-group">
-            <label>Return</label>
-            <input class="input-field" type="date">
-          </div>
-        </div>
-        <button class="btn btn-primary" style="width:100%;">Search</button>
       </div>
     </div>
 
   </div>
 </div>
 
-<!-- ── CANCEL MODAL ── -->
+<!-- CANCEL MODAL -->
 <div class="modal-overlay" id="cancelModal" onclick="closeModalOutside(event)">
   <div class="modal">
     <div class="modal-header">
       <div class="modal-title">Cancel flight</div>
-      <button class="modal-close" onclick="closeModal()">✕</button>
+      <button class="modal-close" onclick="closeModal()">X</button>
     </div>
     <div class="modal-body">
       <div class="modal-warning">
-        <div class="modal-warning-icon">⚠</div>
+        <div class="modal-warning-title">Notice</div>
         <div>Canceling within 24 hours of departure is non-refundable for base fare. As an <strong>Executive Platinum</strong> member, your refund may be eligible under the Elite Flexible Waiver policy.</div>
       </div>
 
@@ -1300,7 +1219,7 @@
         <div class="refund-row"><span>Base fare</span><span class="val" style="color:var(--text-dark);">$2,840.00</span></div>
         <div class="refund-row"><span>Taxes & carrier-imposed fees</span><span class="val" style="color:var(--text-dark);">$318.50</span></div>
         <div class="refund-row"><span>Seat upgrade</span><span class="val" style="color:var(--text-dark);">$149.00</span></div>
-        <div class="refund-row"><span>Non-refundable fee (Waived)</span><span class="val" style="color:var(--green);">–$0.00</span></div>
+        <div class="refund-row"><span>Non-refundable fee (Waived)</span><span class="val" style="color:var(--green);">&ndash;$0.00</span></div>
         <div class="refund-row total"><span>Estimated trip credit</span><span class="val">$3,307.50</span></div>
       </div>
 
