@@ -23,7 +23,10 @@
     --muted: #6B7280;
     --green: #108040;
     --green-light: #E6F4EA;
-    --exec-plat: #5B6770; 
+    --amber: #B45309;
+    --amber-light: #FEF3C7;
+    --amber-border: #F59E0B;
+    --exec-plat: #5B6770;
     --font-primary: 'Helvetica Neue', Arial, sans-serif;
   }
 
@@ -39,167 +42,114 @@
 
   /* NAV */
   nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    position: sticky; top: 0; z-index: 100;
     background: var(--card);
     border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 40px;
-    height: 68px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; height: 68px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.04);
   }
 
   .nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-    color: var(--aa-blue);
-    text-decoration: none;
+    display: flex; align-items: center; gap: 8px;
+    font-size: 22px; font-weight: 700; letter-spacing: -0.5px;
+    color: var(--aa-blue); text-decoration: none;
   }
 
   .nav-logo-icon {
-    position: relative;
-    width: 24px;
-    height: 24px;
+    position: relative; width: 24px; height: 24px;
     background: linear-gradient(135deg, var(--aa-blue) 50%, var(--aa-red) 50%);
     clip-path: polygon(0 40%, 100% 0, 80% 100%, 20% 100%);
   }
 
   .aa-badge {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: #fff;
-    background: var(--text-dark);
-    padding: 3px 8px;
-    border-radius: 4px;
-    margin-left: 6px;
+    font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+    color: #fff; background: var(--text-dark);
+    padding: 3px 8px; border-radius: 4px; margin-left: 6px;
   }
 
-  .nav-links {
-    display: flex;
-    gap: 32px;
-    list-style: none;
-  }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { color: var(--text); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--aa-blue); font-weight: 700; }
 
-  .nav-links a {
-    color: var(--text);
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
-    transition: color 0.2s;
-  }
-
-  .nav-links a:hover, .nav-links a.active { 
-    color: var(--aa-blue); 
-    font-weight: 700;
-  }
-
-  .nav-right {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
+  .nav-right { display: flex; align-items: center; gap: 16px; }
 
   .member-pill {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: var(--card2);
-    border: 1px solid var(--border);
-    border-radius: 30px;
-    padding: 4px 14px 4px 4px;
-    cursor: pointer;
+    display: flex; align-items: center; gap: 10px;
+    background: var(--card2); border: 1px solid var(--border);
+    border-radius: 30px; padding: 4px 14px 4px 4px; cursor: pointer;
   }
 
   .member-avatar {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
+    width: 32px; height: 32px; border-radius: 50%;
     background: var(--exec-plat);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    font-weight: 700;
-    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; color: #fff;
   }
 
   .member-info { line-height: 1.2; }
   .member-name { font-size: 12px; font-weight: 700; color: var(--text-dark); }
-  .member-tier {
-    font-size: 10px;
-    font-weight: 700;
-    color: var(--exec-plat);
-  }
+  .member-tier { font-size: 10px; font-weight: 700; color: var(--exec-plat); }
 
-  /* HERO / WELCOME BAR */
-  .hero-bar {
-    background: linear-gradient(135deg, var(--aa-dark-blue) 0%, var(--aa-blue) 100%);
-    padding: 36px 40px 32px;
-    position: relative;
-    overflow: hidden;
+  /* DELAY ALERT BANNER */
+  .delay-banner {
+    background: linear-gradient(135deg, #92400E 0%, #B45309 100%);
+    padding: 14px 40px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     color: #fff;
   }
 
+  .delay-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .delay-banner-text { flex: 1; }
+  .delay-banner-title { font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+  .delay-banner-sub { font-size: 13px; opacity: 0.88; }
+
+  .delay-banner-btn {
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.4);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s;
+  }
+
+  .delay-banner-btn:hover { background: rgba(255,255,255,0.28); }
+
+  /* HERO BAR */
+  .hero-bar {
+    background: linear-gradient(135deg, var(--aa-dark-blue) 0%, var(--aa-blue) 100%);
+    padding: 36px 40px 32px;
+    position: relative; overflow: hidden; color: #fff;
+  }
+
   .hero-bar::before {
-    content: '';
-    position: absolute;
-    top: -50px; right: -50px;
+    content: ''; position: absolute; top: -50px; right: -50px;
     width: 400px; height: 400px;
     background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 60%);
     pointer-events: none;
   }
 
-  .hero-greeting {
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: #E8F4FA;
-    margin-bottom: 6px;
-  }
-
-  .hero-name {
-    font-size: 36px;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-    margin-bottom: 8px;
-  }
-
-  .hero-sub {
-    color: #D1E8F7;
-    font-size: 14px;
-  }
-
+  .hero-greeting { font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #E8F4FA; margin-bottom: 6px; }
+  .hero-name { font-size: 36px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 8px; }
+  .hero-sub { color: #D1E8F7; font-size: 14px; }
   .hero-sub strong { color: #fff; font-weight: 700; }
 
-  .hero-stats {
-    display: flex;
-    gap: 40px;
-    margin-top: 28px;
-  }
-
+  .hero-stats { display: flex; gap: 40px; margin-top: 28px; }
   .stat-item { line-height: 1.2; }
-  .stat-val {
-    font-size: 26px;
-    font-weight: 700;
-  }
+  .stat-val { font-size: 26px; font-weight: 700; }
   .stat-val span { font-size: 14px; font-weight: 400; opacity: 0.8; }
   .stat-label { font-size: 12px; color: #D1E8F7; margin-top: 4px; }
-
-  .stat-divider {
-    width: 1px;
-    background: rgba(255,255,255,0.2);
-    align-self: stretch;
-  }
+  .stat-divider { width: 1px; background: rgba(255,255,255,0.2); align-self: stretch; }
 
   /* LAYOUT */
   .main-layout {
@@ -213,16 +163,30 @@
 
   /* SECTION TITLES */
   .section-title {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--text-dark);
+    font-size: 18px; font-weight: 700; color: var(--text-dark);
     margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
+    display: flex; align-items: center; gap: 12px;
   }
 
-  /* UPCOMING TRIP CARD */
+  /* DELAY NOTICE inline card */
+  .delay-notice {
+    background: var(--amber-light);
+    border: 1px solid var(--amber-border);
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin-bottom: 16px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .delay-notice-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+
+  .delay-notice-body { flex: 1; }
+  .delay-notice-title { font-size: 13px; font-weight: 700; color: #92400E; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+  .delay-notice-text { font-size: 13px; color: #78350F; line-height: 1.5; }
+
+  /* TRIP CARD */
   .trip-card {
     background: var(--card);
     border: 1px solid var(--border);
@@ -241,40 +205,28 @@
     border-bottom: 1px solid var(--border);
   }
 
-  .trip-flight-no {
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    color: var(--aa-blue);
-    margin-bottom: 6px;
-    text-transform: uppercase;
-  }
-
-  .trip-route {
-    font-size: 26px;
-    font-weight: 700;
-    color: var(--text-dark);
-    letter-spacing: -0.5px;
-  }
-
+  .trip-flight-no { font-size: 12px; font-weight: 700; letter-spacing: 1px; color: var(--aa-blue); margin-bottom: 6px; text-transform: uppercase; }
+  .trip-route { font-size: 26px; font-weight: 700; color: var(--text-dark); letter-spacing: -0.5px; }
   .trip-route .arrow { color: var(--aa-red); margin: 0 8px; font-weight: 400; }
 
-  .trip-badge {
-    background: var(--green-light);
-    color: var(--green);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 1px;
+  .trip-badge-delayed {
+    background: var(--amber-light);
+    color: var(--amber);
+    border: 1px solid var(--amber-border);
+    font-size: 11px; font-weight: 700; letter-spacing: 1px;
     text-transform: uppercase;
     padding: 6px 12px;
     border-radius: 4px;
+    white-space: nowrap;
   }
 
-  .trip-legs {
-    padding: 12px 24px;
-    display: flex;
-    flex-direction: column;
+  .trip-badge {
+    background: #E6F4EA; color: var(--green);
+    font-size: 11px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; padding: 6px 12px; border-radius: 4px;
   }
+
+  .trip-legs { padding: 12px 24px; display: flex; flex-direction: column; }
 
   .leg {
     display: grid;
@@ -287,88 +239,54 @@
 
   .leg:last-child { border-bottom: none; }
 
-  .leg-airport {
-    text-align: center;
-  }
-
-  .leg-code {
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--text-dark);
-    letter-spacing: -0.5px;
-  }
-
+  .leg-airport { text-align: center; }
+  .leg-code { font-size: 28px; font-weight: 700; color: var(--text-dark); letter-spacing: -0.5px; }
   .leg-city { font-size: 12px; color: var(--muted); margin-top: 2px; }
   .leg-time { font-size: 16px; font-weight: 700; color: var(--text-dark); margin-top: 6px; }
+  .leg-time.delayed { color: var(--amber); }
+  .leg-time-orig { font-size: 12px; color: var(--muted); text-decoration: line-through; margin-top: 2px; }
   .leg-date { font-size: 11px; color: var(--muted); }
 
   .leg-middle { text-align: center; position: relative; }
-
-  .leg-line {
-    height: 2px;
-    background: var(--border);
-    position: relative;
-    margin: 10px 0;
-  }
-
+  .leg-line { height: 2px; background: var(--border); position: relative; margin: 10px 0; }
   .leg-plane-node {
-    position: absolute;
-    top: 50%;
-    left: 50%;
+    position: absolute; top: 50%; left: 50%;
     transform: translate(-50%, -50%);
-    background: var(--aa-blue);
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
+    background: var(--amber); width: 8px; height: 8px; border-radius: 50%;
   }
+  .leg-plane-node.on-time { background: var(--aa-blue); }
 
   .leg-duration { font-size: 12px; color: var(--muted); font-weight: 500; }
   .leg-airline { font-size: 11px; color: var(--muted); margin-top: 4px; }
-  .leg-stop { font-size: 11px; color: var(--aa-blue); font-weight: 700; margin-top: 2px; }
+  .leg-delay-tag { font-size: 11px; color: var(--amber); font-weight: 700; margin-top: 4px; background: var(--amber-light); display: inline-block; padding: 2px 6px; border-radius: 3px; }
 
   .trip-actions {
     padding: 16px 24px;
-    display: flex;
-    gap: 12px;
+    display: flex; gap: 12px;
     background: var(--card2);
     border-top: 1px solid var(--border);
+    flex-wrap: wrap;
   }
 
   .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
     font-family: var(--font-primary);
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
-    transition: all 0.2s;
-    text-decoration: none;
+    font-size: 14px; font-weight: 700; cursor: pointer;
+    border: none; border-radius: 4px; padding: 10px 20px;
+    transition: all 0.2s; text-decoration: none;
   }
 
-  .btn-primary {
-    background: var(--aa-blue);
-    color: #fff;
-  }
+  .btn-primary { background: var(--aa-blue); color: #fff; }
   .btn-primary:hover { background: var(--aa-dark-blue); }
 
-  .btn-outline {
-    background: #fff;
-    color: var(--aa-blue);
-    border: 1px solid var(--aa-blue);
-  }
+  .btn-outline { background: #fff; color: var(--aa-blue); border: 1px solid var(--aa-blue); }
   .btn-outline:hover { background: var(--aa-light-blue); }
 
-  .btn-danger-outline {
-    background: #fff;
-    color: var(--aa-red);
-    border: 1px solid var(--aa-red);
-  }
+  .btn-danger-outline { background: #fff; color: var(--aa-red); border: 1px solid var(--aa-red); }
   .btn-danger-outline:hover { background: #fdf2f2; }
+
+  .btn-amber { background: var(--amber-light); color: var(--amber); border: 1px solid var(--amber-border); font-weight: 700; }
+  .btn-amber:hover { background: #FDE68A; }
 
   /* FLIGHT TRACKER */
   .tracker-card {
@@ -380,49 +298,28 @@
   }
 
   .tracker-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: flex; align-items: center; justify-content: space-between;
     margin-bottom: 20px;
   }
 
-  .tracker-status {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  .tracker-status { display: flex; align-items: center; gap: 8px; }
+  .status-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .status-dot.delayed { background: var(--amber); box-shadow: 0 0 0 0 rgba(180,83,9,0.4); animation: pulse-amber 2s infinite; }
+  .status-text { font-size: 14px; font-weight: 700; }
+  .status-text.delayed { color: var(--amber); }
+
+  @keyframes pulse-amber {
+    0% { box-shadow: 0 0 0 0 rgba(180,83,9,0.4); }
+    70% { box-shadow: 0 0 0 8px rgba(180,83,9,0); }
+    100% { box-shadow: 0 0 0 0 rgba(180,83,9,0); }
   }
 
-  .status-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--green);
-  }
-
-  .status-text { font-size: 14px; font-weight: 700; color: var(--green); }
-
-  .progress-track {
-    background: var(--border);
-    border-radius: 4px;
-    height: 8px;
-    overflow: hidden;
-    margin-bottom: 12px;
-  }
-
-  .progress-fill {
-    height: 100%;
-    width: 0%;
-    background: var(--aa-blue);
-    border-radius: 4px;
-    transition: width 1.5s ease;
-  }
+  .progress-track { background: var(--border); border-radius: 4px; height: 8px; overflow: hidden; margin-bottom: 12px; }
+  .progress-fill { height: 100%; width: 0%; background: var(--aa-blue); border-radius: 4px; transition: width 1.5s ease; }
 
   .progress-labels {
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    color: var(--muted);
-    font-weight: 500;
+    display: flex; justify-content: space-between;
+    font-size: 12px; color: var(--muted); font-weight: 500;
     margin-bottom: 24px;
   }
 
@@ -431,116 +328,64 @@
     border: 1px solid var(--border);
     border-radius: 8px;
     height: 180px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
   }
 
   .map-bg {
-    position: absolute;
-    inset: 0;
+    position: absolute; inset: 0;
     background-image:
       radial-gradient(circle at 20% 60%, rgba(0,120,210,0.08) 0%, transparent 50%),
       radial-gradient(circle at 80% 40%, rgba(195,0,25,0.05) 0%, transparent 50%);
   }
 
   .map-route-line {
-    position: absolute;
-    top: 50%;
-    left: 15%;
-    right: 15%;
-    height: 2px;
-    background: var(--aa-blue);
+    position: absolute; top: 50%; left: 15%; right: 15%;
+    height: 2px; background: var(--border);
     transform: translateY(-50%) rotate(-4deg);
   }
 
   .map-dot {
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    border: 3px solid #fff;
-    top: 50%;
-    transform: translateY(-50%);
+    position: absolute; width: 12px; height: 12px;
+    border-radius: 50%; border: 3px solid #fff;
+    top: 50%; transform: translateY(-50%);
     box-shadow: 0 1px 3px rgba(0,0,0,0.2);
   }
 
-  .map-dot.origin {
-    left: 15%;
-    background: var(--aa-blue);
-    margin-top: -3px;
-  }
+  .map-dot.origin { left: 15%; background: var(--aa-blue); margin-top: -3px; }
+  .map-dot.dest { right: 15%; background: var(--aa-red); margin-top: -1px; }
 
-  .map-dot.dest {
-    right: 15%;
-    background: var(--aa-red);
-    margin-top: -1px;
-  }
-
-  .map-label {
-    position: absolute;
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--text-dark);
-  }
-
+  .map-label { position: absolute; font-size: 11px; font-weight: 700; color: var(--text-dark); }
   .map-label.l-mem { left: 13%; bottom: 40px; }
   .map-label.l-dfw { right: 13%; bottom: 45px; }
 
   /* TABS */
-  .tab-bar {
-    display: flex;
-    border-bottom: 2px solid var(--border);
-    margin-bottom: 24px;
-  }
+  .tab-bar { display: flex; border-bottom: 2px solid var(--border); margin-bottom: 24px; }
 
   .tab {
-    padding: 12px 24px;
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--muted);
-    cursor: pointer;
-    border-bottom: 3px solid transparent;
-    margin-bottom: -2px;
+    padding: 12px 24px; font-size: 14px; font-weight: 700;
+    color: var(--muted); cursor: pointer;
+    border-bottom: 3px solid transparent; margin-bottom: -2px;
     transition: all 0.2s;
   }
 
-  .tab.active {
-    color: var(--aa-blue);
-    border-bottom-color: var(--aa-blue);
-  }
-
+  .tab.active { color: var(--aa-blue); border-bottom-color: var(--aa-blue); }
   .tab:hover:not(.active) { color: var(--text-dark); }
 
   .tab-content { display: none; }
   .tab-content.active { display: block; }
 
-  /* UPCOMING TRIPS LIST */
+  /* TRIPS LIST */
   .trip-list-item {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    padding: 16px 20px;
-    margin-bottom: 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    display: flex; align-items: center; gap: 20px;
+    background: var(--card); border: 1px solid var(--border);
+    padding: 16px 20px; margin-bottom: 12px; border-radius: 8px;
+    cursor: pointer; transition: border-color 0.2s, box-shadow 0.2s;
   }
 
-  .trip-list-item:hover { 
-    border-color: var(--aa-blue); 
-    box-shadow: 0 2px 8px rgba(0,120,210,0.1); 
-  }
+  .trip-list-item:hover { border-color: var(--aa-blue); box-shadow: 0 2px 8px rgba(0,120,210,0.1); }
 
-  .trip-list-dates {
-    text-align: center;
-    min-width: 50px;
-  }
-
+  .trip-list-dates { text-align: center; min-width: 50px; }
   .trip-list-day { font-size: 24px; font-weight: 700; color: var(--text-dark); line-height: 1; }
   .trip-list-month { font-size: 12px; color: var(--muted); font-weight: 700; text-transform: uppercase; margin-top: 4px; }
 
@@ -549,140 +394,89 @@
   .trip-list-detail { font-size: 13px; color: var(--muted); }
 
   .trip-list-status {
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    padding: 6px 12px;
-    border-radius: 4px;
+    font-size: 11px; font-weight: 700; text-transform: uppercase;
+    padding: 6px 12px; border-radius: 4px; white-space: nowrap;
   }
 
   .status-confirmed { background: var(--green-light); color: var(--green); }
   .status-upcoming { background: var(--aa-light-blue); color: var(--aa-blue); }
+  .status-delayed { background: var(--amber-light); color: var(--amber); }
 
   /* RIGHT SIDEBAR */
   .sidebar { display: flex; flex-direction: column; gap: 24px; }
 
   .sidebar-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 24px;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 24px;
   }
 
   /* Boarding Pass */
   .boarding-pass {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 8px; overflow: hidden;
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   }
 
-  .bp-top {
-    padding: 20px 24px;
-    border-bottom: 2px dashed var(--border);
-    background: var(--card);
-  }
+  .bp-top { padding: 20px 24px; border-bottom: 2px dashed var(--border); background: var(--card); }
 
   .bp-airline {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 16px;
+    display: flex; align-items: center; gap: 8px;
   }
 
-  .bp-aa-logo {
-    color: var(--aa-blue);
-    font-weight: 900;
-    font-size: 14px;
-  }
+  .bp-aa-logo { color: var(--aa-blue); font-weight: 900; font-size: 14px; }
 
   .bp-route {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 20px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; margin-bottom: 20px;
   }
 
   .bp-airport { text-align: center; }
   .bp-code { font-size: 36px; font-weight: 700; color: var(--text-dark); letter-spacing: -1px; }
   .bp-city { font-size: 11px; color: var(--muted); font-weight: 700; text-transform: uppercase; }
   .bp-time { font-size: 14px; font-weight: 700; color: var(--text-dark); margin-top: 6px; }
+  .bp-time.delayed-time { color: var(--amber); }
+  .bp-time-orig { font-size: 11px; color: var(--muted); text-decoration: line-through; }
 
-  .bp-line {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-  }
-
-  .bp-dashes {
-    width: 100%;
-    height: 2px;
-    background: var(--border);
-  }
-
+  .bp-line { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .bp-dashes { width: 100%; height: 2px; background: var(--border); }
   .bp-dur { font-size: 11px; color: var(--muted); font-weight: 500; margin-top: 4px; }
 
-  .bp-details {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 16px;
-  }
+  .bp-details { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
 
   .bp-field label { font-size: 10px; font-weight: 700; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 4px; }
   .bp-field span { font-size: 14px; font-weight: 700; color: var(--text-dark); }
 
   .bp-bottom {
     padding: 16px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: flex; align-items: center; justify-content: space-between;
     background: var(--card2);
   }
 
-  .bp-barcode {
-    display: flex;
-    gap: 3px;
-    align-items: flex-end;
-  }
+  .bp-barcode { display: flex; gap: 3px; align-items: flex-end; }
+  .bp-bar { background: var(--text-dark); border-radius: 1px; }
 
-  .bp-bar {
-    background: var(--text-dark);
-    border-radius: 1px;
-  }
-
-  .bp-seat-big {
-    text-align: right;
-  }
-
+  .bp-seat-big { text-align: right; }
   .bp-seat-big span { display: block; font-size: 11px; color: var(--muted); font-weight: 700; text-transform: uppercase; }
   .bp-seat-big strong { font-size: 42px; font-weight: 700; color: var(--aa-blue); line-height: 1; }
 
+  /* Delay badge on boarding pass */
+  .bp-delay-badge {
+    background: var(--amber-light);
+    border: 1px solid var(--amber-border);
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin-bottom: 16px;
+    font-size: 12px;
+    color: var(--amber);
+    font-weight: 700;
+    text-align: center;
+  }
+
   /* Miles card */
-  .miles-bar {
-    height: 10px;
-    background: var(--border);
-    border-radius: 5px;
-    overflow: hidden;
-    margin: 12px 0 8px;
-  }
-
-  .miles-fill {
-    height: 100%;
-    background: var(--exec-plat);
-    border-radius: 5px;
-    width: 0%;
-    transition: width 1.5s ease;
-  }
-
+  .miles-bar { height: 10px; background: var(--border); border-radius: 5px; overflow: hidden; margin: 12px 0 8px; }
+  .miles-fill { height: 100%; background: var(--exec-plat); border-radius: 5px; width: 0%; transition: width 1.5s ease; }
   .miles-labels { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); font-weight: 500; }
   .miles-amount { font-size: 32px; font-weight: 700; color: var(--text-dark); }
   .miles-sub { font-size: 13px; color: var(--muted); }
@@ -692,23 +486,12 @@
   /* Checklist */
   .checklist { display: flex; flex-direction: column; gap: 12px; }
 
-  .check-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 14px;
-  }
+  .check-item { display: flex; align-items: center; gap: 12px; font-size: 14px; }
 
   .check-icon {
-    width: 20px;
-    height: 20px;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 11px;
-    font-weight: 700;
-    flex-shrink: 0;
+    width: 20px; height: 20px; border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700; flex-shrink: 0;
   }
 
   .check-icon.done { background: var(--green); color: #fff; }
@@ -720,58 +503,26 @@
   .check-action { font-size: 13px; color: var(--aa-blue); cursor: pointer; font-weight: 700; }
   .check-action:hover { text-decoration: underline; }
 
-  /* Flight search quick panel */
-  .search-row { display: flex; flex-direction: column; gap: 16px; }
-
-  .input-group { display: flex; flex-direction: column; gap: 6px; }
-  .input-group label { font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--text-dark); }
-
-  .input-field {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 12px 14px;
-    color: var(--text-dark);
-    font-family: var(--font-primary);
-    font-size: 14px;
-    outline: none;
-    transition: border-color 0.2s;
-    width: 100%;
-  }
-
-  .input-field:focus { border-color: var(--aa-blue); box-shadow: 0 0 0 1px var(--aa-blue); }
-  .input-field::placeholder { color: var(--muted); }
-
-  .input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-
-  /* CANCEL / REFUND MODAL */
+  /* CANCEL MODAL */
   .modal-overlay {
-    position: fixed;
-    inset: 0;
+    position: fixed; inset: 0;
     background: rgba(17, 24, 39, 0.7);
     z-index: 200;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    pointer-events: none;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none;
     transition: opacity 0.2s;
   }
 
-  .modal-overlay.open {
-    opacity: 1;
-    pointer-events: all;
-  }
+  .modal-overlay.open { opacity: 1; pointer-events: all; }
 
   .modal {
     background: var(--card);
     border-radius: 8px;
-    width: 500px;
-    max-width: 94vw;
+    width: 520px; max-width: 94vw;
     overflow: hidden;
     transform: translateY(20px);
     transition: transform 0.2s;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.15);
   }
 
   .modal-overlay.open .modal { transform: translateY(0); }
@@ -780,78 +531,137 @@
     background: var(--card);
     padding: 24px;
     border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: flex; align-items: center; justify-content: space-between;
   }
 
-  .modal-title {
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--text-dark);
-  }
+  .modal-title { font-size: 20px; font-weight: 700; color: var(--text-dark); }
 
   .modal-close {
-    background: transparent;
-    border: none;
-    color: var(--muted);
-    font-size: 16px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: color 0.2s;
+    background: transparent; border: none;
+    color: var(--muted); font-size: 16px; font-weight: 700;
+    cursor: pointer; transition: color 0.2s;
+    width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+    border-radius: 4px;
   }
-  .modal-close:hover { color: var(--text-dark); }
+  .modal-close:hover { color: var(--text-dark); background: var(--card2); }
 
   .modal-body { padding: 24px; }
 
-  .modal-warning {
-    background: #FEF2F2;
-    border: 1px solid #FCA5A5;
-    border-radius: 4px;
-    padding: 16px;
-    margin-bottom: 24px;
-    font-size: 14px;
-    color: #991B1B;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+  /* Step-based modal */
+  .cancel-step { display: none; }
+  .cancel-step.active { display: block; }
+
+  /* Step 1: Reason select */
+  .modal-amber-box {
+    background: var(--amber-light);
+    border: 1px solid var(--amber-border);
+    border-radius: 4px; padding: 14px 16px; margin-bottom: 20px;
+    font-size: 14px; color: #78350F; line-height: 1.5;
   }
 
-  .modal-warning-title { font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.5px; }
+  .modal-amber-box strong { color: #92400E; }
 
+  .reason-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+
+  .reason-option {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 14px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 6px; cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+    position: relative;
+  }
+
+  .reason-option input[type="radio"] { margin-top: 2px; accent-color: var(--aa-blue); flex-shrink: 0; }
+  .reason-option:hover { border-color: var(--aa-blue); background: var(--aa-light-blue); }
+  .reason-option.selected { border-color: var(--aa-blue); background: var(--aa-light-blue); }
+
+  .reason-option-label { font-size: 14px; font-weight: 700; color: var(--text-dark); margin-bottom: 2px; }
+  .reason-option-sub { font-size: 12px; color: var(--muted); }
+
+  /* Step 2: Review */
   .refund-breakdown {
-    background: var(--card2);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 16px;
-    margin-bottom: 24px;
+    background: var(--card2); border: 1px solid var(--border);
+    border-radius: 4px; padding: 16px; margin-bottom: 20px;
   }
 
   .refund-row {
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-    padding: 6px 0;
-    color: var(--text);
+    display: flex; justify-content: space-between;
+    font-size: 14px; padding: 6px 0; color: var(--text);
   }
 
   .refund-row.total {
     border-top: 1px solid var(--border);
-    margin-top: 12px;
-    padding-top: 12px;
-    color: var(--text-dark);
-    font-weight: 700;
-    font-size: 16px;
+    margin-top: 12px; padding-top: 12px;
+    color: var(--text-dark); font-weight: 700; font-size: 16px;
   }
 
   .refund-row.total .val { color: var(--green); }
+  .refund-row .val-strikethrough { text-decoration: line-through; color: var(--muted); font-size: 12px; }
+  .refund-row .val-waived { color: var(--green); font-size: 12px; font-weight: 700; margin-left: 6px; }
 
-  .modal-actions {
-    display: flex;
-    gap: 12px;
+  .elite-waiver-notice {
+    background: #E6F4EA; border: 1px solid #86EFAC;
+    border-radius: 4px; padding: 12px 14px; margin-bottom: 20px;
+    font-size: 13px; color: #166534;
+    display: flex; gap: 8px; align-items: flex-start;
   }
 
+  /* Step 3: Confirmed */
+  .confirmed-view {
+    text-align: center; padding: 8px 0 16px;
+  }
+
+  .confirmed-icon {
+    width: 64px; height: 64px; border-radius: 50%;
+    background: var(--green-light);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px;
+    margin: 0 auto 20px;
+  }
+
+  .confirmed-title { font-size: 22px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; }
+  .confirmed-sub { font-size: 14px; color: var(--muted); margin-bottom: 24px; line-height: 1.6; }
+
+  .confirmed-detail {
+    background: var(--card2); border: 1px solid var(--border);
+    border-radius: 6px; padding: 16px; margin-bottom: 24px;
+    text-align: left;
+  }
+
+  .confirmed-detail-row {
+    display: flex; justify-content: space-between;
+    font-size: 14px; padding: 5px 0; color: var(--text);
+  }
+
+  .confirmed-detail-row strong { color: var(--text-dark); font-weight: 700; }
+
+  .modal-actions { display: flex; gap: 12px; }
   .modal-actions .btn { flex: 1; }
+
+  /* Cancelled state overlay on trip card */
+  .trip-card.cancelled-state {
+    opacity: 0.55;
+    pointer-events: none;
+    position: relative;
+  }
+
+  .cancelled-ribbon {
+    display: none;
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    background: var(--aa-red);
+    color: #fff;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 10px;
+  }
+
+  .trip-card.cancelled-state .cancelled-ribbon { display: block; }
+  .trip-card.cancelled-state { padding-top: 40px; position: relative; }
 
   @media (max-width: 900px) {
     .main-layout { grid-template-columns: 1fr; }
@@ -860,6 +670,7 @@
     .hero-bar { padding: 24px 20px; }
     .hero-stats { gap: 20px; flex-wrap: wrap; }
     .main-layout { padding: 24px 16px 40px; }
+    .delay-banner { padding: 14px 20px; }
   }
 
   .mt-4 { margin-top: 4px; }
@@ -897,6 +708,16 @@
   </div>
 </nav>
 
+<!-- DELAY ALERT BANNER -->
+<div class="delay-banner">
+  <div class="delay-icon">⚠️</div>
+  <div class="delay-banner-text">
+    <div class="delay-banner-title">Flight AA 3521 is delayed — new departure 6:45 PM (was 4:10 PM)</div>
+    <div class="delay-banner-sub">ATC ground delay program in effect at MEM due to convective weather over the Mid-South corridor. Your DFW connection is protected.</div>
+  </div>
+  <button class="delay-banner-btn" onclick="document.getElementById('tripCardAnchor').scrollIntoView({behavior:'smooth'})">View details</button>
+</div>
+
 <!-- HERO BAR -->
 <div class="hero-bar">
   <div class="hero-greeting">Welcome back</div>
@@ -931,43 +752,61 @@
   <!-- LEFT COLUMN -->
   <div class="left-col">
 
+    <!-- DELAY NOTICE -->
+    <div class="delay-notice" id="delayNotice">
+      <div class="delay-notice-icon">🌩️</div>
+      <div class="delay-notice-body">
+        <div class="delay-notice-title">ATC Ground Delay — Convective Weather</div>
+        <div class="delay-notice-text">
+          AA 3521 (MEM → DFW) is currently under an FAA ground delay program due to severe thunderstorm activity over the Mid-South corridor. Inbound aircraft from ORD arrived late at MEM, creating a 2h 35m departure delay. New departure: <strong>6:45 PM CT</strong>. Your layover at DFW is sufficient — QF 8 departs 10:15 PM. No rebooking needed.
+        </div>
+      </div>
+    </div>
+
     <!-- UPCOMING TRIP CARD -->
-    <div class="section-title">Upcoming trip</div>
-    <div class="trip-card">
+    <div class="section-title" id="tripCardAnchor">Upcoming trip</div>
+
+    <!-- Cancelled ribbon is hidden until user cancels -->
+    <div class="trip-card" id="mainTripCard" style="position:relative;">
+      <div class="cancelled-ribbon">Trip Cancelled</div>
+
       <div class="trip-card-header">
         <div>
           <div class="trip-flight-no">Record Locator: VNYZPT</div>
           <div class="trip-route">MEM <span class="arrow">&rarr;</span> DFW <span class="arrow">&rarr;</span> SYD</div>
           <div class="text-muted mt-4">Tuesday, June 16 · Memphis to Sydney · 2 segments</div>
         </div>
-        <div class="trip-badge">ON TIME</div>
+        <div class="trip-badge-delayed">DELAYED 2h 35m</div>
       </div>
 
       <div class="trip-legs">
 
-        <!-- Leg 1: MEM → DFW (American Eagle) -->
+        <!-- Leg 1: MEM → DFW (DELAYED) -->
         <div class="leg">
           <div class="leg-airport">
             <div class="leg-code">MEM</div>
             <div class="leg-city">Memphis, TN</div>
-            <div class="leg-time">4:10 PM</div>
+            <div class="leg-time delayed">6:45 PM</div>
+            <div class="leg-time-orig">was 4:10 PM</div>
             <div class="leg-date">Tue Jun 16</div>
           </div>
           <div class="leg-middle">
             <div class="leg-line"><span class="leg-plane-node"></span></div>
             <div class="leg-duration">1h 45m</div>
             <div class="leg-airline">AA 3521 · Embraer E175</div>
-            <div class="leg-stop">Operated by Envoy Air as American Eagle</div>
+            <div class="leg-airline">Operated by Envoy Air as American Eagle</div>
+            <div class="leg-delay-tag">⚠ Delayed — ATC / Weather</div>
           </div>
           <div class="leg-airport">
             <div class="leg-code">DFW</div>
             <div class="leg-city">Dallas/Fort Worth</div>
-            <div class="leg-time">5:55 PM</div>
+            <div class="leg-time delayed">8:30 PM</div>
+            <div class="leg-time-orig">was 5:55 PM</div>
             <div class="leg-date">Tue Jun 16</div>
           </div>
         </div>
 
-        <!-- Leg 2: DFW → SYD (Qantas / Mainline Codeshare) -->
+        <!-- Leg 2: DFW → SYD (ON TIME) -->
         <div class="leg">
           <div class="leg-airport">
             <div class="leg-code">DFW</div>
@@ -976,10 +815,11 @@
             <div class="leg-date">Tue Jun 16</div>
           </div>
           <div class="leg-middle">
-            <div class="leg-line"><span class="leg-plane-node"></span></div>
+            <div class="leg-line"><span class="leg-plane-node on-time"></span></div>
             <div class="leg-duration">17h 00m</div>
             <div class="leg-airline">QF 8 · Boeing 787-9</div>
-            <div class="leg-stop">Qantas operated · AA 7411 Codeshare</div>
+            <div class="leg-airline">Qantas operated · AA 7411 Codeshare</div>
+            <div class="leg-delay-tag" style="background:#E6F4EA;color:var(--green);">✓ On time · Connection protected</div>
           </div>
           <div class="leg-airport">
             <div class="leg-code">SYD</div>
@@ -992,9 +832,10 @@
       </div>
 
       <div class="trip-actions">
-        <button class="btn btn-danger-outline" onclick="openModal()">Cancel / Refund</button>
+        <button class="btn btn-danger-outline" onclick="openCancelModal()">Cancel / Refund</button>
         <button class="btn btn-outline" onclick="alert('Boarding pass added to Apple Wallet')">Add to Wallet</button>
-        <button class="btn btn-outline" onclick="alert('Seat change opens 24h before departure')">Change Seats</button>
+        <button class="btn btn-outline" onclick="alert('Seat selection available at check-in')">Change Seats</button>
+        <button class="btn btn-amber" onclick="alert('Delay options: rebooking line is open. Call 1-800-433-7300 or use the AA app to rebook at no charge.')">Delay Options</button>
         <button class="btn btn-primary" onclick="alert('Check-in opens Jun 15 at 4:10 PM')">Check in</button>
       </div>
     </div>
@@ -1005,11 +846,11 @@
       <div class="tracker-head">
         <div>
           <div style="font-weight:700;color:var(--text-dark);font-size:16px;">AA 3521 &nbsp;·&nbsp; MEM &rarr; DFW</div>
-          <div class="text-muted mt-4">Departs in ~6 hours · Terminal B, Gate B22</div>
+          <div class="text-muted mt-4">New departure: 6:45 PM · Terminal B, Gate B14 (gate changed)</div>
         </div>
         <div class="tracker-status">
-          <div class="status-dot"></div>
-          <div class="status-text">Scheduled</div>
+          <div class="status-dot delayed"></div>
+          <div class="status-text delayed">Delayed</div>
         </div>
       </div>
 
@@ -1017,9 +858,9 @@
         <div class="progress-fill" id="trackProgress"></div>
       </div>
       <div class="progress-labels">
-        <span>MEM · 4:10 PM</span>
+        <span>MEM · 6:45 PM</span>
         <span>Flight not yet departed</span>
-        <span>DFW · 5:55 PM</span>
+        <span>DFW · 8:30 PM</span>
       </div>
 
       <div class="map-placeholder">
@@ -1038,7 +879,7 @@
         </div>
         <div>
           <div style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;margin-bottom:4px;">Gate</div>
-          <div style="font-weight:700;font-size:15px;color:var(--text-dark);">B22</div>
+          <div style="font-weight:700;font-size:15px;color:var(--amber);">B14 <span style="font-size:11px;background:var(--amber-light);color:var(--amber);padding:2px 5px;border-radius:3px;font-weight:700;">CHANGED</span></div>
         </div>
         <div>
           <div style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;margin-bottom:4px;">Aircraft</div>
@@ -1047,6 +888,10 @@
         <div>
           <div style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;margin-bottom:4px;">Seat</div>
           <div style="font-weight:700;font-size:15px;color:var(--aa-blue);">2A <span style="font-size:12px;color:var(--muted);font-weight:400;">First</span></div>
+        </div>
+        <div>
+          <div style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;margin-bottom:4px;">Inbound aircraft</div>
+          <div style="font-weight:700;font-size:15px;color:var(--amber);">Arrived 5:52 PM <span style="font-size:11px;color:var(--muted);font-weight:400;">(late from ORD)</span></div>
         </div>
       </div>
     </div>
@@ -1060,16 +905,16 @@
     </div>
 
     <div id="tab-upcoming" class="tab-content active">
-      <div class="trip-list-item">
+      <div id="upcomingListItem" class="trip-list-item">
         <div class="trip-list-dates">
           <div class="trip-list-day">16</div>
           <div class="trip-list-month">Jun</div>
         </div>
         <div class="trip-list-info">
           <div class="trip-list-route">Memphis to Sydney (via DFW)</div>
-          <div class="trip-list-detail">AA 3521 / QF 8 · First / Business</div>
+          <div class="trip-list-detail">AA 3521 / QF 8 · First / Business · ⚠ AA 3521 delayed 2h 35m</div>
         </div>
-        <div class="trip-list-status status-confirmed">Confirmed</div>
+        <div class="trip-list-status status-delayed">Delayed</div>
       </div>
     </div>
 
@@ -1087,8 +932,19 @@
       </div>
     </div>
 
-    <div id="tab-cancelled" class="tab-content">
-      <div style="padding:28px 0;text-align:center;color:var(--muted);font-size:14px;">No canceled trips to display.</div>
+    <div id="tab-cancelled" class="tab-content" id="cancelledTab">
+      <div id="cancelledListEmpty" style="padding:28px 0;text-align:center;color:var(--muted);font-size:14px;">No canceled trips to display.</div>
+      <div id="cancelledListItem" style="display:none;" class="trip-list-item" style="cursor:default;pointer-events:none;">
+        <div class="trip-list-dates">
+          <div class="trip-list-day">16</div>
+          <div class="trip-list-month">Jun</div>
+        </div>
+        <div class="trip-list-info">
+          <div class="trip-list-route">Memphis to Sydney (via DFW)</div>
+          <div class="trip-list-detail">AA 3521 / QF 8 · Cancelled Jun 15 · Trip credit $3,307.50</div>
+        </div>
+        <div class="trip-list-status" style="background:#FEE2E2;color:var(--aa-red);">Cancelled</div>
+      </div>
     </div>
 
   </div>
@@ -1098,16 +954,18 @@
 
     <!-- BOARDING PASS -->
     <div class="section-title">Boarding pass</div>
-    <div class="boarding-pass">
+    <div class="boarding-pass" id="boardingPass">
       <div class="bp-top">
         <div class="bp-airline">
           <span class="bp-aa-logo">American Eagle</span>
         </div>
+        <div class="bp-delay-badge">⚠ Flight delayed — new departure 6:45 PM</div>
         <div class="bp-route">
           <div class="bp-airport">
             <div class="bp-code">MEM</div>
             <div class="bp-city">Memphis</div>
-            <div class="bp-time">4:10 PM</div>
+            <div class="bp-time delayed-time">6:45 PM</div>
+            <div class="bp-time-orig">was 4:10 PM</div>
           </div>
           <div class="bp-line">
             <div class="bp-dashes"></div>
@@ -1117,7 +975,8 @@
           <div class="bp-airport">
             <div class="bp-code">DFW</div>
             <div class="bp-city">Dallas</div>
-            <div class="bp-time">5:55 PM</div>
+            <div class="bp-time delayed-time">8:30 PM</div>
+            <div class="bp-time-orig">was 5:55 PM</div>
           </div>
         </div>
         <div class="bp-details">
@@ -1125,7 +984,7 @@
           <div class="bp-field"><label>Flight</label><span>AA 3521</span></div>
           <div class="bp-field"><label>Class</label><span>First</span></div>
           <div class="bp-field"><label>Date</label><span>Jun 16</span></div>
-          <div class="bp-field"><label>Boarding</label><span>3:40 PM</span></div>
+          <div class="bp-field"><label>Boarding</label><span>6:20 PM</span></div>
           <div class="bp-field"><label>Group</label><span>1 (Exec)</span></div>
         </div>
       </div>
@@ -1176,20 +1035,20 @@
       <div class="section-title">Trip checklist</div>
       <div class="checklist">
         <div class="check-item">
-          <div class="check-icon done">Y</div>
+          <div class="check-icon done">✓</div>
           <div class="check-label done">Passport valid</div>
         </div>
         <div class="check-item">
-          <div class="check-icon done">Y</div>
+          <div class="check-icon done">✓</div>
           <div class="check-label done">Australia ETA approved</div>
         </div>
         <div class="check-item">
-          <div class="check-icon done">Y</div>
+          <div class="check-icon done">✓</div>
           <div class="check-label done">Seats selected</div>
         </div>
         <div class="check-item">
-          <div class="check-icon warn">P</div>
-          <div class="check-label">Check in opens Jun 15</div>
+          <div class="check-icon warn">!</div>
+          <div class="check-label">Check in opens Jun 15 · <span style="color:var(--amber);font-weight:700;">Gate changed to B14</span></div>
         </div>
         <div class="check-item">
           <div class="check-icon todo"></div>
@@ -1206,34 +1065,113 @@
 <div class="modal-overlay" id="cancelModal" onclick="closeModalOutside(event)">
   <div class="modal">
     <div class="modal-header">
-      <div class="modal-title">Cancel flight</div>
-      <button class="modal-close" onclick="closeModal()">X</button>
+      <div class="modal-title" id="modalTitle">Cancel trip</div>
+      <button class="modal-close" onclick="closeModal()" id="modalCloseBtn">✕</button>
     </div>
     <div class="modal-body">
-      <div class="modal-warning">
-        <div class="modal-warning-title">Notice</div>
-        <div>Canceling within 24 hours of departure is non-refundable for base fare. As an <strong>Executive Platinum</strong> member, your refund may be eligible under the Elite Flexible Waiver policy.</div>
+
+      <!-- STEP 1: Reason -->
+      <div class="cancel-step active" id="stepReason">
+        <div class="modal-amber-box">
+          Your flight is <strong>delayed 2h 35m due to weather/ATC</strong>. As an <strong>Executive Platinum</strong> member, you qualify for a <strong>full trip credit</strong> with the Elite Flexible Waiver — no cancellation fee.
+        </div>
+
+        <div style="font-size:14px;font-weight:700;color:var(--text-dark);margin-bottom:12px;">Why are you canceling?</div>
+
+        <div class="reason-list" id="reasonList">
+          <label class="reason-option" id="reason-weather">
+            <input type="radio" name="cancel_reason" value="weather" onchange="selectReason(this)">
+            <div>
+              <div class="reason-option-label">Flight delay / weather disruption</div>
+              <div class="reason-option-sub">Qualify for full refund or trip credit under AA waiver policy</div>
+            </div>
+          </label>
+          <label class="reason-option" id="reason-plans">
+            <input type="radio" name="cancel_reason" value="plans" onchange="selectReason(this)">
+            <div>
+              <div class="reason-option-label">Change of plans</div>
+              <div class="reason-option-sub">Trip credit issued; fare difference may apply on rebooking</div>
+            </div>
+          </label>
+          <label class="reason-option" id="reason-emergency">
+            <input type="radio" name="cancel_reason" value="emergency" onchange="selectReason(this)">
+            <div>
+              <div class="reason-option-label">Personal / family emergency</div>
+              <div class="reason-option-sub">May qualify for bereavement or medical exception — agent review required</div>
+            </div>
+          </label>
+          <label class="reason-option" id="reason-other">
+            <input type="radio" name="cancel_reason" value="other" onchange="selectReason(this)">
+            <div>
+              <div class="reason-option-label">Other reason</div>
+              <div class="reason-option-sub">Standard trip credit policy applies</div>
+            </div>
+          </label>
+        </div>
+
+        <div class="modal-actions">
+          <button class="btn btn-outline" onclick="closeModal()">Never mind</button>
+          <button class="btn btn-primary" id="step1Next" onclick="goToStep2()" disabled style="opacity:0.5;cursor:not-allowed;">Continue →</button>
+        </div>
       </div>
 
-      <div class="refund-breakdown">
-        <div class="refund-row"><span>Base fare</span><span class="val" style="color:var(--text-dark);">$2,840.00</span></div>
-        <div class="refund-row"><span>Taxes & carrier-imposed fees</span><span class="val" style="color:var(--text-dark);">$318.50</span></div>
-        <div class="refund-row"><span>Seat upgrade</span><span class="val" style="color:var(--text-dark);">$149.00</span></div>
-        <div class="refund-row"><span>Non-refundable fee (Waived)</span><span class="val" style="color:var(--green);">&ndash;$0.00</span></div>
-        <div class="refund-row total"><span>Estimated trip credit</span><span class="val">$3,307.50</span></div>
+      <!-- STEP 2: Review refund -->
+      <div class="cancel-step" id="stepReview">
+        <div class="elite-waiver-notice">
+          <span>✅</span>
+          <span><strong>Executive Platinum Elite Flexible Waiver applied.</strong> Your cancellation fee of $200 has been waived. Full trip credit issued to AAdvantage account <strong>#7X3W4K2</strong>.</span>
+        </div>
+
+        <div class="refund-breakdown">
+          <div class="refund-row"><span>Base fare (Business / First)</span><span style="color:var(--text-dark);">$2,840.00</span></div>
+          <div class="refund-row"><span>Taxes &amp; carrier-imposed fees</span><span style="color:var(--text-dark);">$318.50</span></div>
+          <div class="refund-row"><span>Seat upgrade</span><span style="color:var(--text-dark);">$149.00</span></div>
+          <div class="refund-row">
+            <span>Cancellation fee</span>
+            <span>
+              <span class="val-strikethrough">$200.00</span>
+              <span class="val-waived">WAIVED</span>
+            </span>
+          </div>
+          <div class="refund-row total"><span>Total trip credit</span><span class="val">$3,307.50</span></div>
+        </div>
+
+        <div style="font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.6;">
+          Trip credit will be applied to AAdvantage account <strong>#7X3W4K2</strong> within 24 hours and is valid for 12 months from today. Rebooking any AA or partner itinerary is available via the app or website.
+        </div>
+
+        <div class="modal-actions">
+          <button class="btn btn-outline" onclick="goToStep1()">← Back</button>
+          <button class="btn btn-danger-outline" onclick="confirmCancel()">Confirm cancellation</button>
+        </div>
       </div>
 
-      <div class="modal-actions">
-        <button class="btn btn-outline" onclick="closeModal()">Keep trip</button>
-        <button class="btn btn-danger-outline" onclick="alert('Trip Canceled.')">Cancel trip</button>
+      <!-- STEP 3: Confirmed -->
+      <div class="cancel-step" id="stepConfirmed">
+        <div class="confirmed-view">
+          <div class="confirmed-icon">✓</div>
+          <div class="confirmed-title">Trip cancelled</div>
+          <div class="confirmed-sub">
+            Your trip MEM → DFW → SYD has been cancelled.<br>
+            Trip credit of <strong>$3,307.50</strong> has been issued to your AAdvantage account.
+          </div>
+          <div class="confirmed-detail">
+            <div class="confirmed-detail-row"><span>Trip credit</span><strong style="color:var(--green);">$3,307.50</strong></div>
+            <div class="confirmed-detail-row"><span>Account</span><strong>#7X3W4K2</strong></div>
+            <div class="confirmed-detail-row"><span>Valid until</span><strong>Jun 15, 2027</strong></div>
+            <div class="confirmed-detail-row"><span>Confirmation</span><strong>CNCL-VNYZPT-0615</strong></div>
+          </div>
+          <button class="btn btn-primary" style="width:100%;" onclick="closeModal()">Done</button>
+        </div>
       </div>
+
     </div>
   </div>
 </div>
 
 <script>
   window.addEventListener('DOMContentLoaded', () => {
-    setTimeout(() => { document.getElementById('trackProgress').style.width = '20%'; }, 400);
+    setTimeout(() => { document.getElementById('trackProgress').style.width = '0%'; }, 400);
     setTimeout(() => { document.getElementById('milesFill').style.width = '87%'; }, 600);
   });
 
@@ -1244,9 +1182,23 @@
     document.getElementById(tabId).classList.add('active');
   }
 
-  function openModal() {
+  // Cancel modal state
+  let selectedReason = null;
+
+  function openCancelModal() {
     document.getElementById('cancelModal').classList.add('open');
     document.body.style.overflow = 'hidden';
+    // Reset to step 1
+    showStep('stepReason');
+    document.getElementById('modalTitle').textContent = 'Cancel trip';
+    document.getElementById('modalCloseBtn').style.display = 'flex';
+    selectedReason = null;
+    document.querySelectorAll('input[name="cancel_reason"]').forEach(r => r.checked = false);
+    document.querySelectorAll('.reason-option').forEach(el => el.classList.remove('selected'));
+    const btn = document.getElementById('step1Next');
+    btn.disabled = true;
+    btn.style.opacity = '0.5';
+    btn.style.cursor = 'not-allowed';
   }
 
   function closeModal() {
@@ -1256,6 +1208,61 @@
 
   function closeModalOutside(e) {
     if (e.target.id === 'cancelModal') closeModal();
+  }
+
+  function showStep(stepId) {
+    document.querySelectorAll('.cancel-step').forEach(el => el.classList.remove('active'));
+    document.getElementById(stepId).classList.add('active');
+  }
+
+  function selectReason(radio) {
+    selectedReason = radio.value;
+    document.querySelectorAll('.reason-option').forEach(el => el.classList.remove('selected'));
+    radio.closest('.reason-option').classList.add('selected');
+    const btn = document.getElementById('step1Next');
+    btn.disabled = false;
+    btn.style.opacity = '1';
+    btn.style.cursor = 'pointer';
+  }
+
+  function goToStep2() {
+    if (!selectedReason) return;
+    showStep('stepReview');
+    document.getElementById('modalTitle').textContent = 'Review cancellation';
+  }
+
+  function goToStep1() {
+    showStep('stepReason');
+    document.getElementById('modalTitle').textContent = 'Cancel trip';
+  }
+
+  function confirmCancel() {
+    showStep('stepConfirmed');
+    document.getElementById('modalTitle').textContent = 'Cancellation confirmed';
+    document.getElementById('modalCloseBtn').style.display = 'none';
+
+    // Update the trip card
+    const card = document.getElementById('mainTripCard');
+    card.classList.add('cancelled-state');
+
+    // Hide delay banner and notice
+    const banner = document.querySelector('.delay-banner');
+    if (banner) banner.style.display = 'none';
+    const notice = document.getElementById('delayNotice');
+    if (notice) notice.style.display = 'none';
+
+    // Move list item to cancelled tab
+    const upcoming = document.getElementById('upcomingListItem');
+    if (upcoming) upcoming.style.display = 'none';
+
+    const cancelledEmpty = document.getElementById('cancelledListEmpty');
+    if (cancelledEmpty) cancelledEmpty.style.display = 'none';
+
+    const cancelledItem = document.getElementById('cancelledListItem');
+    if (cancelledItem) cancelledItem.style.display = 'flex';
+
+    // Update hero stat
+    document.querySelector('.stat-item .stat-val').textContent = '0';
   }
 </script>
 </body>
