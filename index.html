@@ -1,596 +1,739 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>American Airlines - Manage Trip</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;500;700&family=Arial:wght@400;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  :root {
-    --aa-blue: #0078D2;
-    --aa-dark-blue: #00467F;
-    --aa-red: #C30019;
-    --aa-light-blue: #E8F4FA;
-    --bg-main: #F2F4F7;
-    --card: #FFFFFF;
-    --card2: #F8F9FA;
-    --border: #D1D5DB;
-    --text-dark: #111827;
-    --text: #374151;
-    --muted: #6B7280;
-    --green: #108040;
-    --green-light: #E6F4EA;
-    --amber: #B45309;
-    --amber-light: #FEF3C7;
-    --amber-border: #F59E0B;
-    --exec-plat: #5B6770;
-    --font-primary: 'Helvetica Neue', Arial, sans-serif;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--bg-main);
-    color: var(--text);
-    font-family: var(--font-primary);
-    font-size: 15px;
-    min-height: 100vh;
-  }
-
-  /* NAV */
-  nav {
-    position: sticky; top: 0; z-index: 100;
-    background: var(--card);
-    border-bottom: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 40px; height: 68px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
-  }
-
-  .nav-logo {
-    display: flex; align-items: center; gap: 8px;
-    font-size: 22px; font-weight: 700; letter-spacing: -0.5px;
-    color: var(--aa-blue); text-decoration: none;
-  }
-
-  .nav-logo-icon {
-    position: relative; width: 24px; height: 24px;
-    background: linear-gradient(135deg, var(--aa-blue) 50%, var(--aa-red) 50%);
-    clip-path: polygon(0 40%, 100% 0, 80% 100%, 20% 100%);
-  }
-
-  .aa-badge {
-    font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
-    color: #fff; background: var(--text-dark);
-    padding: 3px 8px; border-radius: 4px; margin-left: 6px;
-  }
-
-  .nav-links { display: flex; gap: 32px; list-style: none; }
-  .nav-links a { color: var(--text); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
-  .nav-links a:hover, .nav-links a.active { color: var(--aa-blue); font-weight: 700; }
-
-  .nav-right { display: flex; align-items: center; gap: 16px; }
-
-  .member-pill {
-    display: flex; align-items: center; gap: 10px;
-    background: var(--card2); border: 1px solid var(--border);
-    border-radius: 30px; padding: 4px 14px 4px 4px; cursor: pointer;
-  }
-
-  .member-avatar {
-    width: 32px; height: 32px; border-radius: 50%;
-    background: var(--exec-plat);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 12px; font-weight: 700; color: #fff;
-  }
-
-  .member-info { line-height: 1.2; }
-  .member-name { font-size: 12px; font-weight: 700; color: var(--text-dark); }
-  .member-tier { font-size: 10px; font-weight: 700; color: var(--exec-plat); }
-
-  /* HERO BAR */
-  .hero-bar {
-    background: linear-gradient(135deg, var(--aa-dark-blue) 0%, var(--aa-blue) 100%);
-    padding: 36px 40px 32px;
-    position: relative; overflow: hidden; color: #fff;
-  }
-
-  .hero-bar::before {
-    content: ''; position: absolute; top: -50px; right: -50px;
-    width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 60%);
-    pointer-events: none;
-  }
-
-  .hero-greeting { font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #E8F4FA; margin-bottom: 6px; }
-  .hero-name { font-size: 36px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 8px; }
-  .hero-sub { color: #D1E8F7; font-size: 14px; }
-  .hero-sub strong { color: #fff; font-weight: 700; }
-
-  .hero-stats { display: flex; gap: 40px; margin-top: 28px; }
-  .stat-item { line-height: 1.2; }
-  .stat-val { font-size: 26px; font-weight: 700; }
-  .stat-val span { font-size: 14px; font-weight: 400; opacity: 0.8; }
-  .stat-label { font-size: 12px; color: #D1E8F7; margin-top: 4px; }
-  .stat-divider { width: 1px; background: rgba(255,255,255,0.2); align-self: stretch; }
-
-  /* LAYOUT */
-  .main-layout {
-    display: grid;
-    grid-template-columns: 1fr 380px;
-    gap: 24px;
-    padding: 32px 40px 60px;
-    max-width: 1320px;
-    margin: 0 auto;
-  }
-
-  /* SECTION TITLES */
-  .section-title {
-    font-size: 18px; font-weight: 700; color: var(--text-dark);
-    margin-bottom: 16px;
-    display: flex; align-items: center; gap: 12px;
-  }
-
-  /* TRIP CARD */
-  .trip-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-    margin-bottom: 32px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-  }
-
-  .trip-card-header {
-    background: var(--card2);
-    padding: 20px 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .trip-flight-no { font-size: 12px; font-weight: 700; letter-spacing: 1px; color: var(--aa-blue); margin-bottom: 6px; text-transform: uppercase; }
-  .trip-route { font-size: 26px; font-weight: 700; color: var(--text-dark); letter-spacing: -0.5px; }
-  .trip-route .arrow { color: var(--aa-red); margin: 0 8px; font-weight: 400; }
-
-  .trip-badge {
-    background: #E6F4EA; color: var(--green);
-    font-size: 11px; font-weight: 700; letter-spacing: 1px;
-    text-transform: uppercase; padding: 6px 12px; border-radius: 4px;
-  }
-
-  .trip-legs { padding: 12px 24px; display: flex; flex-direction: column; }
-
-  .leg {
-    display: grid;
-    grid-template-columns: 100px 1fr 100px;
-    align-items: center;
-    gap: 16px;
-    padding: 20px 0;
-  }
-
-  .leg-airport { text-align: center; }
-  .leg-code { font-size: 28px; font-weight: 700; color: var(--text-dark); letter-spacing: -0.5px; }
-  .leg-city { font-size: 12px; color: var(--muted); margin-top: 2px; }
-  .leg-time { font-size: 16px; font-weight: 700; color: var(--text-dark); margin-top: 6px; }
-  .leg-date { font-size: 11px; color: var(--muted); }
-
-  .leg-middle { text-align: center; position: relative; }
-  .leg-line { height: 2px; background: var(--border); position: relative; margin: 10px 0; }
-  .leg-plane-node {
-    position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    background: var(--aa-blue); width: 8px; height: 8px; border-radius: 50%;
-  }
-
-  .leg-duration { font-size: 12px; color: var(--muted); font-weight: 500; }
-  .leg-airline { font-size: 11px; color: var(--muted); margin-top: 4px; }
-  .leg-on-time-tag { font-size: 11px; color: var(--green); font-weight: 700; margin-top: 4px; background: var(--green-light); display: inline-block; padding: 2px 6px; border-radius: 3px; }
-
-  .trip-actions {
-    padding: 16px 24px;
-    display: flex; gap: 12px;
-    background: var(--card2);
-    border-top: 1px solid var(--border);
-    flex-wrap: wrap;
-  }
-
-  .btn {
-    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-    font-family: var(--font-primary);
-    font-size: 14px; font-weight: 700; cursor: pointer;
-    border: none; border-radius: 4px; padding: 10px 20px;
-    transition: all 0.2s; text-decoration: none;
-  }
-
-  .btn-primary { background: var(--aa-blue); color: #fff; }
-  .btn-primary:hover { background: var(--aa-dark-blue); }
-
-  .btn-outline { background: #fff; color: var(--aa-blue); border: 1px solid var(--aa-blue); }
-  .btn-outline:hover { background: var(--aa-light-blue); }
-
-  .btn-danger-outline { background: #fff; color: var(--aa-red); border: 1px solid var(--aa-red); }
-  .btn-danger-outline:hover { background: #fdf2f2; }
-
-  /* FLIGHT TRACKER */
-  .tracker-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 24px;
-    margin-bottom: 32px;
-  }
-
-  .tracker-head {
-    display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 20px;
-  }
-
-  .tracker-status { display: flex; align-items: center; gap: 8px; }
-  .status-dot { width: 10px; height: 10px; border-radius: 50%; }
-  .status-dot.on-time { background: var(--green); box-shadow: 0 0 0 0 rgba(16,128,64,0.4); animation: pulse-green 2s infinite; }
-  .status-text { font-size: 14px; font-weight: 700; }
-  .status-text.on-time { color: var(--green); }
-
-  @keyframes pulse-green {
-    0% { box-shadow: 0 0 0 0 rgba(16,128,64,0.4); }
-    70% { box-shadow: 0 0 0 8px rgba(16,128,64,0); }
-    100% { box-shadow: 0 0 0 0 rgba(16,128,64,0); }
-  }
-
-  .progress-track { background: var(--border); border-radius: 4px; height: 8px; overflow: hidden; margin-bottom: 12px; }
-  .progress-fill { height: 100%; width: 0%; background: var(--aa-blue); border-radius: 4px; transition: width 1.5s ease; }
-
-  .progress-labels {
-    display: flex; justify-content: space-between;
-    font-size: 12px; color: var(--muted); font-weight: 500;
-    margin-bottom: 24px;
-  }
-
-  .map-placeholder {
-    background: var(--bg-main);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    height: 180px;
-    display: flex; align-items: center; justify-content: center;
-    position: relative; overflow: hidden;
-  }
-
-  .map-bg {
-    position: absolute; inset: 0;
-    background-image:
-      radial-gradient(circle at 20% 60%, rgba(0,120,210,0.08) 0%, transparent 50%),
-      radial-gradient(circle at 80% 40%, rgba(195,0,25,0.05) 0%, transparent 50%);
-  }
-
-  .map-route-line {
-    position: absolute; top: 50%; left: 15%; right: 15%;
-    height: 2px; background: var(--border);
-    transform: translateY(-50%) rotate(-3deg);
-  }
-
-  .map-dot {
-    position: absolute; width: 12px; height: 12px;
-    border-radius: 50%; border: 3px solid #fff;
-    top: 50%; transform: translateY(-50%);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-  }
-
-  .map-dot.origin { left: 15%; background: var(--aa-blue); margin-top: -3px; }
-  .map-dot.dest { right: 15%; background: var(--aa-red); margin-top: -1px; }
-
-  .map-label { position: absolute; font-size: 11px; font-weight: 700; color: var(--text-dark); }
-  .map-label.l-mem { left: 13%; bottom: 40px; }
-  .map-label.l-phx { right: 13%; bottom: 45px; }
-
-  /* TABS */
-  .tab-bar { display: flex; border-bottom: 2px solid var(--border); margin-bottom: 24px; }
-
-  .tab {
-    padding: 12px 24px; font-size: 14px; font-weight: 700;
-    color: var(--muted); cursor: pointer;
-    border-bottom: 3px solid transparent; margin-bottom: -2px;
-    transition: all 0.2s;
-  }
-
-  .tab.active { color: var(--aa-blue); border-bottom-color: var(--aa-blue); }
-  .tab:hover:not(.active) { color: var(--text-dark); }
-
-  .tab-content { display: none; }
-  .tab-content.active { display: block; }
-
-  /* TRIPS LIST */
-  .trip-list-item {
-    display: flex; align-items: center; gap: 20px;
-    background: var(--card); border: 1px solid var(--border);
-    padding: 16px 20px; margin-bottom: 12px; border-radius: 8px;
-    cursor: pointer; transition: border-color 0.2s, box-shadow 0.2s;
-  }
-
-  .trip-list-item:hover { border-color: var(--aa-blue); box-shadow: 0 2px 8px rgba(0,120,210,0.1); }
-
-  .trip-list-dates { text-align: center; min-width: 50px; }
-  .trip-list-day { font-size: 24px; font-weight: 700; color: var(--text-dark); line-height: 1; }
-  .trip-list-month { font-size: 12px; color: var(--muted); font-weight: 700; text-transform: uppercase; margin-top: 4px; }
-
-  .trip-list-info { flex: 1; }
-  .trip-list-route { font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
-  .trip-list-detail { font-size: 13px; color: var(--muted); }
-
-  .trip-list-status {
-    font-size: 11px; font-weight: 700; text-transform: uppercase;
-    padding: 6px 12px; border-radius: 4px; white-space: nowrap;
-  }
-
-  .status-confirmed { background: var(--green-light); color: var(--green); }
-  .status-upcoming { background: var(--aa-light-blue); color: var(--aa-blue); }
-
-  /* RIGHT SIDEBAR */
-  .sidebar { display: flex; flex-direction: column; gap: 24px; }
-
-  .sidebar-card {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 8px; padding: 24px;
-  }
-
-  /* Boarding Pass */
-  .boarding-pass {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 8px; overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  }
-
-  .bp-top { padding: 20px 24px; border-bottom: 2px dashed var(--border); background: var(--card); }
-
-  .bp-airline {
-    font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
-    color: var(--muted); margin-bottom: 16px;
-    display: flex; align-items: center; gap: 8px;
-  }
-
-  .bp-aa-logo { color: var(--aa-blue); font-weight: 900; font-size: 14px; }
-
-  .bp-route {
-    display: flex; align-items: center; justify-content: space-between;
-    gap: 12px; margin-bottom: 20px;
-  }
-
-  .bp-airport { text-align: center; }
-  .bp-code { font-size: 36px; font-weight: 700; color: var(--text-dark); letter-spacing: -1px; }
-  .bp-city { font-size: 11px; color: var(--muted); font-weight: 700; text-transform: uppercase; }
-  .bp-time { font-size: 14px; font-weight: 700; color: var(--text-dark); margin-top: 6px; }
-
-  .bp-line { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; }
-  .bp-dashes { width: 100%; height: 2px; background: var(--border); }
-  .bp-dur { font-size: 11px; color: var(--muted); font-weight: 500; margin-top: 4px; }
-
-  .bp-details { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
-
-  .bp-field label { font-size: 10px; font-weight: 700; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 4px; }
-  .bp-field span { font-size: 14px; font-weight: 700; color: var(--text-dark); }
-
-  .bp-bottom {
-    padding: 16px 24px;
-    display: flex; align-items: center; justify-content: space-between;
-    background: var(--card2);
-  }
-
-  .bp-barcode { display: flex; gap: 3px; align-items: flex-end; }
-  .bp-bar { background: var(--text-dark); border-radius: 1px; }
-
-  .bp-seat-big { text-align: right; }
-  .bp-seat-big span { display: block; font-size: 11px; color: var(--muted); font-weight: 700; text-transform: uppercase; }
-  .bp-seat-big strong { font-size: 42px; font-weight: 700; color: var(--aa-blue); line-height: 1; }
-
-  /* Miles card */
-  .miles-bar { height: 10px; background: var(--border); border-radius: 5px; overflow: hidden; margin: 12px 0 8px; }
-  .miles-fill { height: 100%; background: var(--exec-plat); border-radius: 5px; width: 0%; transition: width 1.5s ease; }
-  .miles-labels { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); font-weight: 500; }
-  .miles-amount { font-size: 32px; font-weight: 700; color: var(--text-dark); }
-  .miles-sub { font-size: 13px; color: var(--muted); }
-  .miles-next { font-size: 13px; color: var(--text); margin-top: 12px; }
-  .miles-next strong { color: var(--exec-plat); }
-
-  /* Checklist */
-  .checklist { display: flex; flex-direction: column; gap: 12px; }
-
-  .check-item { display: flex; align-items: center; gap: 12px; font-size: 14px; }
-
-  .check-icon {
-    width: 20px; height: 20px; border-radius: 4px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 11px; font-weight: 700; flex-shrink: 0;
-  }
-
-  .check-icon.done { background: var(--green); color: #fff; }
-  .check-icon.warn { background: #F59E0B; color: #fff; }
-  .check-icon.todo { background: var(--card); color: var(--border); border: 2px solid var(--border); }
-
-  .check-label { flex: 1; color: var(--text-dark); font-weight: 500; }
-  .check-label.done { text-decoration: line-through; color: var(--muted); }
-  .check-action { font-size: 13px; color: var(--aa-blue); cursor: pointer; font-weight: 700; }
-  .check-action:hover { text-decoration: underline; }
-
-  /* CANCEL MODAL */
-  .modal-overlay {
-    position: fixed; inset: 0;
-    background: rgba(17, 24, 39, 0.7);
-    z-index: 200;
-    display: flex; align-items: center; justify-content: center;
-    opacity: 0; pointer-events: none;
-    transition: opacity 0.2s;
-  }
-
-  .modal-overlay.open { opacity: 1; pointer-events: all; }
-
-  .modal {
-    background: var(--card);
-    border-radius: 8px;
-    width: 520px; max-width: 94vw;
-    overflow: hidden;
-    transform: translateY(20px);
-    transition: transform 0.2s;
-    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.15);
-  }
-
-  .modal-overlay.open .modal { transform: translateY(0); }
-
-  .modal-header {
-    background: var(--card);
-    padding: 24px;
-    border-bottom: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: space-between;
-  }
-
-  .modal-title { font-size: 20px; font-weight: 700; color: var(--text-dark); }
-
-  .modal-close {
-    background: transparent; border: none;
-    color: var(--muted); font-size: 16px; font-weight: 700;
-    cursor: pointer; transition: color 0.2s;
-    width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
-    border-radius: 4px;
-  }
-  .modal-close:hover { color: var(--text-dark); background: var(--card2); }
-
-  .modal-body { padding: 24px; }
-
-  .cancel-step { display: none; }
-  .cancel-step.active { display: block; }
-
-  .modal-blue-box {
-    background: var(--aa-light-blue);
-    border: 1px solid var(--aa-blue);
-    border-radius: 4px; padding: 14px 16px; margin-bottom: 20px;
-    font-size: 14px; color: #003F7D; line-height: 1.5;
-  }
-
-  .reason-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
-
-  .reason-option {
-    display: flex; align-items: flex-start; gap: 12px;
-    padding: 14px 16px;
-    border: 1.5px solid var(--border);
-    border-radius: 6px; cursor: pointer;
-    transition: border-color 0.15s, background 0.15s;
-  }
-
-  .reason-option input[type="radio"] { margin-top: 2px; accent-color: var(--aa-blue); flex-shrink: 0; }
-  .reason-option:hover { border-color: var(--aa-blue); background: var(--aa-light-blue); }
-  .reason-option.selected { border-color: var(--aa-blue); background: var(--aa-light-blue); }
-
-  .reason-option-label { font-size: 14px; font-weight: 700; color: var(--text-dark); margin-bottom: 2px; }
-  .reason-option-sub { font-size: 12px; color: var(--muted); }
-
-  .refund-breakdown {
-    background: var(--card2); border: 1px solid var(--border);
-    border-radius: 4px; padding: 16px; margin-bottom: 20px;
-  }
-
-  .refund-row {
-    display: flex; justify-content: space-between;
-    font-size: 14px; padding: 6px 0; color: var(--text);
-  }
-
-  .refund-row.total {
-    border-top: 1px solid var(--border);
-    margin-top: 12px; padding-top: 12px;
-    color: var(--text-dark); font-weight: 700; font-size: 16px;
-  }
-
-  .refund-row.total .val { color: var(--green); }
-
-  .elite-waiver-notice {
-    background: #E6F4EA; border: 1px solid #86EFAC;
-    border-radius: 4px; padding: 12px 14px; margin-bottom: 20px;
-    font-size: 13px; color: #166534;
-    display: flex; gap: 8px; align-items: flex-start;
-  }
-
-  .confirmed-view {
-    text-align: center; padding: 8px 0 16px;
-  }
-
-  .confirmed-icon {
-    width: 64px; height: 64px; border-radius: 50%;
-    background: var(--green-light);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 28px;
-    margin: 0 auto 20px;
-  }
-
-  .confirmed-title { font-size: 22px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; }
-  .confirmed-sub { font-size: 14px; color: var(--muted); margin-bottom: 24px; line-height: 1.6; }
-
-  .confirmed-detail {
-    background: var(--card2); border: 1px solid var(--border);
-    border-radius: 6px; padding: 16px; margin-bottom: 24px;
-    text-align: left;
-  }
-
-  .confirmed-detail-row {
-    display: flex; justify-content: space-between;
-    font-size: 14px; padding: 5px 0; color: var(--text);
-  }
-
-  .confirmed-detail-row strong { color: var(--text-dark); font-weight: 700; }
-
-  .modal-actions { display: flex; gap: 12px; }
-  .modal-actions .btn { flex: 1; }
-
-  .trip-card.cancelled-state {
-    opacity: 0.55;
-    pointer-events: none;
-    position: relative;
-  }
-
-  .cancelled-ribbon {
-    display: none;
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    background: var(--aa-red);
-    color: #fff;
-    text-align: center;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 10px;
-  }
-
-  .trip-card.cancelled-state .cancelled-ribbon { display: block; }
-  .trip-card.cancelled-state { padding-top: 40px; position: relative; }
-
-  @media (max-width: 900px) {
-    .main-layout { grid-template-columns: 1fr; }
-    nav { padding: 0 20px; }
-    .nav-links { display: none; }
-    .hero-bar { padding: 24px 20px; }
-    .hero-stats { gap: 20px; flex-wrap: wrap; }
-    .main-layout { padding: 24px 16px 40px; }
-  }
-
-  .mt-4 { margin-top: 4px; }
-  .mt-8 { margin-top: 8px; }
-  .mt-12 { margin-top: 12px; }
-  .flex { display: flex; }
-  .items-center { align-items: center; }
-  .gap-8 { gap: 8px; }
-  .text-muted { color: var(--muted); font-size: 13px; }
+:root {
+–aa-blue: #0078D2;
+–aa-dark-blue: #00467F;
+–aa-red: #C30019;
+–aa-light-blue: #E8F4FA;
+–bg-main: #F2F4F7;
+–card: #FFFFFF;
+–card2: #F8F9FA;
+–border: #D1D5DB;
+–text-dark: #111827;
+–text: #374151;
+–muted: #6B7280;
+–green: #108040;
+–green-light: #E6F4EA;
+–amber: #B45309;
+–amber-light: #FEF3C7;
+–exec-plat: #5B6770;
+–font: -apple-system, ‘Helvetica Neue’, Arial, sans-serif;
+–safe-bottom: env(safe-area-inset-bottom, 0px);
+–safe-left: env(safe-area-inset-left, 0px);
+–safe-right: env(safe-area-inset-right, 0px);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+background: var(–bg-main);
+color: var(–text);
+font-family: var(–font);
+font-size: 15px;
+min-height: 100vh;
+-webkit-text-size-adjust: 100%;
+}
+
+/* ── NAV ── */
+nav {
+position: sticky; top: 0; z-index: 100;
+background: var(–card);
+border-bottom: 1px solid var(–border);
+display: flex; align-items: center; justify-content: space-between;
+padding: 0 16px;
+padding-left: calc(16px + var(–safe-left));
+padding-right: calc(16px + var(–safe-right));
+height: 56px;
+box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+}
+
+.nav-logo {
+display: flex; align-items: center; gap: 8px;
+font-size: 18px; font-weight: 700; color: var(–aa-blue); text-decoration: none;
+}
+
+.nav-logo-icon {
+width: 22px; height: 22px;
+background: linear-gradient(135deg, var(–aa-blue) 50%, var(–aa-red) 50%);
+clip-path: polygon(0 40%, 100% 0, 80% 100%, 20% 100%);
+flex-shrink: 0;
+}
+
+.aa-badge {
+font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+color: #fff; background: var(–text-dark);
+padding: 2px 6px; border-radius: 3px;
+}
+
+/* hamburger — hidden on desktop */
+.nav-hamburger {
+display: none;
+flex-direction: column; gap: 5px;
+background: none; border: none; padding: 6px; cursor: pointer;
+}
+.nav-hamburger span {
+display: block; width: 22px; height: 2px;
+background: var(–text-dark); border-radius: 2px;
+transition: all 0.25s;
+}
+
+.nav-links {
+display: flex; gap: 28px; list-style: none;
+}
+.nav-links a {
+color: var(–text); text-decoration: none; font-size: 14px; font-weight: 500;
+transition: color 0.2s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(–aa-blue); font-weight: 700; }
+
+.member-pill {
+display: flex; align-items: center; gap: 8px;
+background: var(–card2); border: 1px solid var(–border);
+border-radius: 30px; padding: 4px 12px 4px 4px; cursor: pointer;
+}
+
+.member-avatar {
+width: 30px; height: 30px; border-radius: 50%;
+background: var(–exec-plat);
+display: flex; align-items: center; justify-content: center;
+font-size: 11px; font-weight: 700; color: #fff; flex-shrink: 0;
+}
+
+.member-info { line-height: 1.2; }
+.member-name { font-size: 12px; font-weight: 700; color: var(–text-dark); }
+.member-tier { font-size: 10px; font-weight: 700; color: var(–exec-plat); }
+
+/* ── MOBILE NAV DRAWER ── */
+.nav-drawer {
+display: none;
+position: fixed; inset: 0; z-index: 200;
+}
+.nav-drawer.open { display: block; }
+.drawer-backdrop {
+position: absolute; inset: 0;
+background: rgba(0,0,0,0.45);
+}
+.drawer-panel {
+position: absolute; top: 0; left: 0; bottom: 0;
+width: min(300px, 85vw);
+background: var(–card);
+padding: 24px 0 calc(24px + var(–safe-bottom)) 0;
+display: flex; flex-direction: column;
+box-shadow: 4px 0 20px rgba(0,0,0,0.15);
+transform: translateX(-100%);
+transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+.nav-drawer.open .drawer-panel { transform: translateX(0); }
+
+.drawer-header {
+display: flex; align-items: center; justify-content: space-between;
+padding: 0 20px 20px;
+border-bottom: 1px solid var(–border);
+margin-bottom: 8px;
+}
+.drawer-close {
+background: none; border: none; font-size: 18px;
+color: var(–muted); cursor: pointer; padding: 4px;
+}
+.drawer-member {
+display: flex; align-items: center; gap: 12px;
+padding: 16px 20px;
+background: var(–card2); margin: 0 12px 8px;
+border-radius: 8px;
+}
+.drawer-member-info .member-name { font-size: 14px; }
+.drawer-member-info .member-tier { font-size: 11px; margin-top: 2px; }
+
+.drawer-links { list-style: none; padding: 0 12px; }
+.drawer-links li a {
+display: block; padding: 14px 12px;
+color: var(–text-dark); text-decoration: none;
+font-size: 15px; font-weight: 600;
+border-radius: 6px;
+transition: background 0.15s;
+}
+.drawer-links li a:active, .drawer-links li a.active { background: var(–aa-light-blue); color: var(–aa-blue); }
+
+/* ── HERO ── */
+.hero-bar {
+background: linear-gradient(135deg, var(–aa-dark-blue) 0%, var(–aa-blue) 100%);
+padding: 24px 16px 20px;
+padding-left: calc(16px + var(–safe-left));
+padding-right: calc(16px + var(–safe-right));
+color: #fff; position: relative; overflow: hidden;
+}
+.hero-bar::before {
+content: ‘’; position: absolute; top: -60px; right: -60px;
+width: 300px; height: 300px;
+background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 60%);
+pointer-events: none;
+}
+
+.hero-greeting { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #E8F4FA; margin-bottom: 4px; }
+.hero-name { font-size: 26px; font-weight: 700; letter-spacing: -0.3px; margin-bottom: 4px; }
+.hero-sub { color: #D1E8F7; font-size: 13px; }
+.hero-sub strong { color: #fff; }
+
+.hero-stats {
+display: grid; grid-template-columns: 1fr 1fr;
+gap: 12px 0;
+margin-top: 20px;
+background: rgba(255,255,255,0.08);
+border-radius: 10px;
+padding: 16px;
+}
+
+.stat-item { line-height: 1.2; }
+.stat-val { font-size: 20px; font-weight: 700; }
+.stat-label { font-size: 11px; color: #D1E8F7; margin-top: 2px; }
+
+.stat-item:nth-child(1),
+.stat-item:nth-child(2) {
+padding-bottom: 12px;
+border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+.stat-item:nth-child(3),
+.stat-item:nth-child(4) {
+padding-top: 12px;
+}
+.stat-item:nth-child(odd) {
+padding-right: 12px;
+border-right: 1px solid rgba(255,255,255,0.15);
+}
+.stat-item:nth-child(even) { padding-left: 12px; }
+
+/* ── LAYOUT ── */
+.main-layout {
+padding: 20px 16px 80px;
+padding-left: calc(16px + var(–safe-left));
+padding-right: calc(16px + var(–safe-right));
+padding-bottom: calc(80px + var(–safe-bottom));
+max-width: 680px;
+margin: 0 auto;
+display: flex; flex-direction: column; gap: 0;
+}
+
+.section-title {
+font-size: 16px; font-weight: 700; color: var(–text-dark);
+margin: 24px 0 12px;
+display: flex; align-items: center; gap: 10px;
+}
+.section-title:first-child { margin-top: 0; }
+
+/* ── TRIP CARD ── */
+.trip-card {
+background: var(–card);
+border: 1px solid var(–border);
+border-radius: 12px;
+overflow: hidden;
+box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.trip-card-header {
+background: var(–card2);
+padding: 16px;
+display: flex; justify-content: space-between; align-items: flex-start;
+border-bottom: 1px solid var(–border);
+gap: 12px;
+}
+
+.trip-flight-no { font-size: 11px; font-weight: 700; letter-spacing: 1px; color: var(–aa-blue); margin-bottom: 4px; text-transform: uppercase; }
+.trip-route { font-size: 22px; font-weight: 700; color: var(–text-dark); letter-spacing: -0.3px; }
+.trip-route .arrow { color: var(–aa-red); margin: 0 6px; font-weight: 400; }
+
+.trip-badge {
+background: var(–green-light); color: var(–green);
+font-size: 10px; font-weight: 700; letter-spacing: 1px;
+text-transform: uppercase; padding: 5px 10px; border-radius: 4px;
+white-space: nowrap; flex-shrink: 0;
+}
+
+.trip-legs { padding: 0 16px; }
+
+.leg {
+display: grid;
+grid-template-columns: 80px 1fr 80px;
+align-items: center;
+gap: 8px;
+padding: 16px 0;
+}
+
+.leg-airport { text-align: center; }
+.leg-code { font-size: 24px; font-weight: 700; color: var(–text-dark); letter-spacing: -0.3px; }
+.leg-city { font-size: 10px; color: var(–muted); margin-top: 1px; }
+.leg-time { font-size: 14px; font-weight: 700; color: var(–text-dark); margin-top: 4px; }
+.leg-date { font-size: 10px; color: var(–muted); }
+
+.leg-middle { text-align: center; }
+.leg-line { height: 2px; background: var(–border); position: relative; margin: 8px 0; }
+.leg-plane-node {
+position: absolute; top: 50%; left: 50%;
+transform: translate(-50%, -50%);
+background: var(–aa-blue); width: 8px; height: 8px; border-radius: 50%;
+}
+.leg-duration { font-size: 11px; color: var(–muted); font-weight: 500; }
+.leg-airline { font-size: 10px; color: var(–muted); margin-top: 2px; }
+.leg-on-time-tag { font-size: 10px; color: var(–green); font-weight: 700; margin-top: 4px; background: var(–green-light); display: inline-block; padding: 2px 6px; border-radius: 3px; }
+
+.trip-actions {
+padding: 12px 16px;
+display: grid; grid-template-columns: 1fr 1fr;
+gap: 8px;
+background: var(–card2);
+border-top: 1px solid var(–border);
+}
+
+.btn {
+display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+font-family: var(–font);
+font-size: 13px; font-weight: 700; cursor: pointer;
+border: none; border-radius: 8px; padding: 11px 14px;
+transition: all 0.15s; text-decoration: none;
+/* touch target */
+min-height: 44px;
+-webkit-tap-highlight-color: transparent;
+}
+
+.btn-primary { background: var(–aa-blue); color: #fff; }
+.btn-primary:active { background: var(–aa-dark-blue); }
+
+.btn-outline { background: #fff; color: var(–aa-blue); border: 1.5px solid var(–aa-blue); }
+.btn-outline:active { background: var(–aa-light-blue); }
+
+.btn-danger-outline { background: #fff; color: var(–aa-red); border: 1.5px solid var(–aa-red); }
+.btn-danger-outline:active { background: #fdf2f2; }
+
+.btn-full { grid-column: 1 / -1; }
+
+/* ── TRACKER ── */
+.tracker-card {
+background: var(–card);
+border: 1px solid var(–border);
+border-radius: 12px;
+padding: 16px;
+box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.tracker-head {
+display: flex; align-items: flex-start; justify-content: space-between;
+margin-bottom: 16px; gap: 12px;
+}
+
+.tracker-head-title { font-weight: 700; color: var(–text-dark); font-size: 15px; }
+.tracker-head-sub { font-size: 12px; color: var(–muted); margin-top: 2px; line-height: 1.4; }
+
+.tracker-status { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+.status-dot { width: 9px; height: 9px; border-radius: 50%; }
+.status-dot.on-time { background: var(–green); animation: pulse-green 2s infinite; }
+.status-text { font-size: 13px; font-weight: 700; }
+.status-text.on-time { color: var(–green); }
+
+@keyframes pulse-green {
+0%   { box-shadow: 0 0 0 0 rgba(16,128,64,0.4); }
+70%  { box-shadow: 0 0 0 7px rgba(16,128,64,0); }
+100% { box-shadow: 0 0 0 0 rgba(16,128,64,0); }
+}
+
+.progress-track { background: var(–border); border-radius: 4px; height: 7px; overflow: hidden; margin-bottom: 8px; }
+.progress-fill { height: 100%; width: 0%; background: var(–aa-blue); border-radius: 4px; transition: width 1.5s ease; }
+
+.progress-labels {
+display: flex; justify-content: space-between;
+font-size: 11px; color: var(–muted); font-weight: 500;
+margin-bottom: 16px;
+}
+.progress-labels .center { display: none; }
+
+.map-placeholder {
+background: var(–bg-main);
+border: 1px solid var(–border);
+border-radius: 8px;
+height: 140px;
+display: flex; align-items: center; justify-content: center;
+position: relative; overflow: hidden;
+}
+.map-bg { position: absolute; inset: 0; background: radial-gradient(circle at 20% 60%, rgba(0,120,210,0.08) 0%, transparent 50%); }
+.map-route-line { position: absolute; top: 50%; left: 15%; right: 15%; height: 2px; background: var(–border); transform: translateY(-50%) rotate(-3deg); }
+.map-dot { position: absolute; width: 11px; height: 11px; border-radius: 50%; border: 3px solid #fff; top: 50%; transform: translateY(-50%); box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+.map-dot.origin { left: 15%; background: var(–aa-blue); margin-top: -3px; }
+.map-dot.dest { right: 15%; background: var(–aa-red); margin-top: -1px; }
+.map-label { position: absolute; font-size: 11px; font-weight: 700; color: var(–text-dark); }
+.map-label.l-mem { left: 12%; bottom: 32px; }
+.map-label.l-phx { right: 12%; bottom: 36px; }
+
+.tracker-meta {
+display: grid; grid-template-columns: repeat(3, 1fr);
+gap: 12px; margin-top: 16px;
+}
+.tracker-meta-item label {
+font-size: 10px; font-weight: 700; text-transform: uppercase;
+color: var(–muted); display: block; margin-bottom: 3px;
+}
+.tracker-meta-item span { font-weight: 700; font-size: 14px; color: var(–text-dark); }
+.tracker-meta-item span.blue { color: var(–aa-blue); }
+.tracker-meta-item span.green { color: var(–green); font-size: 13px; }
+
+/* ── TABS ── */
+.tab-bar {
+display: flex; border-bottom: 2px solid var(–border);
+margin-bottom: 16px; overflow-x: auto; -webkit-overflow-scrolling: touch;
+scrollbar-width: none;
+}
+.tab-bar::-webkit-scrollbar { display: none; }
+
+.tab {
+padding: 10px 20px; font-size: 14px; font-weight: 700;
+color: var(–muted); cursor: pointer; white-space: nowrap;
+border-bottom: 3px solid transparent; margin-bottom: -2px;
+transition: all 0.2s;
+-webkit-tap-highlight-color: transparent;
+}
+.tab.active { color: var(–aa-blue); border-bottom-color: var(–aa-blue); }
+
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* ── TRIP LIST ── */
+.trip-list-item {
+display: flex; align-items: center; gap: 14px;
+background: var(–card); border: 1px solid var(–border);
+padding: 14px 16px; margin-bottom: 10px; border-radius: 10px;
+cursor: pointer; transition: border-color 0.2s;
+-webkit-tap-highlight-color: transparent;
+}
+.trip-list-item:active { border-color: var(–aa-blue); background: var(–aa-light-blue); }
+
+.trip-list-dates { text-align: center; min-width: 44px; }
+.trip-list-day { font-size: 22px; font-weight: 700; color: var(–text-dark); line-height: 1; }
+.trip-list-month { font-size: 11px; color: var(–muted); font-weight: 700; text-transform: uppercase; margin-top: 3px; }
+
+.trip-list-info { flex: 1; min-width: 0; }
+.trip-list-route { font-size: 14px; font-weight: 700; color: var(–text-dark); margin-bottom: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.trip-list-detail { font-size: 12px; color: var(–muted); }
+
+.trip-list-status {
+font-size: 10px; font-weight: 700; text-transform: uppercase;
+padding: 5px 10px; border-radius: 4px; white-space: nowrap; flex-shrink: 0;
+}
+.status-confirmed { background: var(–green-light); color: var(–green); }
+.status-upcoming { background: var(–aa-light-blue); color: var(–aa-blue); }
+
+/* ── BOARDING PASS ── */
+.boarding-pass {
+background: var(–card); border: 1px solid var(–border);
+border-radius: 12px; overflow: hidden;
+box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.bp-top { padding: 16px; border-bottom: 2px dashed var(–border); }
+
+.bp-airline {
+font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+color: var(–muted); margin-bottom: 14px;
+display: flex; align-items: center; gap: 6px;
+}
+.bp-aa-logo { color: var(–aa-blue); font-weight: 900; font-size: 13px; }
+
+.bp-route {
+display: flex; align-items: center; justify-content: space-between;
+gap: 8px; margin-bottom: 16px;
+}
+.bp-airport { text-align: center; }
+.bp-code { font-size: 30px; font-weight: 700; color: var(–text-dark); letter-spacing: -1px; }
+.bp-city { font-size: 10px; color: var(–muted); font-weight: 700; text-transform: uppercase; }
+.bp-time { font-size: 13px; font-weight: 700; color: var(–text-dark); margin-top: 4px; }
+
+.bp-line { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px; }
+.bp-dashes { width: 100%; height: 1px; background: var(–border); }
+.bp-dur { font-size: 10px; color: var(–muted); font-weight: 500; margin-top: 3px; text-align: center; }
+
+.bp-details { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.bp-field label { font-size: 9px; font-weight: 700; text-transform: uppercase; color: var(–muted); display: block; margin-bottom: 2px; }
+.bp-field span { font-size: 13px; font-weight: 700; color: var(–text-dark); }
+
+.bp-bottom {
+padding: 14px 16px;
+display: flex; align-items: center; justify-content: space-between;
+background: var(–card2);
+}
+
+.bp-barcode { display: flex; gap: 3px; align-items: flex-end; }
+.bp-bar { background: var(–text-dark); border-radius: 1px; }
+
+.bp-seat-big { text-align: right; }
+.bp-seat-big span { display: block; font-size: 10px; color: var(–muted); font-weight: 700; text-transform: uppercase; }
+.bp-seat-big strong { font-size: 38px; font-weight: 700; color: var(–aa-blue); line-height: 1; }
+
+/* ── SIDEBAR CARDS ── */
+.sidebar-card {
+background: var(–card); border: 1px solid var(–border);
+border-radius: 12px; padding: 16px;
+box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.miles-amount { font-size: 28px; font-weight: 700; color: var(–text-dark); }
+.miles-sub { font-size: 13px; color: var(–muted); }
+.miles-bar { height: 8px; background: var(–border); border-radius: 5px; overflow: hidden; margin: 10px 0 6px; }
+.miles-fill { height: 100%; background: var(–exec-plat); border-radius: 5px; width: 0%; transition: width 1.5s ease; }
+.miles-labels { display: flex; justify-content: space-between; font-size: 11px; color: var(–muted); font-weight: 500; }
+.miles-next { font-size: 13px; color: var(–text); margin-top: 10px; }
+.miles-next strong { color: var(–exec-plat); }
+.miles-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px; }
+
+/* ── CHECKLIST ── */
+.checklist { display: flex; flex-direction: column; gap: 12px; }
+
+.check-item { display: flex; align-items: center; gap: 10px; font-size: 14px; min-height: 36px; }
+
+.check-icon {
+width: 22px; height: 22px; border-radius: 5px;
+display: flex; align-items: center; justify-content: center;
+font-size: 11px; font-weight: 700; flex-shrink: 0;
+}
+.check-icon.done { background: var(–green); color: #fff; }
+.check-icon.warn { background: #F59E0B; color: #fff; }
+.check-icon.todo { background: var(–card); color: var(–border); border: 2px solid var(–border); }
+
+.check-label { flex: 1; color: var(–text-dark); font-weight: 500; font-size: 13px; }
+.check-label.done { text-decoration: line-through; color: var(–muted); }
+.check-action { font-size: 13px; color: var(–aa-blue); cursor: pointer; font-weight: 700; padding: 4px 8px; -webkit-tap-highlight-color: transparent; }
+
+/* ── CANCEL MODAL ── */
+.modal-overlay {
+position: fixed; inset: 0;
+background: rgba(17, 24, 39, 0.7);
+z-index: 300;
+display: flex; align-items: flex-end; justify-content: center;
+opacity: 0; pointer-events: none;
+transition: opacity 0.25s;
+}
+
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+
+.modal {
+background: var(–card);
+border-radius: 16px 16px 0 0;
+width: 100%; max-width: 600px;
+max-height: 92vh;
+overflow-y: auto;
+-webkit-overflow-scrolling: touch;
+transform: translateY(100%);
+transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+padding-bottom: var(–safe-bottom);
+}
+
+.modal-overlay.open .modal { transform: translateY(0); }
+
+/* drag handle */
+.modal-handle {
+width: 36px; height: 4px; background: var(–border);
+border-radius: 2px; margin: 12px auto 0;
+}
+
+.modal-header {
+padding: 16px 20px;
+border-bottom: 1px solid var(–border);
+display: flex; align-items: center; justify-content: space-between;
+}
+
+.modal-title { font-size: 18px; font-weight: 700; color: var(–text-dark); }
+
+.modal-close {
+background: var(–card2); border: none;
+color: var(–muted); font-size: 14px; font-weight: 700;
+cursor: pointer; width: 32px; height: 32px;
+display: flex; align-items: center; justify-content: center;
+border-radius: 50%; -webkit-tap-highlight-color: transparent;
+}
+
+.modal-body { padding: 20px; }
+
+.cancel-step { display: none; }
+.cancel-step.active { display: block; }
+
+.modal-blue-box {
+background: var(–aa-light-blue);
+border: 1px solid var(–aa-blue);
+border-radius: 8px; padding: 12px 14px; margin-bottom: 16px;
+font-size: 13px; color: #003F7D; line-height: 1.5;
+}
+
+.reason-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+
+.reason-option {
+display: flex; align-items: flex-start; gap: 12px;
+padding: 14px;
+border: 1.5px solid var(–border);
+border-radius: 10px; cursor: pointer;
+transition: border-color 0.15s, background 0.15s;
+-webkit-tap-highlight-color: transparent;
+}
+.reason-option input[type=“radio”] { margin-top: 2px; accent-color: var(–aa-blue); flex-shrink: 0; width: 18px; height: 18px; }
+.reason-option:active { background: var(–aa-light-blue); }
+.reason-option.selected { border-color: var(–aa-blue); background: var(–aa-light-blue); }
+
+.reason-option-label { font-size: 14px; font-weight: 700; color: var(–text-dark); margin-bottom: 2px; }
+.reason-option-sub { font-size: 12px; color: var(–muted); }
+
+.refund-breakdown {
+background: var(–card2); border: 1px solid var(–border);
+border-radius: 8px; padding: 14px; margin-bottom: 16px;
+}
+.refund-row { display: flex; justify-content: space-between; font-size: 14px; padding: 6px 0; color: var(–text); }
+.refund-row.total {
+border-top: 1px solid var(–border);
+margin-top: 10px; padding-top: 10px;
+color: var(–text-dark); font-weight: 700; font-size: 15px;
+}
+.refund-row.total .val { color: var(–green); }
+
+.elite-waiver-notice {
+background: #E6F4EA; border: 1px solid #86EFAC;
+border-radius: 8px; padding: 12px 14px; margin-bottom: 16px;
+font-size: 13px; color: #166534;
+display: flex; gap: 8px; align-items: flex-start;
+}
+
+.confirmed-view { text-align: center; padding: 8px 0 12px; }
+
+.confirmed-icon {
+width: 60px; height: 60px; border-radius: 50%;
+background: var(–green-light);
+display: flex; align-items: center; justify-content: center;
+font-size: 26px;
+margin: 0 auto 16px;
+}
+
+.confirmed-title { font-size: 20px; font-weight: 700; color: var(–text-dark); margin-bottom: 6px; }
+.confirmed-sub { font-size: 14px; color: var(–muted); margin-bottom: 20px; line-height: 1.6; }
+
+.confirmed-detail {
+background: var(–card2); border: 1px solid var(–border);
+border-radius: 8px; padding: 14px; margin-bottom: 20px; text-align: left;
+}
+.confirmed-detail-row { display: flex; justify-content: space-between; font-size: 14px; padding: 5px 0; color: var(–text); }
+.confirmed-detail-row strong { color: var(–text-dark); font-weight: 700; }
+
+.modal-actions { display: flex; gap: 10px; }
+.modal-actions .btn { flex: 1; }
+
+/* cancelled state */
+.trip-card.cancelled-state { opacity: 0.55; pointer-events: none; position: relative; }
+.cancelled-ribbon {
+display: none; position: absolute; top: 0; left: 0; right: 0;
+background: var(–aa-red); color: #fff; text-align: center;
+font-size: 12px; font-weight: 700; letter-spacing: 1px;
+text-transform: uppercase; padding: 8px; z-index: 1;
+}
+.trip-card.cancelled-state .cancelled-ribbon { display: block; }
+.trip-card.cancelled-state { padding-top: 36px; position: relative; }
+
+.text-muted { color: var(–muted); font-size: 12px; }
+.mt-4 { margin-top: 4px; }
+
+/* ── DESKTOP: restore two-column layout ── */
+@media (min-width: 900px) {
+nav {
+padding: 0 40px; height: 68px;
+}
+.nav-hamburger { display: none !important; }
+.nav-links { display: flex !important; }
+.member-pill { display: flex !important; }
+
+```
+.hero-bar { padding: 36px 40px 32px; }
+.hero-name { font-size: 36px; }
+.hero-stats {
+  display: flex; gap: 40px;
+  background: transparent; padding: 0; border-radius: 0;
+  margin-top: 28px;
+}
+.stat-item { border: none !important; padding: 0 !important; }
+.stat-val { font-size: 26px; }
+.stat-label { font-size: 12px; }
+
+.main-layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 24px;
+  padding: 32px 40px 60px;
+  max-width: 1320px;
+  align-items: start;
+}
+
+.section-title { font-size: 18px; margin: 0 0 16px; }
+.left-col > .section-title { margin-top: 0; }
+.left-col > .section-title + * { margin-bottom: 32px; }
+.left-col > *:not(:first-child) { margin-top: 32px; }
+
+.sidebar { grid-column: 2; display: flex; flex-direction: column; gap: 24px; }
+.sidebar > .section-title { margin: 0 0 0; }
+
+.trip-card { border-radius: 8px; }
+.tracker-card { border-radius: 8px; }
+.boarding-pass { border-radius: 8px; }
+.sidebar-card { border-radius: 8px; }
+
+.trip-card-header { padding: 20px 24px; }
+.trip-route { font-size: 26px; }
+.trip-legs { padding: 0 24px; }
+.leg { grid-template-columns: 100px 1fr 100px; gap: 16px; padding: 20px 0; }
+.leg-code { font-size: 28px; }
+.leg-time { font-size: 16px; }
+
+.trip-actions { padding: 16px 24px; display: flex; flex-wrap: wrap; background: var(--card2); }
+.btn-full { grid-column: unset; }
+
+.modal {
+  border-radius: 8px;
+  max-height: 85vh;
+  width: 520px;
+  align-self: center;
+}
+.modal-overlay { align-items: center; }
+.modal-handle { display: none; }
+
+.tracker-meta { grid-template-columns: repeat(5, 1fr); }
+.map-placeholder { height: 180px; }
+
+.progress-labels .center { display: block; }
+
+.bp-code { font-size: 36px; }
+.bp-seat-big strong { font-size: 42px; }
+
+.trip-list-item { padding: 16px 20px; }
+```
+
+}
+
+/* ── MOBILE: hide desktop-only elements ── */
+@media (max-width: 899px) {
+.nav-hamburger { display: flex; }
+.nav-links { display: none; }
+.member-pill .member-info { display: none; }
+.member-pill { padding: 4px; }
+}
 </style>
+
 </head>
 <body>
 
 <!-- NAV -->
+
 <nav>
   <a href="#" class="nav-logo">
     <div class="nav-logo-icon"></div>
-    American Airlines <span class="aa-badge">oneworld</span>
+    American <span class="aa-badge" style="display:none;" id="oneworldBadge">oneworld</span>
   </a>
+
   <ul class="nav-links">
     <li><a href="#" class="active">Manage trips</a></li>
     <li><a href="#">Book</a></li>
@@ -598,18 +741,52 @@
     <li><a href="#">Flight status</a></li>
     <li><a href="#">AAdvantage</a></li>
   </ul>
-  <div class="nav-right">
-    <div class="member-pill">
+
+  <div style="display:flex;align-items:center;gap:10px;">
+    <div class="member-pill" onclick="openDrawer()">
       <div class="member-avatar">KT</div>
       <div class="member-info">
         <div class="member-name">Kenneth Tupea</div>
         <div class="member-tier">Executive Platinum</div>
       </div>
     </div>
+    <button class="nav-hamburger" onclick="openDrawer()" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
-<!-- HERO BAR -->
+<!-- MOBILE NAV DRAWER -->
+
+<div class="nav-drawer" id="navDrawer">
+  <div class="drawer-backdrop" onclick="closeDrawer()"></div>
+  <div class="drawer-panel">
+    <div class="drawer-header">
+      <div class="nav-logo" style="font-size:16px;">
+        <div class="nav-logo-icon"></div>
+        American Airlines
+      </div>
+      <button class="drawer-close" onclick="closeDrawer()">✕</button>
+    </div>
+    <div class="drawer-member">
+      <div class="member-avatar" style="width:40px;height:40px;font-size:14px;">KT</div>
+      <div class="drawer-member-info">
+        <div class="member-name">Kenneth Tupea</div>
+        <div class="member-tier">Executive Platinum · #7X3W4K2</div>
+      </div>
+    </div>
+    <ul class="drawer-links">
+      <li><a href="#" class="active">Manage trips</a></li>
+      <li><a href="#">Book a flight</a></li>
+      <li><a href="#">Check in</a></li>
+      <li><a href="#">Flight status</a></li>
+      <li><a href="#">AAdvantage</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- HERO -->
+
 <div class="hero-bar">
   <div class="hero-greeting">Welcome back</div>
   <div class="hero-name">Kenneth Tupea</div>
@@ -619,17 +796,14 @@
       <div class="stat-val">142,800</div>
       <div class="stat-label">Lifetime Miles</div>
     </div>
-    <div class="stat-divider"></div>
     <div class="stat-item">
       <div class="stat-val">87,430</div>
       <div class="stat-label">Available Miles</div>
     </div>
-    <div class="stat-divider"></div>
     <div class="stat-item">
       <div class="stat-val" id="upcomingCount">1</div>
       <div class="stat-label">Upcoming trip</div>
     </div>
-    <div class="stat-divider"></div>
     <div class="stat-item">
       <div class="stat-val">Jun 20</div>
       <div class="stat-label">Next departure</div>
@@ -638,388 +812,417 @@
 </div>
 
 <!-- MAIN LAYOUT -->
+
 <div class="main-layout">
 
-  <!-- LEFT COLUMN -->
+  <!-- LEFT COL -->
+
   <div class="left-col">
 
-    <!-- UPCOMING TRIP CARD -->
-    <div class="section-title" id="tripCardAnchor">Upcoming trip</div>
+```
+<div class="section-title">Upcoming trip</div>
 
-    <div class="trip-card" id="mainTripCard" style="position:relative;">
-      <div class="cancelled-ribbon">Trip Cancelled</div>
+<!-- TRIP CARD -->
+<div class="trip-card" id="mainTripCard" style="position:relative;">
+  <div class="cancelled-ribbon">Trip Cancelled</div>
 
-      <div class="trip-card-header">
-        <div>
-          <div class="trip-flight-no">Record Locator: KT8PHX &nbsp;·&nbsp; AA 2127</div>
-          <div class="trip-route">MEM <span class="arrow">&rarr;</span> PHX</div>
-          <div class="text-muted mt-4">Friday, June 20 · Memphis to Phoenix Sky Harbor · Nonstop</div>
-        </div>
-        <div class="trip-badge">ON TIME</div>
-      </div>
-
-      <div class="trip-legs">
-        <div class="leg">
-          <div class="leg-airport">
-            <div class="leg-code">MEM</div>
-            <div class="leg-city">Memphis, TN</div>
-            <div class="leg-time">4:45 PM</div>
-            <div class="leg-date">Fri Jun 20</div>
-          </div>
-          <div class="leg-middle">
-            <div class="leg-line"><span class="leg-plane-node"></span></div>
-            <div class="leg-duration">3h 15m</div>
-            <div class="leg-airline">AA 2127 · Airbus A321</div>
-            <div class="leg-airline">Nonstop · Terminal A, Gate A17</div>
-            <div class="leg-on-time-tag">✓ On time</div>
-          </div>
-          <div class="leg-airport">
-            <div class="leg-code">PHX</div>
-            <div class="leg-city">Phoenix Sky Harbor</div>
-            <div class="leg-time">6:00 PM</div>
-            <div class="leg-date">Fri Jun 20</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="trip-actions">
-        <button class="btn btn-danger-outline" onclick="openCancelModal()">Cancel / Refund</button>
-        <button class="btn btn-outline" onclick="alert('Boarding pass added to Apple Wallet')">Add to Wallet</button>
-        <button class="btn btn-outline" onclick="alert('Seat selection: seat 2A confirmed in First Class')">Change Seats</button>
-        <button class="btn btn-primary" onclick="alert('Check-in opens Jun 19 at 4:45 PM CT')">Check in</button>
-      </div>
+  <div class="trip-card-header">
+    <div>
+      <div class="trip-flight-no">KT8PHX · AA 2127</div>
+      <div class="trip-route">MEM <span class="arrow">→</span> PHX</div>
+      <div class="text-muted mt-4">Fri Jun 20 · Memphis to Phoenix · Nonstop</div>
     </div>
-
-    <!-- FLIGHT TRACKER -->
-    <div class="section-title">Live flight tracker</div>
-    <div class="tracker-card">
-      <div class="tracker-head">
-        <div>
-          <div style="font-weight:700;color:var(--text-dark);font-size:16px;">AA 2127 &nbsp;·&nbsp; MEM &rarr; PHX</div>
-          <div class="text-muted mt-4">Departure: 4:45 PM CT · Terminal A, Gate A17 · Arrives PHX 6:00 PM MT</div>
-        </div>
-        <div class="tracker-status">
-          <div class="status-dot on-time"></div>
-          <div class="status-text on-time">On Time</div>
-        </div>
-      </div>
-
-      <div class="progress-track">
-        <div class="progress-fill" id="trackProgress"></div>
-      </div>
-      <div class="progress-labels">
-        <span>MEM · 4:45 PM CT</span>
-        <span>Flight not yet departed</span>
-        <span>PHX · 6:00 PM MT</span>
-      </div>
-
-      <div class="map-placeholder">
-        <div class="map-bg"></div>
-        <div class="map-route-line"></div>
-        <div class="map-dot origin"></div>
-        <div class="map-dot dest"></div>
-        <span class="map-label l-mem">MEM</span>
-        <span class="map-label l-phx">PHX</span>
-      </div>
-
-      <div class="flex items-center gap-8 mt-12" style="flex-wrap:wrap;gap:32px;margin-top:24px;">
-        <div>
-          <div style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;margin-bottom:4px;">Terminal</div>
-          <div style="font-weight:700;font-size:15px;color:var(--text-dark);">Terminal A</div>
-        </div>
-        <div>
-          <div style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;margin-bottom:4px;">Gate</div>
-          <div style="font-weight:700;font-size:15px;color:var(--text-dark);">A17</div>
-        </div>
-        <div>
-          <div style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;margin-bottom:4px;">Aircraft</div>
-          <div style="font-weight:700;font-size:15px;color:var(--text-dark);">Airbus A321</div>
-        </div>
-        <div>
-          <div style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;margin-bottom:4px;">Seat</div>
-          <div style="font-weight:700;font-size:15px;color:var(--aa-blue);">2A <span style="font-size:12px;color:var(--muted);font-weight:400;">First</span></div>
-        </div>
-        <div>
-          <div style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;margin-bottom:4px;">Boarding</div>
-          <div style="font-weight:700;font-size:15px;color:var(--green);">4:20 PM CT <span style="font-size:11px;color:var(--muted);font-weight:400;">(Group 1 – Exec)</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- TRIPS TABS -->
-    <div class="section-title">Your trips</div>
-    <div class="tab-bar">
-      <div class="tab active" onclick="switchTab(this,'tab-upcoming')">Upcoming</div>
-      <div class="tab" onclick="switchTab(this,'tab-past')">Past flights</div>
-      <div class="tab" onclick="switchTab(this,'tab-cancelled')">Canceled</div>
-    </div>
-
-    <div id="tab-upcoming" class="tab-content active">
-      <div id="upcomingListItem" class="trip-list-item">
-        <div class="trip-list-dates">
-          <div class="trip-list-day">20</div>
-          <div class="trip-list-month">Jun</div>
-        </div>
-        <div class="trip-list-info">
-          <div class="trip-list-route">Memphis to Phoenix Sky Harbor</div>
-          <div class="trip-list-detail">AA 2127 · First Class · Nonstop · 3h 15m · ✓ On time</div>
-        </div>
-        <div class="trip-list-status status-upcoming">Upcoming</div>
-      </div>
-    </div>
-
-    <div id="tab-past" class="tab-content">
-      <div class="trip-list-item">
-        <div class="trip-list-dates">
-          <div class="trip-list-day">02</div>
-          <div class="trip-list-month">Jun</div>
-        </div>
-        <div class="trip-list-info">
-          <div class="trip-list-route">Salt Lake City to Dallas</div>
-          <div class="trip-list-detail">AA 1428 · Main Cabin · +4,210 miles earned</div>
-        </div>
-        <div class="trip-list-status status-confirmed">Completed</div>
-      </div>
-    </div>
-
-    <div id="tab-cancelled" class="tab-content">
-      <div id="cancelledListEmpty" style="padding:28px 0;text-align:center;color:var(--muted);font-size:14px;">No canceled trips to display.</div>
-      <div id="cancelledListItem" style="display:none;" class="trip-list-item" style="cursor:default;">
-        <div class="trip-list-dates">
-          <div class="trip-list-day">20</div>
-          <div class="trip-list-month">Jun</div>
-        </div>
-        <div class="trip-list-info">
-          <div class="trip-list-route">Memphis to Phoenix Sky Harbor</div>
-          <div class="trip-list-detail">AA 2127 · Cancelled Jun 15 · Trip credit $687.00</div>
-        </div>
-        <div class="trip-list-status" style="background:#FEE2E2;color:var(--aa-red);">Cancelled</div>
-      </div>
-    </div>
-
+    <div class="trip-badge">ON TIME</div>
   </div>
 
-  <!-- RIGHT SIDEBAR -->
-  <div class="sidebar">
-
-    <!-- BOARDING PASS -->
-    <div class="section-title">Boarding pass</div>
-    <div class="boarding-pass" id="boardingPass">
-      <div class="bp-top">
-        <div class="bp-airline">
-          <span class="bp-aa-logo">American Airlines</span>
-        </div>
-        <div class="bp-route">
-          <div class="bp-airport">
-            <div class="bp-code">MEM</div>
-            <div class="bp-city">Memphis</div>
-            <div class="bp-time">4:45 PM</div>
-          </div>
-          <div class="bp-line">
-            <div class="bp-dashes"></div>
-            <div class="bp-dashes"></div>
-            <div class="bp-dur">3h 15m · Nonstop</div>
-          </div>
-          <div class="bp-airport">
-            <div class="bp-code">PHX</div>
-            <div class="bp-city">Phoenix</div>
-            <div class="bp-time">6:00 PM</div>
-          </div>
-        </div>
-        <div class="bp-details">
-          <div class="bp-field"><label>Passenger</label><span>Kenneth Tupea</span></div>
-          <div class="bp-field"><label>Flight</label><span>AA 2127</span></div>
-          <div class="bp-field"><label>Class</label><span>First</span></div>
-          <div class="bp-field"><label>Date</label><span>Jun 20</span></div>
-          <div class="bp-field"><label>Boarding</label><span>4:20 PM</span></div>
-          <div class="bp-field"><label>Group</label><span>1 (Exec)</span></div>
-        </div>
+  <div class="trip-legs">
+    <div class="leg">
+      <div class="leg-airport">
+        <div class="leg-code">MEM</div>
+        <div class="leg-city">Memphis, TN</div>
+        <div class="leg-time">4:45 PM</div>
+        <div class="leg-date">Fri Jun 20</div>
       </div>
-      <div class="bp-bottom">
-        <div class="bp-barcode">
-          <div class="bp-bar" style="width:2px;height:40px;"></div>
-          <div class="bp-bar" style="width:1px;height:32px;"></div>
-          <div class="bp-bar" style="width:3px;height:40px;"></div>
-          <div class="bp-bar" style="width:1px;height:28px;"></div>
-          <div class="bp-bar" style="width:2px;height:40px;"></div>
-          <div class="bp-bar" style="width:1px;height:35px;"></div>
-          <div class="bp-bar" style="width:3px;height:40px;"></div>
-          <div class="bp-bar" style="width:1px;height:30px;"></div>
-          <div class="bp-bar" style="width:2px;height:40px;"></div>
-          <div class="bp-bar" style="width:2px;height:26px;"></div>
-          <div class="bp-bar" style="width:1px;height:40px;"></div>
-          <div class="bp-bar" style="width:3px;height:33px;"></div>
-          <div class="bp-bar" style="width:1px;height:40px;"></div>
-          <div class="bp-bar" style="width:2px;height:38px;"></div>
-          <div class="bp-bar" style="width:1px;height:40px;"></div>
-        </div>
-        <div class="bp-seat-big">
-          <span>Seat</span>
-          <strong>2A</strong>
-        </div>
+      <div class="leg-middle">
+        <div class="leg-line"><span class="leg-plane-node"></span></div>
+        <div class="leg-duration">3h 15m</div>
+        <div class="leg-airline">AA 2127 · A321</div>
+        <div class="leg-airline">Gate A17</div>
+        <div class="leg-on-time-tag">✓ On time</div>
+      </div>
+      <div class="leg-airport">
+        <div class="leg-code">PHX</div>
+        <div class="leg-city">Phoenix SKY</div>
+        <div class="leg-time">6:00 PM</div>
+        <div class="leg-date">Fri Jun 20</div>
       </div>
     </div>
+  </div>
 
-    <!-- MILES CARD -->
-    <div class="sidebar-card">
-      <div class="section-title">AAdvantage account</div>
-      <div class="miles-amount">87,430</div>
-      <div class="miles-sub">Available miles</div>
-      <div class="miles-bar"><div class="miles-fill" id="milesFill"></div></div>
-      <div class="miles-labels">
-        <span>Executive Platinum</span>
-        <span>87K / 100K LP</span>
-      </div>
-      <div class="miles-next">Earn <strong>12,570 Loyalty Points</strong> to keep Executive Platinum.</div>
-      <div style="margin-top:20px;display:flex;gap:12px;">
-        <button class="btn btn-outline" style="flex:1;padding:8px;font-size:13px;">Redeem miles</button>
-        <button class="btn btn-outline" style="flex:1;padding:8px;font-size:13px;">View activity</button>
-      </div>
-    </div>
-
-    <!-- PRE-TRIP CHECKLIST -->
-    <div class="sidebar-card">
-      <div class="section-title">Trip checklist</div>
-      <div class="checklist">
-        <div class="check-item">
-          <div class="check-icon done">✓</div>
-          <div class="check-label done">Government ID / TSA PreCheck</div>
-        </div>
-        <div class="check-item">
-          <div class="check-icon done">✓</div>
-          <div class="check-label done">Seats selected · 2A First Class</div>
-        </div>
-        <div class="check-item">
-          <div class="check-icon warn">!</div>
-          <div class="check-label">Check-in opens <strong>Jun 19 at 4:45 PM CT</strong></div>
-        </div>
-        <div class="check-item">
-          <div class="check-icon todo"></div>
-          <div class="check-label">Add Known Traveler Number</div>
-          <div class="check-action">Add</div>
-        </div>
-        <div class="check-item">
-          <div class="check-icon todo"></div>
-          <div class="check-label">Add to Apple Wallet</div>
-          <div class="check-action">Add</div>
-        </div>
-      </div>
-    </div>
-
+  <div class="trip-actions">
+    <button class="btn btn-danger-outline" onclick="openCancelModal()">Cancel / Refund</button>
+    <button class="btn btn-outline" onclick="alert('Boarding pass added to Apple Wallet')">Add to Wallet</button>
+    <button class="btn btn-outline" onclick="alert('Seat 2A confirmed in First Class')">Change Seats</button>
+    <button class="btn btn-primary" onclick="alert('Check-in opens Jun 19 at 4:45 PM CT')">Check in</button>
   </div>
 </div>
 
+<!-- FLIGHT TRACKER -->
+<div class="section-title" style="margin-top:24px;">Live flight tracker</div>
+<div class="tracker-card">
+  <div class="tracker-head">
+    <div>
+      <div class="tracker-head-title">AA 2127 · MEM → PHX</div>
+      <div class="tracker-head-sub">Departs 4:45 PM CT · Gate A17<br>Arrives PHX 6:00 PM MT</div>
+    </div>
+    <div class="tracker-status">
+      <div class="status-dot on-time"></div>
+      <div class="status-text on-time">On Time</div>
+    </div>
+  </div>
+
+  <div class="progress-track">
+    <div class="progress-fill" id="trackProgress"></div>
+  </div>
+  <div class="progress-labels">
+    <span>MEM 4:45</span>
+    <span class="center">Not departed</span>
+    <span>PHX 6:00</span>
+  </div>
+
+  <div class="map-placeholder">
+    <div class="map-bg"></div>
+    <div class="map-route-line"></div>
+    <div class="map-dot origin"></div>
+    <div class="map-dot dest"></div>
+    <span class="map-label l-mem">MEM</span>
+    <span class="map-label l-phx">PHX</span>
+  </div>
+
+  <div class="tracker-meta">
+    <div class="tracker-meta-item">
+      <label>Terminal</label>
+      <span>Terminal A</span>
+    </div>
+    <div class="tracker-meta-item">
+      <label>Gate</label>
+      <span>A17</span>
+    </div>
+    <div class="tracker-meta-item">
+      <label>Aircraft</label>
+      <span>A321</span>
+    </div>
+    <div class="tracker-meta-item">
+      <label>Seat</label>
+      <span class="blue">2A <span style="font-size:11px;color:var(--muted);font-weight:400;">First</span></span>
+    </div>
+    <div class="tracker-meta-item">
+      <label>Boarding</label>
+      <span class="green">4:20 PM <span style="font-size:10px;color:var(--muted);font-weight:400;">Grp 1</span></span>
+    </div>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="section-title" style="margin-top:24px;">Your trips</div>
+<div class="tab-bar">
+  <div class="tab active" onclick="switchTab(this,'tab-upcoming')">Upcoming</div>
+  <div class="tab" onclick="switchTab(this,'tab-past')">Past flights</div>
+  <div class="tab" onclick="switchTab(this,'tab-cancelled')">Canceled</div>
+</div>
+
+<div id="tab-upcoming" class="tab-content active">
+  <div id="upcomingListItem" class="trip-list-item">
+    <div class="trip-list-dates">
+      <div class="trip-list-day">20</div>
+      <div class="trip-list-month">Jun</div>
+    </div>
+    <div class="trip-list-info">
+      <div class="trip-list-route">Memphis → Phoenix Sky Harbor</div>
+      <div class="trip-list-detail">AA 2127 · First Class · Nonstop · 3h 15m · ✓ On time</div>
+    </div>
+    <div class="trip-list-status status-upcoming">Upcoming</div>
+  </div>
+</div>
+
+<div id="tab-past" class="tab-content">
+  <div class="trip-list-item">
+    <div class="trip-list-dates">
+      <div class="trip-list-day">02</div>
+      <div class="trip-list-month">Jun</div>
+    </div>
+    <div class="trip-list-info">
+      <div class="trip-list-route">Salt Lake City → Dallas</div>
+      <div class="trip-list-detail">AA 1428 · Main Cabin · +4,210 miles earned</div>
+    </div>
+    <div class="trip-list-status status-confirmed">Completed</div>
+  </div>
+</div>
+
+<div id="tab-cancelled" class="tab-content">
+  <div id="cancelledListEmpty" style="padding:28px 0;text-align:center;color:var(--muted);font-size:14px;">No canceled trips to display.</div>
+  <div id="cancelledListItem" style="display:none;" class="trip-list-item">
+    <div class="trip-list-dates">
+      <div class="trip-list-day">20</div>
+      <div class="trip-list-month">Jun</div>
+    </div>
+    <div class="trip-list-info">
+      <div class="trip-list-route">Memphis → Phoenix Sky Harbor</div>
+      <div class="trip-list-detail">AA 2127 · Cancelled Jun 15 · Trip credit $687.00</div>
+    </div>
+    <div class="trip-list-status" style="background:#FEE2E2;color:var(--aa-red);">Cancelled</div>
+  </div>
+</div>
+```
+
+  </div><!-- /left-col -->
+
+  <!-- RIGHT SIDEBAR -->
+
+  <div class="sidebar">
+
+```
+<div class="section-title">Boarding pass</div>
+<div class="boarding-pass" id="boardingPass">
+  <div class="bp-top">
+    <div class="bp-airline">
+      <span class="bp-aa-logo">American Airlines</span>
+    </div>
+    <div class="bp-route">
+      <div class="bp-airport">
+        <div class="bp-code">MEM</div>
+        <div class="bp-city">Memphis</div>
+        <div class="bp-time">4:45 PM</div>
+      </div>
+      <div class="bp-line">
+        <div class="bp-dashes"></div>
+        <div class="bp-dashes"></div>
+        <div class="bp-dur">3h 15m · Nonstop</div>
+      </div>
+      <div class="bp-airport">
+        <div class="bp-code">PHX</div>
+        <div class="bp-city">Phoenix</div>
+        <div class="bp-time">6:00 PM</div>
+      </div>
+    </div>
+    <div class="bp-details">
+      <div class="bp-field"><label>Passenger</label><span>Kenneth Tupea</span></div>
+      <div class="bp-field"><label>Flight</label><span>AA 2127</span></div>
+      <div class="bp-field"><label>Class</label><span>First</span></div>
+      <div class="bp-field"><label>Date</label><span>Jun 20</span></div>
+      <div class="bp-field"><label>Boarding</label><span>4:20 PM</span></div>
+      <div class="bp-field"><label>Group</label><span>1 (Exec)</span></div>
+    </div>
+  </div>
+  <div class="bp-bottom">
+    <div class="bp-barcode">
+      <div class="bp-bar" style="width:2px;height:36px;"></div>
+      <div class="bp-bar" style="width:1px;height:28px;"></div>
+      <div class="bp-bar" style="width:3px;height:36px;"></div>
+      <div class="bp-bar" style="width:1px;height:24px;"></div>
+      <div class="bp-bar" style="width:2px;height:36px;"></div>
+      <div class="bp-bar" style="width:1px;height:30px;"></div>
+      <div class="bp-bar" style="width:3px;height:36px;"></div>
+      <div class="bp-bar" style="width:1px;height:26px;"></div>
+      <div class="bp-bar" style="width:2px;height:36px;"></div>
+      <div class="bp-bar" style="width:2px;height:22px;"></div>
+      <div class="bp-bar" style="width:1px;height:36px;"></div>
+      <div class="bp-bar" style="width:3px;height:29px;"></div>
+      <div class="bp-bar" style="width:1px;height:36px;"></div>
+      <div class="bp-bar" style="width:2px;height:34px;"></div>
+      <div class="bp-bar" style="width:1px;height:36px;"></div>
+    </div>
+    <div class="bp-seat-big">
+      <span>Seat</span>
+      <strong>2A</strong>
+    </div>
+  </div>
+</div>
+
+<!-- MILES CARD -->
+<div class="sidebar-card">
+  <div class="section-title">AAdvantage account</div>
+  <div class="miles-amount">87,430</div>
+  <div class="miles-sub">Available miles</div>
+  <div class="miles-bar"><div class="miles-fill" id="milesFill"></div></div>
+  <div class="miles-labels">
+    <span>Executive Platinum</span>
+    <span>87K / 100K LP</span>
+  </div>
+  <div class="miles-next">Earn <strong>12,570 Loyalty Points</strong> to keep Executive Platinum.</div>
+  <div class="miles-btns">
+    <button class="btn btn-outline" style="font-size:13px;padding:10px 8px;">Redeem miles</button>
+    <button class="btn btn-outline" style="font-size:13px;padding:10px 8px;">View activity</button>
+  </div>
+</div>
+
+<!-- CHECKLIST -->
+<div class="sidebar-card">
+  <div class="section-title">Trip checklist</div>
+  <div class="checklist">
+    <div class="check-item">
+      <div class="check-icon done">✓</div>
+      <div class="check-label done">Government ID / TSA PreCheck</div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon done">✓</div>
+      <div class="check-label done">Seats selected · 2A First Class</div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon warn">!</div>
+      <div class="check-label">Check-in opens <strong>Jun 19 at 4:45 PM CT</strong></div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon todo"></div>
+      <div class="check-label">Add Known Traveler Number</div>
+      <div class="check-action">Add</div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon todo"></div>
+      <div class="check-label">Add to Apple Wallet</div>
+      <div class="check-action">Add</div>
+    </div>
+  </div>
+</div>
+```
+
+  </div><!-- /sidebar -->
+
+</div><!-- /main-layout -->
+
 <!-- CANCEL MODAL -->
+
 <div class="modal-overlay" id="cancelModal" onclick="closeModalOutside(event)">
   <div class="modal">
+    <div class="modal-handle"></div>
     <div class="modal-header">
       <div class="modal-title" id="modalTitle">Cancel trip</div>
       <button class="modal-close" onclick="closeModal()" id="modalCloseBtn">✕</button>
     </div>
     <div class="modal-body">
 
-      <!-- STEP 1: Reason -->
-      <div class="cancel-step active" id="stepReason">
-        <div class="modal-blue-box">
-          As an <strong>Executive Platinum</strong> member, your cancellation fee is <strong>waived</strong> on refundable and flexible fares. Trip credit will be issued to AAdvantage #7X3W4K2.
-        </div>
-
-        <div style="font-size:14px;font-weight:700;color:var(--text-dark);margin-bottom:12px;">Why are you canceling?</div>
-
-        <div class="reason-list">
-          <label class="reason-option" id="reason-plans">
-            <input type="radio" name="cancel_reason" value="plans" onchange="selectReason(this)">
-            <div>
-              <div class="reason-option-label">Change of plans</div>
-              <div class="reason-option-sub">Trip credit issued; valid 12 months from today</div>
-            </div>
-          </label>
-          <label class="reason-option" id="reason-emergency">
-            <input type="radio" name="cancel_reason" value="emergency" onchange="selectReason(this)">
-            <div>
-              <div class="reason-option-label">Personal / family emergency</div>
-              <div class="reason-option-sub">May qualify for bereavement exception — agent review required</div>
-            </div>
-          </label>
-          <label class="reason-option" id="reason-other">
-            <input type="radio" name="cancel_reason" value="other" onchange="selectReason(this)">
-            <div>
-              <div class="reason-option-label">Other reason</div>
-              <div class="reason-option-sub">Standard trip credit policy applies</div>
-            </div>
-          </label>
-        </div>
-
-        <div class="modal-actions">
-          <button class="btn btn-outline" onclick="closeModal()">Never mind</button>
-          <button class="btn btn-primary" id="step1Next" onclick="goToStep2()" disabled style="opacity:0.5;cursor:not-allowed;">Continue →</button>
-        </div>
-      </div>
-
-      <!-- STEP 2: Review refund -->
-      <div class="cancel-step" id="stepReview">
-        <div class="elite-waiver-notice">
-          <span>✅</span>
-          <span><strong>Executive Platinum Elite Flexible Waiver applied.</strong> No cancellation fee. Full trip credit issued to AAdvantage account <strong>#7X3W4K2</strong>.</span>
-        </div>
-
-        <div class="refund-breakdown">
-          <div class="refund-row"><span>Base fare (First Class)</span><span style="color:var(--text-dark);">$587.00</span></div>
-          <div class="refund-row"><span>Taxes &amp; carrier-imposed fees</span><span style="color:var(--text-dark);">$68.50</span></div>
-          <div class="refund-row"><span>Seat upgrade</span><span style="color:var(--text-dark);">$31.50</span></div>
-          <div class="refund-row">
-            <span>Cancellation fee</span>
-            <span style="color:var(--green);font-weight:700;">WAIVED</span>
-          </div>
-          <div class="refund-row total"><span>Total trip credit</span><span class="val">$687.00</span></div>
-        </div>
-
-        <div style="font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.6;">
-          Trip credit applied to AAdvantage account <strong>#7X3W4K2</strong> within 24 hours. Valid for 12 months from today. Rebook any AA itinerary via the app or website.
-        </div>
-
-        <div class="modal-actions">
-          <button class="btn btn-outline" onclick="goToStep1()">← Back</button>
-          <button class="btn btn-danger-outline" onclick="confirmCancel()">Confirm cancellation</button>
-        </div>
-      </div>
-
-      <!-- STEP 3: Confirmed -->
-      <div class="cancel-step" id="stepConfirmed">
-        <div class="confirmed-view">
-          <div class="confirmed-icon">✓</div>
-          <div class="confirmed-title">Trip cancelled</div>
-          <div class="confirmed-sub">
-            Your trip MEM → PHX has been cancelled.<br>
-            Trip credit of <strong>$687.00</strong> has been issued to your AAdvantage account.
-          </div>
-          <div class="confirmed-detail">
-            <div class="confirmed-detail-row"><span>Trip credit</span><strong style="color:var(--green);">$687.00</strong></div>
-            <div class="confirmed-detail-row"><span>Account</span><strong>#7X3W4K2</strong></div>
-            <div class="confirmed-detail-row"><span>Valid until</span><strong>Jun 15, 2027</strong></div>
-            <div class="confirmed-detail-row"><span>Confirmation</span><strong>CNCL-KT8PHX-0615</strong></div>
-          </div>
-          <button class="btn btn-primary" style="width:100%;" onclick="closeModal()">Done</button>
-        </div>
-      </div>
-
+```
+  <!-- STEP 1 -->
+  <div class="cancel-step active" id="stepReason">
+    <div class="modal-blue-box">
+      As an <strong>Executive Platinum</strong> member, your cancellation fee is <strong>waived</strong>. Trip credit will be issued to AAdvantage #7X3W4K2.
     </div>
+
+    <div style="font-size:14px;font-weight:700;color:var(--text-dark);margin-bottom:12px;">Why are you canceling?</div>
+
+    <div class="reason-list">
+      <label class="reason-option" id="reason-plans">
+        <input type="radio" name="cancel_reason" value="plans" onchange="selectReason(this)">
+        <div>
+          <div class="reason-option-label">Change of plans</div>
+          <div class="reason-option-sub">Trip credit issued; valid 12 months from today</div>
+        </div>
+      </label>
+      <label class="reason-option" id="reason-emergency">
+        <input type="radio" name="cancel_reason" value="emergency" onchange="selectReason(this)">
+        <div>
+          <div class="reason-option-label">Personal / family emergency</div>
+          <div class="reason-option-sub">May qualify for bereavement exception</div>
+        </div>
+      </label>
+      <label class="reason-option" id="reason-other">
+        <input type="radio" name="cancel_reason" value="other" onchange="selectReason(this)">
+        <div>
+          <div class="reason-option-label">Other reason</div>
+          <div class="reason-option-sub">Standard trip credit policy applies</div>
+        </div>
+      </label>
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn btn-outline" onclick="closeModal()">Never mind</button>
+      <button class="btn btn-primary" id="step1Next" onclick="goToStep2()" disabled style="opacity:0.5;cursor:not-allowed;">Continue →</button>
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="cancel-step" id="stepReview">
+    <div class="elite-waiver-notice">
+      <span>✅</span>
+      <span><strong>Executive Platinum waiver applied.</strong> No cancellation fee. Full trip credit to AAdvantage <strong>#7X3W4K2</strong>.</span>
+    </div>
+
+    <div class="refund-breakdown">
+      <div class="refund-row"><span>Base fare (First Class)</span><span>$587.00</span></div>
+      <div class="refund-row"><span>Taxes &amp; fees</span><span>$68.50</span></div>
+      <div class="refund-row"><span>Seat upgrade</span><span>$31.50</span></div>
+      <div class="refund-row"><span>Cancellation fee</span><span style="color:var(--green);font-weight:700;">WAIVED</span></div>
+      <div class="refund-row total"><span>Total trip credit</span><span class="val">$687.00</span></div>
+    </div>
+
+    <div style="font-size:12px;color:var(--muted);margin-bottom:20px;line-height:1.6;">
+      Trip credit applied to <strong>#7X3W4K2</strong> within 24 hours. Valid 12 months. Rebook any AA itinerary via app or website.
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn btn-outline" onclick="goToStep1()">← Back</button>
+      <button class="btn btn-danger-outline" onclick="confirmCancel()">Confirm cancel</button>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="cancel-step" id="stepConfirmed">
+    <div class="confirmed-view">
+      <div class="confirmed-icon">✓</div>
+      <div class="confirmed-title">Trip cancelled</div>
+      <div class="confirmed-sub">
+        Your MEM → PHX trip has been cancelled.<br>
+        Trip credit of <strong>$687.00</strong> has been issued.
+      </div>
+      <div class="confirmed-detail">
+        <div class="confirmed-detail-row"><span>Trip credit</span><strong style="color:var(--green);">$687.00</strong></div>
+        <div class="confirmed-detail-row"><span>Account</span><strong>#7X3W4K2</strong></div>
+        <div class="confirmed-detail-row"><span>Valid until</span><strong>Jun 15, 2027</strong></div>
+        <div class="confirmed-detail-row"><span>Confirmation</span><strong>CNCL-KT8PHX-0615</strong></div>
+      </div>
+      <button class="btn btn-primary" style="width:100%;" onclick="closeModal()">Done</button>
+    </div>
+  </div>
+
+</div>
+```
+
   </div>
 </div>
 
 <script>
+  // Show oneworld badge on desktop
+  function updateBadge() {
+    document.getElementById('oneworldBadge').style.display = window.innerWidth >= 900 ? 'inline' : 'none';
+  }
+  updateBadge();
+  window.addEventListener('resize', updateBadge);
+
+  // Progress bars
   window.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => { document.getElementById('trackProgress').style.width = '0%'; }, 400);
     setTimeout(() => { document.getElementById('milesFill').style.width = '87%'; }, 600);
   });
 
-  function switchTab(clickedEl, tabId) {
-    document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
-    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-    clickedEl.classList.add('active');
+  // Tabs
+  function switchTab(el, tabId) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
     document.getElementById(tabId).classList.add('active');
   }
 
+  // Drawer
+  function openDrawer() {
+    document.getElementById('navDrawer').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeDrawer() {
+    document.getElementById('navDrawer').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Cancel modal
   let selectedReason = null;
 
   function openCancelModal() {
@@ -1032,9 +1235,7 @@
     document.querySelectorAll('input[name="cancel_reason"]').forEach(r => r.checked = false);
     document.querySelectorAll('.reason-option').forEach(el => el.classList.remove('selected'));
     const btn = document.getElementById('step1Next');
-    btn.disabled = true;
-    btn.style.opacity = '0.5';
-    btn.style.cursor = 'not-allowed';
+    btn.disabled = true; btn.style.opacity = '0.5'; btn.style.cursor = 'not-allowed';
   }
 
   function closeModal() {
@@ -1056,9 +1257,7 @@
     document.querySelectorAll('.reason-option').forEach(el => el.classList.remove('selected'));
     radio.closest('.reason-option').classList.add('selected');
     const btn = document.getElementById('step1Next');
-    btn.disabled = false;
-    btn.style.opacity = '1';
-    btn.style.cursor = 'pointer';
+    btn.disabled = false; btn.style.opacity = '1'; btn.style.cursor = 'pointer';
   }
 
   function goToStep2() {
@@ -1074,23 +1273,20 @@
 
   function confirmCancel() {
     showStep('stepConfirmed');
-    document.getElementById('modalTitle').textContent = 'Cancellation confirmed';
+    document.getElementById('modalTitle').textContent = 'Cancelled';
     document.getElementById('modalCloseBtn').style.display = 'none';
 
-    const card = document.getElementById('mainTripCard');
-    card.classList.add('cancelled-state');
+    document.getElementById('mainTripCard').classList.add('cancelled-state');
 
-    const upcoming = document.getElementById('upcomingListItem');
-    if (upcoming) upcoming.style.display = 'none';
-
-    const cancelledEmpty = document.getElementById('cancelledListEmpty');
-    if (cancelledEmpty) cancelledEmpty.style.display = 'none';
-
-    const cancelledItem = document.getElementById('cancelledListItem');
-    if (cancelledItem) cancelledItem.style.display = 'flex';
-
+    const up = document.getElementById('upcomingListItem');
+    if (up) up.style.display = 'none';
+    const empEl = document.getElementById('cancelledListEmpty');
+    if (empEl) empEl.style.display = 'none';
+    const canItem = document.getElementById('cancelledListItem');
+    if (canItem) canItem.style.display = 'flex';
     document.getElementById('upcomingCount').textContent = '0';
   }
 </script>
+
 </body>
 </html>
