@@ -39,7 +39,6 @@ body {
   -webkit-text-size-adjust: 100%;
 }
 
-/* ── NAV ── */
 nav {
   position: sticky; top: 0; z-index: 100;
   background: var(--card);
@@ -80,7 +79,6 @@ nav {
   font-size: 12px; font-weight: 700; color: #fff;
 }
 
-/* ── DRAWER ── */
 .drawer { display: none; position: fixed; inset: 0; z-index: 200; }
 .drawer.open { display: block; }
 .drawer-bg { position: absolute; inset: 0; background: rgba(0,0,0,0.5); }
@@ -124,7 +122,6 @@ nav {
 }
 .drawer-links li a:active, .drawer-links li a.active { background: var(--light-blue); color: var(--blue); }
 
-/* ── HERO ── */
 .hero {
   background: linear-gradient(135deg, var(--dark-blue) 0%, var(--blue) 100%);
   padding: 24px 16px 22px;
@@ -155,7 +152,6 @@ nav {
 .stat-val { font-size: 20px; font-weight: 700; }
 .stat-label { font-size: 10px; color: #D1E8F7; margin-top: 3px; }
 
-/* ── LAYOUT ── */
 .wrap {
   padding: 18px 14px 80px;
   padding-left: calc(14px + var(--safe-l));
@@ -171,7 +167,6 @@ nav {
 }
 .section-title:first-child { margin-top: 0; }
 
-/* ── TRIP PILL SWITCHER ── */
 .trip-switcher {
   display: flex; gap: 8px; overflow-x: auto;
   scrollbar-width: none;
@@ -199,7 +194,6 @@ nav {
 .dot-out { background: var(--blue); }
 .dot-ret { background: var(--red); }
 
-/* ── TRIP CARD ── */
 .trip-view { display: none; }
 .trip-view.active { display: block; }
 
@@ -239,7 +233,6 @@ nav {
 .badge-blue { background: var(--light-blue); color: var(--blue); }
 .badge-orange { background: #FEF3C7; color: var(--amber); }
 
-/* LEGS */
 .trip-legs { padding: 0 14px; }
 
 .leg {
@@ -268,7 +261,6 @@ nav {
 .tag-green { color: var(--green); background: var(--green-bg); }
 .tag-orange { color: #92400E; background: #FEF3C7; }
 
-/* LAYOVER */
 .layover {
   background: #F0F4FF;
   border-top: 1px dashed var(--border);
@@ -280,7 +272,6 @@ nav {
 .layover-text { font-size: 11px; color: var(--muted); font-weight: 600; }
 .layover-text strong { color: var(--dark); }
 
-/* ACTIONS */
 .trip-actions {
   background: var(--card2);
   border-top: 1px solid var(--border);
@@ -304,7 +295,6 @@ nav {
 .btn-danger { background: var(--card); color: var(--red); border: 1.5px solid var(--red); }
 .btn-full { grid-column: 1 / -1; }
 
-/* ── TRACKER ── */
 .tracker-card {
   background: var(--card); border: 1px solid var(--border);
   border-radius: 12px; padding: 16px;
@@ -314,11 +304,6 @@ nav {
 .tracker-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; gap: 10px; }
 .tracker-title { font-size: 14px; font-weight: 700; color: var(--dark); }
 .tracker-sub { font-size: 11px; color: var(--muted); margin-top: 3px; line-height: 1.4; }
-
-.progress-track { background: var(--border); border-radius: 4px; height: 7px; overflow: hidden; margin-bottom: 7px; }
-.progress-fill { height: 100%; background: var(--blue); border-radius: 4px; transition: width 1.5s ease; }
-
-.progress-labels { display: flex; justify-content: space-between; font-size: 10px; color: var(--muted); margin-bottom: 16px; }
 
 .map-box {
   background: var(--bg); border: 1px solid var(--border);
@@ -334,19 +319,15 @@ nav {
   border: 2px solid #fff; top: 50%; transform: translateY(-50%);
   box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
-.mdot.a { left: 12%; background: var(--blue); margin-top: -3px; }
-.mdot.b { left: 47%; background: var(--plat); margin-top: -2px; }
-.mdot.c { right: 12%; background: var(--red); }
+.mdot.a { left: 10%; background: var(--blue); margin-top: -3px; }
+.mdot.b { left: 37%; background: var(--plat); margin-top: -2px; }
+.mdot.c { left: 63%; background: var(--plat); margin-top: -1px; }
+.mdot.d { right: 10%; background: var(--red); }
 .mlbl { position: absolute; font-size: 10px; font-weight: 700; color: var(--dark); }
-.mlbl.la { left: 10%; bottom: 26px; }
-.mlbl.lb { left: 45%; bottom: 26px; }
-.mlbl.lc { right: 9%; bottom: 26px; }
-
-/* two-dot map (nonstop) */
-.mdot.a2 { left: 12%; background: var(--blue); margin-top: -3px; }
-.mdot.b2 { right: 12%; background: var(--red); }
-.mlbl.la2 { left: 10%; bottom: 26px; }
-.mlbl.lb2 { right: 9%; bottom: 26px; }
+.mlbl.la { left: 8%; bottom: 26px; }
+.mlbl.lb { left: 34%; bottom: 26px; }
+.mlbl.lc { left: 60%; bottom: 26px; }
+.mlbl.ld { right: 7%; bottom: 26px; }
 
 .tracker-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 16px; }
 .tm-label { font-size: 9px; font-weight: 700; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }
@@ -354,7 +335,6 @@ nav {
 .tm-val.blue { color: var(--blue); }
 .tm-val.green { color: var(--green); }
 
-/* ── STATUS BADGE ── */
 .status-row { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
 .sdot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
 .sdot.green { background: var(--green); animation: pg 2s infinite; }
@@ -369,7 +349,6 @@ nav {
   100% { box-shadow: 0 0 0 0 rgba(16,128,64,0); }
 }
 
-/* ── BOARDING PASS ── */
 .bp-card {
   background: var(--card); border: 1px solid var(--border);
   border-radius: 12px; overflow: hidden;
@@ -418,7 +397,6 @@ nav {
 .bp-seat span { display: block; font-size: 9px; color: var(--muted); font-weight: 700; text-transform: uppercase; }
 .bp-seat strong { font-size: 36px; font-weight: 700; color: var(--blue); line-height: 1; }
 
-/* ── MILES ── */
 .miles-card {
   background: var(--card); border: 1px solid var(--border);
   border-radius: 12px; padding: 16px;
@@ -432,7 +410,6 @@ nav {
 .miles-next strong { color: var(--plat); }
 .miles-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px; }
 
-/* ── CHECKLIST ── */
 .checklist-card {
   background: var(--card); border: 1px solid var(--border);
   border-radius: 12px; padding: 16px;
@@ -451,7 +428,6 @@ nav {
 .ci-label.done { text-decoration: line-through; color: var(--muted); }
 .ci-action { font-size: 12px; color: var(--blue); font-weight: 700; cursor: pointer; padding: 4px 6px; -webkit-tap-highlight-color: transparent; }
 
-/* ── TABS ── */
 .tab-bar {
   display: flex; border-bottom: 2px solid var(--border);
   margin-bottom: 14px;
@@ -488,7 +464,6 @@ nav {
 .b-can { background: #FEE2E2; color: var(--red); }
 .tab-empty { padding: 28px 0; text-align: center; color: var(--muted); font-size: 13px; }
 
-/* ── MODAL ── */
 .modal-overlay {
   position: fixed; inset: 0; z-index: 300;
   background: rgba(17,24,39,0.72);
@@ -628,7 +603,7 @@ nav {
     <div class="stat"><div class="stat-val">142,800</div><div class="stat-label">Lifetime Miles</div></div>
     <div class="stat"><div class="stat-val">87,430</div><div class="stat-label">Available Miles</div></div>
     <div class="stat"><div class="stat-val" id="upcomingCount">2</div><div class="stat-label">Upcoming trips</div></div>
-    <div class="stat"><div class="stat-val">Jun 17</div><div class="stat-label">Next departure</div></div>
+    <div class="stat"><div class="stat-val">Jun 19</div><div class="stat-label">Next departure</div></div>
   </div>
 </div>
 
@@ -641,11 +616,11 @@ nav {
   <div class="trip-switcher">
     <div class="trip-pill active" onclick="showTrip('outbound', this)">
       <div class="pill-dot dot-out"></div>
-      Jun 17 · MEM → SYD
+      Jun 19 · MEM → SYD
     </div>
     <div class="trip-pill" onclick="showTrip('return', this)">
       <div class="pill-dot dot-ret"></div>
-      Jun 19 · SYD → MEM
+      Jul 19 · SYD → MEM
     </div>
   </div>
 
@@ -656,60 +631,62 @@ nav {
       <div class="cancelled-ribbon">Trip Cancelled</div>
       <div class="trip-head">
         <div>
-          <div class="trip-recno">VNYZPT &nbsp;·&nbsp; AA 1884 / QF 8</div>
+          <div class="trip-recno">VNYZPT &nbsp;·&nbsp; AA 2349 / QF 8</div>
           <div class="trip-route">MEM <span class="arr">→</span> DFW <span class="arr">→</span> SYD</div>
-          <div class="trip-sub">Wed Jun 17 · Memphis to Sydney · 2 segments · ~22h total</div>
+          <div class="trip-sub">Thu Jun 19 · Memphis to Sydney · 2 segments · ~24h total</div>
         </div>
         <div class="badge badge-green">ON TIME</div>
       </div>
 
       <div class="trip-legs">
+        <!-- Leg 1: MEM → DFW -->
         <div class="leg">
           <div class="leg-apt">
             <div class="leg-code">MEM</div>
             <div class="leg-city">Memphis, TN</div>
-            <div class="leg-time">4:45 PM</div>
-            <div class="leg-date">Wed Jun 17</div>
+            <div class="leg-time">7:54 PM</div>
+            <div class="leg-date">Thu Jun 19</div>
           </div>
           <div class="leg-mid">
             <div class="leg-line"><span class="leg-dot"></span></div>
-            <div class="leg-dur">1h 45m</div>
-            <div class="leg-info">AA 1884 · Airbus A319</div>
-            <div class="leg-info">Terminal B · Gate B6</div>
+            <div class="leg-dur">1h 46m</div>
+            <div class="leg-info">AA 2349 · Airbus A319</div>
+            <div class="leg-info">Terminal B · Gate B14</div>
             <div class="leg-tag tag-green">✓ On time</div>
           </div>
           <div class="leg-apt">
             <div class="leg-code">DFW</div>
             <div class="leg-city">Dallas/Fort Worth</div>
-            <div class="leg-time">6:30 PM</div>
-            <div class="leg-date">Wed Jun 17</div>
+            <div class="leg-time">9:40 PM</div>
+            <div class="leg-date">Thu Jun 19</div>
           </div>
         </div>
 
         <div class="layover">
           <div class="layover-dot"></div>
-          <div class="layover-text"><strong>4h 25m layover</strong> at DFW · Terminal D &mdash; Connection protected</div>
+          <div class="layover-text"><strong>1h 15m layover</strong> at DFW · Terminal D &mdash; Connection protected</div>
         </div>
 
+        <!-- Leg 2: DFW → SYD -->
         <div class="leg">
           <div class="leg-apt">
             <div class="leg-code">DFW</div>
             <div class="leg-city">Dallas/Fort Worth</div>
             <div class="leg-time">10:55 PM</div>
-            <div class="leg-date">Wed Jun 17</div>
+            <div class="leg-date">Thu Jun 19</div>
           </div>
           <div class="leg-mid">
             <div class="leg-line"><span class="leg-dot"></span></div>
             <div class="leg-dur">17h 00m</div>
             <div class="leg-info">QF 8 (AA 7262) · A380</div>
-            <div class="leg-info">Terminal D, Gate D16</div>
+            <div class="leg-info">Terminal D · Gate D16</div>
             <div class="leg-tag tag-green">✓ On time · Protected</div>
           </div>
           <div class="leg-apt">
             <div class="leg-code">SYD</div>
             <div class="leg-city">Sydney, AU</div>
             <div class="leg-time">6:55 AM</div>
-            <div class="leg-date">Fri Jun 19</div>
+            <div class="leg-date">Sat Jun 21</div>
           </div>
         </div>
       </div>
@@ -718,7 +695,7 @@ nav {
         <button class="btn btn-danger" onclick="openCancelModal('outbound')">Cancel / Refund</button>
         <button class="btn btn-outline" onclick="alert('Boarding passes added to Apple Wallet')">Add to Wallet</button>
         <button class="btn btn-outline" onclick="alert('Seat 2A (AA) & 1A (QF) confirmed')">Change Seats</button>
-        <button class="btn btn-primary" onclick="alert('Check-in opens Jun 16 at 4:45 PM CT')">Check in</button>
+        <button class="btn btn-primary" onclick="alert('Check-in opens Jun 18 at 7:54 PM CT')">Check in</button>
       </div>
     </div>
 
@@ -727,8 +704,8 @@ nav {
     <div class="tracker-card">
       <div class="tracker-head">
         <div>
-          <div class="tracker-title">AA 1884 · MEM→DFW &nbsp;|&nbsp; QF 8 · DFW→SYD</div>
-          <div class="tracker-sub">Departs MEM 4:45 PM CT · Arrives SYD 6:55 AM AEST (Fri Jun 19)</div>
+          <div class="tracker-title">AA 2349 · MEM→DFW &nbsp;|&nbsp; QF 8 · DFW→SYD</div>
+          <div class="tracker-sub">Departs MEM 7:54 PM CT · Arrives SYD 6:55 AM AEST (Sat Jun 21)</div>
         </div>
         <div class="status-row">
           <div class="sdot sched"></div>
@@ -737,29 +714,29 @@ nav {
       </div>
 
       <div style="background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:10px 12px;margin-bottom:14px;font-size:11px;color:var(--muted);line-height:1.7;">
-        Live tracking begins after departure on <strong style="color:var(--dark);">Wed Jun 17 at 4:45 PM CT</strong>. Arrives Sydney <strong style="color:var(--dark);">Fri Jun 19 at 6:55 AM AEST</strong>.
+        Live tracking begins after departure on <strong style="color:var(--dark);">Thu Jun 19 at 7:54 PM CT</strong>. Arrives Sydney <strong style="color:var(--dark);">Sat Jun 21 at 6:55 AM AEST</strong>.
       </div>
 
       <div class="map-box">
         <div class="map-line"></div>
         <div class="mdot a"></div>
-        <div class="mdot b"></div>
-        <div class="mdot c"></div>
+        <div class="mdot b" style="left:40%;"></div>
+        <div class="mdot d"></div>
         <span class="mlbl la">MEM</span>
-        <span class="mlbl lb">DFW</span>
-        <span class="mlbl lc">SYD</span>
+        <span class="mlbl" style="left:37%;bottom:26px;">DFW</span>
+        <span class="mlbl" style="right:7%;bottom:26px;">SYD</span>
       </div>
 
       <div class="tracker-meta">
-        <div><div class="tm-label">Leg 1</div><div class="tm-val">AA 1884</div></div>
+        <div><div class="tm-label">Leg 1</div><div class="tm-val">AA 2349</div></div>
         <div><div class="tm-label">Aircraft</div><div class="tm-val">A319</div></div>
-        <div><div class="tm-label">Gate MEM</div><div class="tm-val blue">B6</div></div>
+        <div><div class="tm-label">Gate MEM</div><div class="tm-val blue">B14</div></div>
         <div><div class="tm-label">Seat (AA)</div><div class="tm-val blue">2A <span style="font-size:10px;color:var(--muted);font-weight:400;">First</span></div></div>
         <div><div class="tm-label">Leg 2</div><div class="tm-val">QF 8</div></div>
         <div><div class="tm-label">Aircraft</div><div class="tm-val">A380</div></div>
         <div><div class="tm-label">Gate DFW</div><div class="tm-val blue">D16</div></div>
         <div><div class="tm-label">Seat (QF)</div><div class="tm-val blue">1A <span style="font-size:10px;color:var(--muted);font-weight:400;">Business</span></div></div>
-        <div><div class="tm-label">Boarding</div><div class="tm-val green">4:20 PM</div></div>
+        <div><div class="tm-label">Boarding</div><div class="tm-val green">7:29 PM</div></div>
       </div>
     </div>
 
@@ -767,27 +744,27 @@ nav {
     <div class="section-title" style="margin-top:20px;">Boarding passes</div>
     <div class="bp-card">
       <div class="bp-seg">
-        <div class="bp-seg-lbl"><div class="bp-seg-num">1</div> American Airlines · AA 1884</div>
+        <div class="bp-seg-lbl"><div class="bp-seg-num">1</div> American Airlines · AA 2349</div>
         <div class="bp-route">
           <div class="bp-apt">
             <div class="bp-code">MEM</div><div class="bp-city">Memphis</div>
-            <div class="bp-time">4:45 PM</div><div class="bp-date">Wed Jun 17</div>
+            <div class="bp-time">7:54 PM</div><div class="bp-date">Thu Jun 19</div>
           </div>
           <div class="bp-mid">
             <div class="bp-line"></div>
-            <div class="bp-dur">1h 45m · Nonstop</div>
+            <div class="bp-dur">1h 46m · Nonstop</div>
           </div>
           <div class="bp-apt">
             <div class="bp-code">DFW</div><div class="bp-city">Dallas</div>
-            <div class="bp-time">6:30 PM</div><div class="bp-date">Wed Jun 17</div>
+            <div class="bp-time">9:40 PM</div><div class="bp-date">Thu Jun 19</div>
           </div>
         </div>
         <div class="bp-grid">
           <div class="bp-field"><label>Passenger</label><span>K. Tupea</span></div>
-          <div class="bp-field"><label>Flight</label><span>AA 1884</span></div>
+          <div class="bp-field"><label>Flight</label><span>AA 2349</span></div>
           <div class="bp-field"><label>Class</label><span>First</span></div>
-          <div class="bp-field"><label>Date</label><span>Jun 17</span></div>
-          <div class="bp-field"><label>Boarding</label><span>4:20 PM</span></div>
+          <div class="bp-field"><label>Date</label><span>Jun 19</span></div>
+          <div class="bp-field"><label>Boarding</label><span>7:29 PM</span></div>
           <div class="bp-field"><label>Group</label><span>1 (Exec)</span></div>
         </div>
       </div>
@@ -796,7 +773,7 @@ nav {
         <div class="bp-route">
           <div class="bp-apt">
             <div class="bp-code">DFW</div><div class="bp-city">Dallas</div>
-            <div class="bp-time">10:55 PM</div><div class="bp-date">Wed Jun 17</div>
+            <div class="bp-time">10:55 PM</div><div class="bp-date">Thu Jun 19</div>
           </div>
           <div class="bp-mid">
             <div class="bp-line"></div>
@@ -804,14 +781,14 @@ nav {
           </div>
           <div class="bp-apt">
             <div class="bp-code">SYD</div><div class="bp-city">Sydney</div>
-            <div class="bp-time">6:55 AM</div><div class="bp-date">Fri Jun 19</div>
+            <div class="bp-time">6:55 AM</div><div class="bp-date">Sat Jun 21</div>
           </div>
         </div>
         <div class="bp-grid">
           <div class="bp-field"><label>Passenger</label><span>K. Tupea</span></div>
           <div class="bp-field"><label>Flight</label><span>QF 8</span></div>
           <div class="bp-field"><label>Class</label><span>Business</span></div>
-          <div class="bp-field"><label>Date</label><span>Jun 17</span></div>
+          <div class="bp-field"><label>Date</label><span>Jun 19</span></div>
           <div class="bp-field"><label>Boarding</label><span>10:25 PM</span></div>
           <div class="bp-field"><label>Group</label><span>1 (Exec)</span></div>
         </div>
@@ -833,67 +810,97 @@ nav {
 
   </div><!-- /view-outbound -->
 
-  <!-- ═══════════ TRIP 2: RETURN ═══════════ -->
+  <!-- ═══════════ TRIP 2: RETURN (Jul 19 SYD→TYO→DFW→MEM) ═══════════ -->
   <div class="trip-view" id="view-return">
 
     <div class="trip-card" id="card-return">
       <div class="cancelled-ribbon">Trip Cancelled</div>
       <div class="trip-head">
         <div>
-          <div class="trip-recno">VNYZRT &nbsp;·&nbsp; QF 7 / AA 1893</div>
-          <div class="trip-route">SYD <span class="arr">→</span> DFW <span class="arr">→</span> MEM</div>
-          <div class="trip-sub">Thu Jun 19 · Sydney to Memphis · 2 segments · ~22h total</div>
+          <div class="trip-recno">VNYZRT &nbsp;·&nbsp; QF 25 / AA 8893 / AA 1788</div>
+          <div class="trip-route">SYD <span class="arr">→</span> TYO <span class="arr">→</span> DFW <span class="arr">→</span> MEM</div>
+          <div class="trip-sub">Sun Jul 19 · Sydney to Memphis via Tokyo · 3 segments · ~31h total</div>
         </div>
         <div class="badge badge-blue">SCHEDULED</div>
       </div>
 
       <div class="trip-legs">
+        <!-- Leg 1: SYD → TYO (HND) -->
         <div class="leg">
           <div class="leg-apt">
             <div class="leg-code">SYD</div>
             <div class="leg-city">Sydney, AU</div>
-            <div class="leg-time">2:30 PM</div>
-            <div class="leg-date">Thu Jun 19</div>
+            <div class="leg-time">8:30 PM</div>
+            <div class="leg-date">Sun Jul 19</div>
           </div>
           <div class="leg-mid">
             <div class="leg-line"><span class="leg-dot"></span></div>
-            <div class="leg-dur">16h 50m</div>
-            <div class="leg-info">QF 7 (AA 7263) · A380</div>
-            <div class="leg-info">Terminal 1 · Gate 8</div>
+            <div class="leg-dur">9h 40m</div>
+            <div class="leg-info">QF 25 · Boeing 787-9</div>
+            <div class="leg-info">Terminal 1 · Gate 23</div>
             <div class="leg-tag tag-green">✓ Scheduled</div>
           </div>
           <div class="leg-apt">
-            <div class="leg-code">DFW</div>
-            <div class="leg-city">Dallas/Fort Worth</div>
-            <div class="leg-time">1:20 PM</div>
-            <div class="leg-date">Thu Jun 19</div>
+            <div class="leg-code">HND</div>
+            <div class="leg-city">Tokyo Haneda</div>
+            <div class="leg-time">6:10 AM</div>
+            <div class="leg-date">Mon Jul 20</div>
           </div>
         </div>
 
         <div class="layover">
           <div class="layover-dot"></div>
-          <div class="layover-text"><strong>2h 40m layover</strong> at DFW · Terminal D &mdash; Connection protected</div>
+          <div class="layover-text"><strong>5h 50m layover</strong> at Tokyo Haneda · Terminal 3 &mdash; oneworld lounge access included</div>
         </div>
 
+        <!-- Leg 2: TYO → DFW -->
+        <div class="leg">
+          <div class="leg-apt">
+            <div class="leg-code">HND</div>
+            <div class="leg-city">Tokyo Haneda</div>
+            <div class="leg-time">12:00 PM</div>
+            <div class="leg-date">Mon Jul 20</div>
+          </div>
+          <div class="leg-mid">
+            <div class="leg-line"><span class="leg-dot"></span></div>
+            <div class="leg-dur">12h 50m</div>
+            <div class="leg-info">AA 8893 (JL codeshare) · B777</div>
+            <div class="leg-info">Terminal 3 · Gate 70</div>
+            <div class="leg-tag tag-green">✓ Scheduled</div>
+          </div>
+          <div class="leg-apt">
+            <div class="leg-code">DFW</div>
+            <div class="leg-city">Dallas/Fort Worth</div>
+            <div class="leg-time">9:50 AM</div>
+            <div class="leg-date">Mon Jul 20</div>
+          </div>
+        </div>
+
+        <div class="layover">
+          <div class="layover-dot"></div>
+          <div class="layover-text"><strong>2h 10m layover</strong> at DFW · Terminal D &mdash; Connection protected</div>
+        </div>
+
+        <!-- Leg 3: DFW → MEM -->
         <div class="leg">
           <div class="leg-apt">
             <div class="leg-code">DFW</div>
             <div class="leg-city">Dallas/Fort Worth</div>
-            <div class="leg-time">4:00 PM</div>
-            <div class="leg-date">Thu Jun 19</div>
+            <div class="leg-time">12:00 PM</div>
+            <div class="leg-date">Mon Jul 20</div>
           </div>
           <div class="leg-mid">
             <div class="leg-line"><span class="leg-dot"></span></div>
-            <div class="leg-dur">1h 55m</div>
-            <div class="leg-info">AA 1893 · Airbus A319</div>
-            <div class="leg-info">Terminal B · Gate B12</div>
+            <div class="leg-dur">1h 47m</div>
+            <div class="leg-info">AA 1788 · Airbus A319</div>
+            <div class="leg-info">Terminal B · Gate B22</div>
             <div class="leg-tag tag-green">✓ Scheduled</div>
           </div>
           <div class="leg-apt">
             <div class="leg-code">MEM</div>
             <div class="leg-city">Memphis, TN</div>
-            <div class="leg-time">5:55 PM</div>
-            <div class="leg-date">Thu Jun 19</div>
+            <div class="leg-time">1:47 PM</div>
+            <div class="leg-date">Mon Jul 20</div>
           </div>
         </div>
       </div>
@@ -901,8 +908,8 @@ nav {
       <div class="trip-actions">
         <button class="btn btn-danger" onclick="openCancelModal('return')">Cancel / Refund</button>
         <button class="btn btn-outline" onclick="alert('Boarding passes added to Apple Wallet')">Add to Wallet</button>
-        <button class="btn btn-outline" onclick="alert('Seat 1A (QF) & 2A (AA) confirmed')">Change Seats</button>
-        <button class="btn btn-primary" onclick="alert('Check-in opens Jun 18 at 2:30 PM AEST')">Check in</button>
+        <button class="btn btn-outline" onclick="alert('Seat 1A (QF) & 3A (AA) confirmed')">Change Seats</button>
+        <button class="btn btn-primary" onclick="alert('Check-in opens Jul 18 at 8:30 PM AEST')">Check in</button>
       </div>
     </div>
 
@@ -911,8 +918,8 @@ nav {
     <div class="tracker-card">
       <div class="tracker-head">
         <div>
-          <div class="tracker-title">QF 7 · SYD→DFW &nbsp;|&nbsp; AA 1893 · DFW→MEM</div>
-          <div class="tracker-sub">Departs SYD 2:30 PM AEST · Arrives MEM 5:55 PM CT (Thu Jun 19)</div>
+          <div class="tracker-title">QF 25 · SYD→HND &nbsp;|&nbsp; AA 8893 · HND→DFW &nbsp;|&nbsp; AA 1788 · DFW→MEM</div>
+          <div class="tracker-sub">Departs SYD 8:30 PM AEST · Arrives MEM 1:47 PM CT (Mon Jul 20)</div>
         </div>
         <div class="status-row">
           <div class="sdot sched"></div>
@@ -921,29 +928,32 @@ nav {
       </div>
 
       <div style="background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:10px 12px;margin-bottom:14px;font-size:11px;color:var(--muted);line-height:1.7;">
-        Live tracking begins after departure on <strong style="color:var(--dark);">Thu Jun 19 at 2:30 PM AEST</strong>. Arrives Memphis <strong style="color:var(--dark);">Thu Jun 19 at 5:55 PM CT</strong>.
+        Live tracking begins after departure on <strong style="color:var(--dark);">Sun Jul 19 at 8:30 PM AEST</strong>. Arrives Memphis <strong style="color:var(--dark);">Mon Jul 20 at 1:47 PM CT</strong>.
       </div>
 
+      <!-- 4-dot map for 3-segment route -->
       <div class="map-box">
         <div class="map-line"></div>
-        <div class="mdot c" style="left:12%;right:auto;background:var(--blue);margin-top:-3px;"></div>
-        <div class="mdot b" style="left:47%;"></div>
-        <div class="mdot a" style="left:auto;right:12%;background:var(--red);"></div>
-        <span class="mlbl" style="left:10%;bottom:26px;">SYD</span>
-        <span class="mlbl" style="left:45%;bottom:26px;">DFW</span>
-        <span class="mlbl" style="right:9%;bottom:26px;">MEM</span>
+        <div class="mdot" style="left:10%;background:var(--blue);border:2px solid #fff;margin-top:-3px;"></div>
+        <div class="mdot" style="left:37%;background:var(--plat);border:2px solid #fff;margin-top:-2px;"></div>
+        <div class="mdot" style="left:64%;background:var(--plat);border:2px solid #fff;margin-top:-1px;"></div>
+        <div class="mdot" style="right:10%;background:var(--red);border:2px solid #fff;"></div>
+        <span class="mlbl" style="left:8%;bottom:26px;">SYD</span>
+        <span class="mlbl" style="left:34%;bottom:26px;">TYO</span>
+        <span class="mlbl" style="left:61%;bottom:26px;">DFW</span>
+        <span class="mlbl" style="right:7%;bottom:26px;">MEM</span>
       </div>
 
       <div class="tracker-meta">
-        <div><div class="tm-label">Leg 1</div><div class="tm-val">QF 7</div></div>
-        <div><div class="tm-label">Aircraft</div><div class="tm-val">A380</div></div>
-        <div><div class="tm-label">Gate SYD</div><div class="tm-val blue">Gate 8</div></div>
+        <div><div class="tm-label">Leg 1</div><div class="tm-val">QF 25</div></div>
+        <div><div class="tm-label">Aircraft</div><div class="tm-val">787-9</div></div>
+        <div><div class="tm-label">Gate SYD</div><div class="tm-val blue">Gate 23</div></div>
         <div><div class="tm-label">Seat (QF)</div><div class="tm-val blue">1A <span style="font-size:10px;color:var(--muted);font-weight:400;">Business</span></div></div>
-        <div><div class="tm-label">Leg 2</div><div class="tm-val">AA 1893</div></div>
-        <div><div class="tm-label">Aircraft</div><div class="tm-val">A319</div></div>
-        <div><div class="tm-label">Gate DFW</div><div class="tm-val blue">B12</div></div>
-        <div><div class="tm-label">Seat (AA)</div><div class="tm-val blue">2A <span style="font-size:10px;color:var(--muted);font-weight:400;">First</span></div></div>
-        <div><div class="tm-label">Boarding</div><div class="tm-val green">2:00 PM</div></div>
+        <div><div class="tm-label">Leg 2</div><div class="tm-val">AA 8893</div></div>
+        <div><div class="tm-label">Aircraft</div><div class="tm-val">B777</div></div>
+        <div><div class="tm-label">Gate HND</div><div class="tm-val blue">Gate 70</div></div>
+        <div><div class="tm-label">Seat (AA)</div><div class="tm-val blue">3A <span style="font-size:10px;color:var(--muted);font-weight:400;">Business</span></div></div>
+        <div><div class="tm-label">Boarding</div><div class="tm-val green">8:00 PM</div></div>
       </div>
     </div>
 
@@ -951,52 +961,77 @@ nav {
     <div class="section-title" style="margin-top:20px;">Boarding passes</div>
     <div class="bp-card">
       <div class="bp-seg">
-        <div class="bp-seg-lbl"><div class="bp-seg-num">1</div> Qantas · QF 7 (AA 7263 codeshare)</div>
+        <div class="bp-seg-lbl"><div class="bp-seg-num">1</div> Qantas · QF 25</div>
         <div class="bp-route">
           <div class="bp-apt">
             <div class="bp-code">SYD</div><div class="bp-city">Sydney</div>
-            <div class="bp-time">2:30 PM</div><div class="bp-date">Thu Jun 19</div>
+            <div class="bp-time">8:30 PM</div><div class="bp-date">Sun Jul 19</div>
           </div>
           <div class="bp-mid">
             <div class="bp-line"></div>
-            <div class="bp-dur">16h 50m · Nonstop</div>
+            <div class="bp-dur">9h 40m · Nonstop</div>
           </div>
           <div class="bp-apt">
-            <div class="bp-code">DFW</div><div class="bp-city">Dallas</div>
-            <div class="bp-time">1:20 PM</div><div class="bp-date">Thu Jun 19</div>
+            <div class="bp-code">HND</div><div class="bp-city">Tokyo</div>
+            <div class="bp-time">6:10 AM</div><div class="bp-date">Mon Jul 20</div>
           </div>
         </div>
         <div class="bp-grid">
           <div class="bp-field"><label>Passenger</label><span>K. Tupea</span></div>
-          <div class="bp-field"><label>Flight</label><span>QF 7</span></div>
+          <div class="bp-field"><label>Flight</label><span>QF 25</span></div>
           <div class="bp-field"><label>Class</label><span>Business</span></div>
-          <div class="bp-field"><label>Date</label><span>Jun 19</span></div>
-          <div class="bp-field"><label>Boarding</label><span>2:00 PM</span></div>
+          <div class="bp-field"><label>Date</label><span>Jul 19</span></div>
+          <div class="bp-field"><label>Boarding</label><span>8:00 PM</span></div>
           <div class="bp-field"><label>Group</label><span>1 (Exec)</span></div>
         </div>
       </div>
       <div class="bp-seg">
-        <div class="bp-seg-lbl"><div class="bp-seg-num">2</div> American Airlines · AA 1893</div>
+        <div class="bp-seg-lbl"><div class="bp-seg-num">2</div> American Airlines · AA 8893 (Japan Airlines codeshare)</div>
         <div class="bp-route">
           <div class="bp-apt">
-            <div class="bp-code">DFW</div><div class="bp-city">Dallas</div>
-            <div class="bp-time">4:00 PM</div><div class="bp-date">Thu Jun 19</div>
+            <div class="bp-code">HND</div><div class="bp-city">Tokyo</div>
+            <div class="bp-time">12:00 PM</div><div class="bp-date">Mon Jul 20</div>
           </div>
           <div class="bp-mid">
             <div class="bp-line"></div>
-            <div class="bp-dur">1h 55m · Nonstop</div>
+            <div class="bp-dur">12h 50m · Nonstop</div>
           </div>
           <div class="bp-apt">
-            <div class="bp-code">MEM</div><div class="bp-city">Memphis</div>
-            <div class="bp-time">5:55 PM</div><div class="bp-date">Thu Jun 19</div>
+            <div class="bp-code">DFW</div><div class="bp-city">Dallas</div>
+            <div class="bp-time">9:50 AM</div><div class="bp-date">Mon Jul 20</div>
           </div>
         </div>
         <div class="bp-grid">
           <div class="bp-field"><label>Passenger</label><span>K. Tupea</span></div>
-          <div class="bp-field"><label>Flight</label><span>AA 1893</span></div>
+          <div class="bp-field"><label>Flight</label><span>AA 8893</span></div>
+          <div class="bp-field"><label>Class</label><span>Business</span></div>
+          <div class="bp-field"><label>Date</label><span>Jul 20</span></div>
+          <div class="bp-field"><label>Boarding</label><span>11:25 AM</span></div>
+          <div class="bp-field"><label>Group</label><span>1 (Exec)</span></div>
+        </div>
+      </div>
+      <div class="bp-seg">
+        <div class="bp-seg-lbl"><div class="bp-seg-num">3</div> American Airlines · AA 1788</div>
+        <div class="bp-route">
+          <div class="bp-apt">
+            <div class="bp-code">DFW</div><div class="bp-city">Dallas</div>
+            <div class="bp-time">12:00 PM</div><div class="bp-date">Mon Jul 20</div>
+          </div>
+          <div class="bp-mid">
+            <div class="bp-line"></div>
+            <div class="bp-dur">1h 47m · Nonstop</div>
+          </div>
+          <div class="bp-apt">
+            <div class="bp-code">MEM</div><div class="bp-city">Memphis</div>
+            <div class="bp-time">1:47 PM</div><div class="bp-date">Mon Jul 20</div>
+          </div>
+        </div>
+        <div class="bp-grid">
+          <div class="bp-field"><label>Passenger</label><span>K. Tupea</span></div>
+          <div class="bp-field"><label>Flight</label><span>AA 1788</span></div>
           <div class="bp-field"><label>Class</label><span>First</span></div>
-          <div class="bp-field"><label>Date</label><span>Jun 19</span></div>
-          <div class="bp-field"><label>Boarding</label><span>3:30 PM</span></div>
+          <div class="bp-field"><label>Date</label><span>Jul 20</span></div>
+          <div class="bp-field"><label>Boarding</label><span>11:30 AM</span></div>
           <div class="bp-field"><label>Group</label><span>1 (Exec)</span></div>
         </div>
       </div>
@@ -1011,7 +1046,7 @@ nav {
           <div class="bp-bar" style="width:1px;height:34px;"></div><div class="bp-bar" style="width:2px;height:31px;"></div>
           <div class="bp-bar" style="width:1px;height:34px;"></div>
         </div>
-        <div class="bp-seat"><span>Seat (AA 1893)</span><strong>2A</strong></div>
+        <div class="bp-seat"><span>Seat (AA 1788)</span><strong>2A</strong></div>
       </div>
     </div>
 
@@ -1041,18 +1076,18 @@ nav {
 
   <div id="tab-up" class="tab-content active">
     <div class="tli" onclick="showTrip('outbound', document.querySelector('.trip-pill:first-child')); scrollToTop()">
-      <div class="tl-date"><div class="tl-day">17</div><div class="tl-mo">Jun</div></div>
+      <div class="tl-date"><div class="tl-day">19</div><div class="tl-mo">Jun</div></div>
       <div class="tl-info">
         <div class="tl-route">Memphis → Sydney (via Dallas)</div>
-        <div class="tl-detail">AA 1884 / QF 8 · First + Business · ✓ On time</div>
+        <div class="tl-detail">AA 2349 / QF 8 · First + Business · ✓ On time</div>
       </div>
       <div class="tl-badge b-up">Upcoming</div>
     </div>
     <div id="returnListItem" class="tli" onclick="showTrip('return', document.querySelectorAll('.trip-pill')[1]); scrollToTop()">
-      <div class="tl-date"><div class="tl-day">19</div><div class="tl-mo">Jun</div></div>
+      <div class="tl-date"><div class="tl-day">19</div><div class="tl-mo">Jul</div></div>
       <div class="tl-info">
-        <div class="tl-route">Sydney → Memphis (via Dallas)</div>
-        <div class="tl-detail">QF 7 / AA 1893 · Business + First · Scheduled</div>
+        <div class="tl-route">Sydney → Memphis (via Tokyo &amp; Dallas)</div>
+        <div class="tl-detail">QF 25 / AA 8893 / AA 1788 · Business + Business + First</div>
       </div>
       <div class="tl-badge b-up">Upcoming</div>
     </div>
@@ -1072,18 +1107,18 @@ nav {
   <div id="tab-can" class="tab-content">
     <div id="cancelledEmpty" class="tab-empty">No canceled trips to display.</div>
     <div id="cancelledOutbound" style="display:none;" class="tli">
-      <div class="tl-date"><div class="tl-day">17</div><div class="tl-mo">Jun</div></div>
+      <div class="tl-date"><div class="tl-day">19</div><div class="tl-mo">Jun</div></div>
       <div class="tl-info">
         <div class="tl-route">Memphis → Sydney (via Dallas)</div>
-        <div class="tl-detail">AA 1884 / QF 8 · Cancelled Jun 16 · Credit $3,892.00</div>
+        <div class="tl-detail">AA 2349 / QF 8 · Cancelled Jun 16 · Credit $3,892.00</div>
       </div>
       <div class="tl-badge b-can">Cancelled</div>
     </div>
     <div id="cancelledReturn" style="display:none;" class="tli">
-      <div class="tl-date"><div class="tl-day">19</div><div class="tl-mo">Jun</div></div>
+      <div class="tl-date"><div class="tl-day">19</div><div class="tl-mo">Jul</div></div>
       <div class="tl-info">
-        <div class="tl-route">Sydney → Memphis (via Dallas)</div>
-        <div class="tl-detail">QF 7 / AA 1893 · Cancelled · Credit $3,892.00</div>
+        <div class="tl-route">Sydney → Memphis (via Tokyo &amp; Dallas)</div>
+        <div class="tl-detail">QF 25 / AA 8893 / AA 1788 · Cancelled · Credit $3,892.00</div>
       </div>
       <div class="tl-badge b-can">Cancelled</div>
     </div>
@@ -1095,7 +1130,7 @@ nav {
     <div class="checklist">
       <div class="ci">
         <div class="ci-icon done">✓</div>
-        <div class="ci-label done">Passport valid · Australia ETA approved</div>
+        <div class="ci-label done">Passport valid · Australia ETA &amp; Japan eVisa approved</div>
       </div>
       <div class="ci">
         <div class="ci-icon done">✓</div>
@@ -1103,11 +1138,11 @@ nav {
       </div>
       <div class="ci">
         <div class="ci-icon done">✓</div>
-        <div class="ci-label done">oneworld connection confirmed at DFW Terminal D</div>
+        <div class="ci-label done">oneworld connections confirmed · DFW Terminal D · HND Terminal 3</div>
       </div>
       <div class="ci">
         <div class="ci-icon warn">!</div>
-        <div class="ci-label">Check-in opens <strong>Jun 16 at 4:45 PM CT</strong></div>
+        <div class="ci-label">Check-in opens <strong>Jun 18 at 7:54 PM CT</strong></div>
       </div>
       <div class="ci">
         <div class="ci-icon todo"></div>
@@ -1116,7 +1151,7 @@ nav {
       </div>
       <div class="ci">
         <div class="ci-icon todo"></div>
-        <div class="ci-label">Add both passes to Apple Wallet</div>
+        <div class="ci-label">Add all passes to Apple Wallet</div>
         <div class="ci-action">Add</div>
       </div>
     </div>
@@ -1189,7 +1224,7 @@ nav {
             <div class="cd-row"><span>Trip credit</span><strong style="color:var(--green);">$3,892.00</strong></div>
             <div class="cd-row"><span>Account</span><strong>X0AJ642</strong></div>
             <div class="cd-row"><span>Valid until</span><strong>Jun 16, 2027</strong></div>
-            <div class="cd-row"><span>Confirmation</span><strong id="confCode">CNCL-VNYZPT-0616</strong></div>
+            <div class="cd-row"><span>Confirmation</span><strong id="confCode">CNCL-VNYZPT-0619</strong></div>
           </div>
           <button class="btn btn-primary" style="width:100%;" onclick="closeModal()">Done</button>
         </div>
@@ -1200,7 +1235,6 @@ nav {
 </div>
 
 <script>
-  // Miles bar
   window.addEventListener('DOMContentLoaded', function() {
     setTimeout(function() {
       var f = document.getElementById('milesFill');
@@ -1208,7 +1242,6 @@ nav {
     }, 500);
   });
 
-  // Drawer
   function openDrawer() {
     document.getElementById('drawer').classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -1218,7 +1251,6 @@ nav {
     document.body.style.overflow = '';
   }
 
-  // Trip switcher
   function showTrip(id, pill) {
     document.querySelectorAll('.trip-view').forEach(function(v) { v.classList.remove('active'); });
     document.querySelectorAll('.trip-pill').forEach(function(p) { p.classList.remove('active'); });
@@ -1230,7 +1262,6 @@ nav {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // Tabs
   function switchTab(el, id) {
     document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
     document.querySelectorAll('.tab-content').forEach(function(t) { t.classList.remove('active'); });
@@ -1238,7 +1269,6 @@ nav {
     document.getElementById(id).classList.add('active');
   }
 
-  // Modal
   var selectedReason = null;
   var cancellingTrip = null;
 
@@ -1292,27 +1322,23 @@ nav {
     document.getElementById('modalTitle').textContent = 'Cancelled';
     document.getElementById('modalCloseBtn').style.display = 'none';
 
-    var code = cancellingTrip === 'return' ? 'CNCL-VNYZRT-0616' : 'CNCL-VNYZPT-0616';
+    var code = cancellingTrip === 'return' ? 'CNCL-VNYZRT-0719' : 'CNCL-VNYZPT-0619';
     document.getElementById('confCode').textContent = code;
 
-    var route = cancellingTrip === 'return' ? 'SYD → DFW → MEM' : 'MEM → DFW → SYD';
+    var route = cancellingTrip === 'return' ? 'SYD → HND → DFW → MEM' : 'MEM → DFW → SYD';
     document.getElementById('confSubText').innerHTML = route + ' has been cancelled.<br>Trip credit of <strong>$3,892.00</strong> has been issued.';
 
-    // Mark card
     var card = document.getElementById('card-' + cancellingTrip);
     if (card) card.classList.add('cancelled-state');
 
-    // Update upcoming count
     var countEl = document.getElementById('upcomingCount');
     var currentCount = parseInt(countEl.textContent, 10);
     countEl.textContent = Math.max(0, currentCount - 1);
 
-    // Move to cancelled tab
     document.getElementById('cancelledEmpty').style.display = 'none';
     var cancelEl = document.getElementById('cancelled' + (cancellingTrip === 'outbound' ? 'Outbound' : 'Return'));
     if (cancelEl) cancelEl.style.display = 'flex';
 
-    // Remove from upcoming list
     if (cancellingTrip === 'return') {
       var ri = document.getElementById('returnListItem');
       if (ri) ri.style.display = 'none';
