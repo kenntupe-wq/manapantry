@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -10,75 +9,75 @@
 html { scroll-behavior: smooth; }
 
 :root {
-–blue: #0078D2;
-–dark-blue: #00467F;
-–red: #C30019;
-–light-blue: #E8F4FA;
-–bg: #F2F4F7;
-–card: #FFFFFF;
-–card2: #F8F9FA;
-–border: #D1D5DB;
-–text: #374151;
-–dark: #111827;
-–muted: #6B7280;
-–green: #108040;
-–green-bg: #E6F4EA;
-–plat: #5B6770;
-–amber: #F59E0B;
-–safe-b: env(safe-area-inset-bottom, 0px);
-–safe-l: env(safe-area-inset-left, 0px);
-–safe-r: env(safe-area-inset-right, 0px);
-–safe-t: env(safe-area-inset-top, 0px);
+  --blue: #0078D2;
+  --dark-blue: #00467F;
+  --red: #C30019;
+  --light-blue: #E8F4FA;
+  --bg: #F2F4F7;
+  --card: #FFFFFF;
+  --card2: #F8F9FA;
+  --border: #D1D5DB;
+  --text: #374151;
+  --dark: #111827;
+  --muted: #6B7280;
+  --green: #108040;
+  --green-bg: #E6F4EA;
+  --plat: #5B6770;
+  --amber: #F59E0B;
+  --safe-b: env(safe-area-inset-bottom, 0px);
+  --safe-l: env(safe-area-inset-left, 0px);
+  --safe-r: env(safe-area-inset-right, 0px);
+  --safe-t: env(safe-area-inset-top, 0px);
 }
 
 body {
-background: var(–bg);
-color: var(–text);
-font-family: -apple-system, ‘Helvetica Neue’, Arial, sans-serif;
-font-size: 15px;
-min-height: 100vh;
--webkit-text-size-adjust: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 15px;
+  min-height: 100vh;
+  -webkit-text-size-adjust: 100%;
 }
 
 /* ── NAV ── */
 nav {
-position: sticky; top: 0; z-index: 100;
-background: var(–card);
-border-bottom: 1px solid var(–border);
-display: flex; align-items: center; justify-content: space-between;
-height: 56px;
-padding: 0 16px;
-padding-left: calc(16px + var(–safe-l));
-padding-right: calc(16px + var(–safe-r));
-box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  position: sticky; top: 0; z-index: 100;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  height: 56px;
+  padding: 0 16px;
+  padding-left: calc(16px + var(--safe-l));
+  padding-right: calc(16px + var(--safe-r));
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
 }
 
 .nav-logo {
-display: flex; align-items: center; gap: 7px;
-font-size: 17px; font-weight: 700; color: var(–blue); text-decoration: none;
+  display: flex; align-items: center; gap: 7px;
+  font-size: 17px; font-weight: 700; color: var(--blue); text-decoration: none;
 }
 .nav-logo-icon {
-width: 20px; height: 20px; flex-shrink: 0;
-background: linear-gradient(135deg, var(–blue) 50%, var(–red) 50%);
-clip-path: polygon(0 40%, 100% 0, 80% 100%, 20% 100%);
+  width: 20px; height: 20px; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--blue) 50%, var(--red) 50%);
+  clip-path: polygon(0 40%, 100% 0, 80% 100%, 20% 100%);
 }
 .aa-badge {
-font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
-color: #fff; background: var(–dark); padding: 2px 6px; border-radius: 3px;
+  font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+  color: #fff; background: var(--dark); padding: 2px 6px; border-radius: 3px;
 }
 
 .hamburger {
-display: flex; flex-direction: column; gap: 5px;
-background: none; border: none; padding: 6px; cursor: pointer;
--webkit-tap-highlight-color: transparent;
+  display: flex; flex-direction: column; gap: 5px;
+  background: none; border: none; padding: 6px; cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
-.hamburger span { display: block; width: 22px; height: 2px; background: var(–dark); border-radius: 2px; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--dark); border-radius: 2px; }
 
 .member-avatar {
-width: 32px; height: 32px; border-radius: 50%;
-background: var(–plat);
-display: flex; align-items: center; justify-content: center;
-font-size: 12px; font-weight: 700; color: #fff;
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--plat);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700; color: #fff;
 }
 
 /* ── DRAWER ── */
@@ -86,52 +85,52 @@ font-size: 12px; font-weight: 700; color: #fff;
 .drawer.open { display: block; }
 .drawer-bg { position: absolute; inset: 0; background: rgba(0,0,0,0.5); }
 .drawer-panel {
-position: absolute; top: 0; left: 0; bottom: 0;
-width: min(300px, 84vw);
-background: var(–card);
-display: flex; flex-direction: column;
-padding-bottom: calc(24px + var(–safe-b));
-box-shadow: 4px 0 20px rgba(0,0,0,0.18);
-transform: translateX(-100%);
-transition: transform 0.28s cubic-bezier(.4,0,.2,1);
+  position: absolute; top: 0; left: 0; bottom: 0;
+  width: min(300px, 84vw);
+  background: var(--card);
+  display: flex; flex-direction: column;
+  padding-bottom: calc(24px + var(--safe-b));
+  box-shadow: 4px 0 20px rgba(0,0,0,0.18);
+  transform: translateX(-100%);
+  transition: transform 0.28s cubic-bezier(.4,0,.2,1);
 }
 .drawer.open .drawer-panel { transform: translateX(0); }
 
 .drawer-head {
-display: flex; align-items: center; justify-content: space-between;
-padding: 20px 18px 16px;
-border-bottom: 1px solid var(–border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 18px 16px;
+  border-bottom: 1px solid var(--border);
 }
 .drawer-close {
-background: none; border: none; font-size: 18px; color: var(–muted); cursor: pointer;
-width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
-border-radius: 6px; -webkit-tap-highlight-color: transparent;
+  background: none; border: none; font-size: 18px; color: var(--muted); cursor: pointer;
+  width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+  border-radius: 6px; -webkit-tap-highlight-color: transparent;
 }
 
 .drawer-member {
-display: flex; align-items: center; gap: 12px;
-margin: 12px; padding: 14px;
-background: var(–card2); border-radius: 10px;
+  display: flex; align-items: center; gap: 12px;
+  margin: 12px; padding: 14px;
+  background: var(--card2); border-radius: 10px;
 }
-.drawer-member-info .mn { font-size: 14px; font-weight: 700; color: var(–dark); }
-.drawer-member-info .mt { font-size: 11px; color: var(–plat); margin-top: 2px; }
+.drawer-member-info .mn { font-size: 14px; font-weight: 700; color: var(--dark); }
+.drawer-member-info .mt { font-size: 11px; color: var(--plat); margin-top: 2px; }
 
 .drawer-links { list-style: none; padding: 8px 12px; }
 .drawer-links li a {
-display: block; padding: 13px 12px;
-font-size: 15px; font-weight: 600; color: var(–dark);
-text-decoration: none; border-radius: 8px;
--webkit-tap-highlight-color: transparent;
+  display: block; padding: 13px 12px;
+  font-size: 15px; font-weight: 600; color: var(--dark);
+  text-decoration: none; border-radius: 8px;
+  -webkit-tap-highlight-color: transparent;
 }
-.drawer-links li a:active, .drawer-links li a.active { background: var(–light-blue); color: var(–blue); }
+.drawer-links li a:active, .drawer-links li a.active { background: var(--light-blue); color: var(--blue); }
 
 /* ── HERO ── */
 .hero {
-background: linear-gradient(135deg, var(–dark-blue) 0%, var(–blue) 100%);
-padding: 24px 16px 22px;
-padding-left: calc(16px + var(–safe-l));
-padding-right: calc(16px + var(–safe-r));
-color: #fff;
+  background: linear-gradient(135deg, var(--dark-blue) 0%, var(--blue) 100%);
+  padding: 24px 16px 22px;
+  padding-left: calc(16px + var(--safe-l));
+  padding-right: calc(16px + var(--safe-r));
+  color: #fff;
 }
 .hero-greeting { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #E8F4FA; margin-bottom: 4px; }
 .hero-name { font-size: 26px; font-weight: 700; margin-bottom: 5px; }
@@ -139,17 +138,17 @@ color: #fff;
 .hero-sub strong { color: #fff; }
 
 .hero-stats {
-display: grid; grid-template-columns: 1fr 1fr;
-gap: 0;
-margin-top: 18px;
-background: rgba(255,255,255,0.1);
-border-radius: 10px;
-overflow: hidden;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin-top: 18px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+  overflow: hidden;
 }
 .stat {
-padding: 14px 12px;
-border-right: 1px solid rgba(255,255,255,0.15);
-border-bottom: 1px solid rgba(255,255,255,0.15);
+  padding: 14px 12px;
+  border-right: 1px solid rgba(255,255,255,0.15);
+  border-bottom: 1px solid rgba(255,255,255,0.15);
 }
 .stat:nth-child(even) { border-right: none; }
 .stat:nth-child(3), .stat:nth-child(4) { border-bottom: none; }
@@ -158,373 +157,373 @@ border-bottom: 1px solid rgba(255,255,255,0.15);
 
 /* ── LAYOUT ── */
 .wrap {
-padding: 18px 14px 80px;
-padding-left: calc(14px + var(–safe-l));
-padding-right: calc(14px + var(–safe-r));
-padding-bottom: calc(80px + var(–safe-b));
-max-width: 700px;
-margin: 0 auto;
+  padding: 18px 14px 80px;
+  padding-left: calc(14px + var(--safe-l));
+  padding-right: calc(14px + var(--safe-r));
+  padding-bottom: calc(80px + var(--safe-b));
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 .section-title {
-font-size: 16px; font-weight: 700; color: var(–dark);
-margin: 22px 0 12px;
+  font-size: 16px; font-weight: 700; color: var(--dark);
+  margin: 22px 0 12px;
 }
 .section-title:first-child { margin-top: 0; }
 
 /* ── TRIP PILL SWITCHER ── */
 .trip-switcher {
-display: flex; gap: 8px; overflow-x: auto;
-scrollbar-width: none;
-margin-bottom: 14px; padding-bottom: 2px;
+  display: flex; gap: 8px; overflow-x: auto;
+  scrollbar-width: none;
+  margin-bottom: 14px; padding-bottom: 2px;
 }
 .trip-switcher::-webkit-scrollbar { display: none; }
 .trip-pill {
-display: flex; align-items: center; gap: 7px;
-padding: 9px 14px;
-border-radius: 20px;
-border: 1.5px solid var(–border);
-background: var(–card);
-cursor: pointer; white-space: nowrap;
-font-size: 13px; font-weight: 600; color: var(–muted);
-transition: all 0.15s;
--webkit-tap-highlight-color: transparent;
-flex-shrink: 0;
+  display: flex; align-items: center; gap: 7px;
+  padding: 9px 14px;
+  border-radius: 20px;
+  border: 1.5px solid var(--border);
+  background: var(--card);
+  cursor: pointer; white-space: nowrap;
+  font-size: 13px; font-weight: 600; color: var(--muted);
+  transition: all 0.15s;
+  -webkit-tap-highlight-color: transparent;
+  flex-shrink: 0;
 }
 .trip-pill.active {
-border-color: var(–blue);
-background: var(–light-blue);
-color: var(–blue);
+  border-color: var(--blue);
+  background: var(--light-blue);
+  color: var(--blue);
 }
 .pill-dot { width: 7px; height: 7px; border-radius: 50%; }
-.dot-out { background: var(–blue); }
-.dot-ret { background: var(–red); }
+.dot-out { background: var(--blue); }
+.dot-ret { background: var(--red); }
 
 /* ── TRIP CARD ── */
 .trip-view { display: none; }
 .trip-view.active { display: block; }
 
 .trip-card {
-background: var(–card);
-border: 1px solid var(–border);
-border-radius: 12px;
-overflow: hidden;
-box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-position: relative;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  position: relative;
 }
 
 .cancelled-ribbon {
-display: none; background: var(–red); color: #fff;
-text-align: center; font-size: 11px; font-weight: 700;
-letter-spacing: 1px; text-transform: uppercase; padding: 8px;
+  display: none; background: var(--red); color: #fff;
+  text-align: center; font-size: 11px; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase; padding: 8px;
 }
 .trip-card.cancelled-state .cancelled-ribbon { display: block; }
 .trip-card.cancelled-state { opacity: 0.6; pointer-events: none; }
 
 .trip-head {
-background: var(–card2);
-padding: 14px 16px;
-border-bottom: 1px solid var(–border);
-display: flex; justify-content: space-between; align-items: flex-start; gap: 10px;
+  background: var(--card2);
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: flex-start; gap: 10px;
 }
-.trip-recno { font-size: 10px; font-weight: 700; letter-spacing: 0.8px; color: var(–blue); margin-bottom: 4px; text-transform: uppercase; }
-.trip-route { font-size: 20px; font-weight: 700; color: var(–dark); }
-.trip-route .arr { color: var(–red); margin: 0 5px; font-weight: 400; }
-.trip-sub { font-size: 11px; color: var(–muted); margin-top: 3px; line-height: 1.4; }
+.trip-recno { font-size: 10px; font-weight: 700; letter-spacing: 0.8px; color: var(--blue); margin-bottom: 4px; text-transform: uppercase; }
+.trip-route { font-size: 20px; font-weight: 700; color: var(--dark); }
+.trip-route .arr { color: var(--red); margin: 0 5px; font-weight: 400; }
+.trip-sub { font-size: 11px; color: var(--muted); margin-top: 3px; line-height: 1.4; }
 
 .badge {
-font-size: 10px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase;
-padding: 5px 9px; border-radius: 4px; white-space: nowrap; flex-shrink: 0;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase;
+  padding: 5px 9px; border-radius: 4px; white-space: nowrap; flex-shrink: 0;
 }
-.badge-green { background: var(–green-bg); color: var(–green); }
-.badge-blue { background: var(–light-blue); color: var(–blue); }
-.badge-orange { background: #FEF3C7; color: var(–amber); }
+.badge-green { background: var(--green-bg); color: var(--green); }
+.badge-blue { background: var(--light-blue); color: var(--blue); }
+.badge-orange { background: #FEF3C7; color: var(--amber); }
 
 /* LEGS */
 .trip-legs { padding: 0 14px; }
 
 .leg {
-display: flex; align-items: center; gap: 8px;
-padding: 14px 0;
-border-bottom: 1px solid #F2F4F7;
+  display: flex; align-items: center; gap: 8px;
+  padding: 14px 0;
+  border-bottom: 1px solid #F2F4F7;
 }
 .leg:last-child { border-bottom: none; }
 
 .leg-apt { text-align: center; min-width: 62px; flex-shrink: 0; }
-.leg-code { font-size: 22px; font-weight: 700; color: var(–dark); }
-.leg-city { font-size: 10px; color: var(–muted); margin-top: 1px; }
-.leg-time { font-size: 13px; font-weight: 700; color: var(–dark); margin-top: 4px; }
-.leg-date { font-size: 10px; color: var(–muted); }
+.leg-code { font-size: 22px; font-weight: 700; color: var(--dark); }
+.leg-city { font-size: 10px; color: var(--muted); margin-top: 1px; }
+.leg-time { font-size: 13px; font-weight: 700; color: var(--dark); margin-top: 4px; }
+.leg-date { font-size: 10px; color: var(--muted); }
 
 .leg-mid { flex: 1; text-align: center; }
-.leg-line { height: 2px; background: var(–border); position: relative; margin: 7px 0; }
+.leg-line { height: 2px; background: var(--border); position: relative; margin: 7px 0; }
 .leg-dot {
-position: absolute; top: 50%; left: 50%;
-transform: translate(-50%, -50%);
-width: 8px; height: 8px; border-radius: 50%; background: var(–blue);
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px; height: 8px; border-radius: 50%; background: var(--blue);
 }
-.leg-dur { font-size: 11px; color: var(–muted); font-weight: 500; }
-.leg-info { font-size: 10px; color: var(–muted); margin-top: 3px; }
+.leg-dur { font-size: 11px; color: var(--muted); font-weight: 500; }
+.leg-info { font-size: 10px; color: var(--muted); margin-top: 3px; }
 .leg-tag { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 3px; margin-top: 4px; }
-.tag-green { color: var(–green); background: var(–green-bg); }
+.tag-green { color: var(--green); background: var(--green-bg); }
 .tag-orange { color: #92400E; background: #FEF3C7; }
 
 /* LAYOVER */
 .layover {
-background: #F0F4FF;
-border-top: 1px dashed var(–border);
-border-bottom: 1px dashed var(–border);
-padding: 8px 14px;
-display: flex; align-items: center; gap: 8px;
+  background: #F0F4FF;
+  border-top: 1px dashed var(--border);
+  border-bottom: 1px dashed var(--border);
+  padding: 8px 14px;
+  display: flex; align-items: center; gap: 8px;
 }
-.layover-dot { width: 7px; height: 7px; border-radius: 50%; background: var(–blue); flex-shrink: 0; }
-.layover-text { font-size: 11px; color: var(–muted); font-weight: 600; }
-.layover-text strong { color: var(–dark); }
+.layover-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--blue); flex-shrink: 0; }
+.layover-text { font-size: 11px; color: var(--muted); font-weight: 600; }
+.layover-text strong { color: var(--dark); }
 
 /* ACTIONS */
 .trip-actions {
-background: var(–card2);
-border-top: 1px solid var(–border);
-padding: 12px 14px;
-display: grid; grid-template-columns: 1fr 1fr;
-gap: 8px;
+  background: var(--card2);
+  border-top: 1px solid var(--border);
+  padding: 12px 14px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 8px;
 }
 
 .btn {
-display: inline-flex; align-items: center; justify-content: center;
-font-family: inherit;
-font-size: 13px; font-weight: 700; cursor: pointer;
-border-radius: 8px; padding: 11px 12px;
-min-height: 44px; border: none;
--webkit-tap-highlight-color: transparent;
-transition: opacity 0.15s;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: inherit;
+  font-size: 13px; font-weight: 700; cursor: pointer;
+  border-radius: 8px; padding: 11px 12px;
+  min-height: 44px; border: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 0.15s;
 }
 .btn:active { opacity: 0.75; }
-.btn-primary { background: var(–blue); color: #fff; }
-.btn-outline { background: var(–card); color: var(–blue); border: 1.5px solid var(–blue); }
-.btn-danger { background: var(–card); color: var(–red); border: 1.5px solid var(–red); }
+.btn-primary { background: var(--blue); color: #fff; }
+.btn-outline { background: var(--card); color: var(--blue); border: 1.5px solid var(--blue); }
+.btn-danger { background: var(--card); color: var(--red); border: 1.5px solid var(--red); }
 .btn-full { grid-column: 1 / -1; }
 
 /* ── TRACKER ── */
 .tracker-card {
-background: var(–card); border: 1px solid var(–border);
-border-radius: 12px; padding: 16px;
-box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 }
 
 .tracker-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; gap: 10px; }
-.tracker-title { font-size: 14px; font-weight: 700; color: var(–dark); }
-.tracker-sub { font-size: 11px; color: var(–muted); margin-top: 3px; line-height: 1.4; }
+.tracker-title { font-size: 14px; font-weight: 700; color: var(--dark); }
+.tracker-sub { font-size: 11px; color: var(--muted); margin-top: 3px; line-height: 1.4; }
 
-.progress-track { background: var(–border); border-radius: 4px; height: 7px; overflow: hidden; margin-bottom: 7px; }
-.progress-fill { height: 100%; background: var(–blue); border-radius: 4px; transition: width 1.5s ease; }
+.progress-track { background: var(--border); border-radius: 4px; height: 7px; overflow: hidden; margin-bottom: 7px; }
+.progress-fill { height: 100%; background: var(--blue); border-radius: 4px; transition: width 1.5s ease; }
 
-.progress-labels { display: flex; justify-content: space-between; font-size: 10px; color: var(–muted); margin-bottom: 16px; }
+.progress-labels { display: flex; justify-content: space-between; font-size: 10px; color: var(--muted); margin-bottom: 16px; }
 
 .map-box {
-background: var(–bg); border: 1px solid var(–border);
-border-radius: 8px; height: 130px; position: relative; overflow: hidden;
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 8px; height: 130px; position: relative; overflow: hidden;
 }
 .map-line {
-position: absolute; top: 50%; left: 12%; right: 12%;
-height: 2px; background: var(–border);
-transform: translateY(-50%) rotate(-2deg);
+  position: absolute; top: 50%; left: 12%; right: 12%;
+  height: 2px; background: var(--border);
+  transform: translateY(-50%) rotate(-2deg);
 }
 .mdot {
-position: absolute; width: 10px; height: 10px; border-radius: 50%;
-border: 2px solid #fff; top: 50%; transform: translateY(-50%);
-box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  position: absolute; width: 10px; height: 10px; border-radius: 50%;
+  border: 2px solid #fff; top: 50%; transform: translateY(-50%);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
-.mdot.a { left: 12%; background: var(–blue); margin-top: -3px; }
-.mdot.b { left: 47%; background: var(–plat); margin-top: -2px; }
-.mdot.c { right: 12%; background: var(–red); }
-.mlbl { position: absolute; font-size: 10px; font-weight: 700; color: var(–dark); }
+.mdot.a { left: 12%; background: var(--blue); margin-top: -3px; }
+.mdot.b { left: 47%; background: var(--plat); margin-top: -2px; }
+.mdot.c { right: 12%; background: var(--red); }
+.mlbl { position: absolute; font-size: 10px; font-weight: 700; color: var(--dark); }
 .mlbl.la { left: 10%; bottom: 26px; }
 .mlbl.lb { left: 45%; bottom: 26px; }
 .mlbl.lc { right: 9%; bottom: 26px; }
 
 /* two-dot map (nonstop) */
-.mdot.a2 { left: 12%; background: var(–blue); margin-top: -3px; }
-.mdot.b2 { right: 12%; background: var(–red); }
+.mdot.a2 { left: 12%; background: var(--blue); margin-top: -3px; }
+.mdot.b2 { right: 12%; background: var(--red); }
 .mlbl.la2 { left: 10%; bottom: 26px; }
 .mlbl.lb2 { right: 9%; bottom: 26px; }
 
 .tracker-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 16px; }
-.tm-label { font-size: 9px; font-weight: 700; text-transform: uppercase; color: var(–muted); margin-bottom: 3px; }
-.tm-val { font-size: 13px; font-weight: 700; color: var(–dark); }
-.tm-val.blue { color: var(–blue); }
-.tm-val.green { color: var(–green); }
+.tm-label { font-size: 9px; font-weight: 700; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }
+.tm-val { font-size: 13px; font-weight: 700; color: var(--dark); }
+.tm-val.blue { color: var(--blue); }
+.tm-val.green { color: var(--green); }
 
 /* ── STATUS BADGE ── */
 .status-row { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
 .sdot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-.sdot.green { background: var(–green); animation: pg 2s infinite; }
-.sdot.sched { background: var(–muted); }
+.sdot.green { background: var(--green); animation: pg 2s infinite; }
+.sdot.sched { background: var(--muted); }
 .stext { font-size: 12px; font-weight: 700; }
-.stext.green { color: var(–green); }
-.stext.sched { color: var(–muted); }
+.stext.green { color: var(--green); }
+.stext.sched { color: var(--muted); }
 
 @keyframes pg {
-0%   { box-shadow: 0 0 0 0 rgba(16,128,64,.4); }
-70%  { box-shadow: 0 0 0 6px rgba(16,128,64,0); }
-100% { box-shadow: 0 0 0 0 rgba(16,128,64,0); }
+  0%   { box-shadow: 0 0 0 0 rgba(16,128,64,.4); }
+  70%  { box-shadow: 0 0 0 6px rgba(16,128,64,0); }
+  100% { box-shadow: 0 0 0 0 rgba(16,128,64,0); }
 }
 
 /* ── BOARDING PASS ── */
 .bp-card {
-background: var(–card); border: 1px solid var(–border);
-border-radius: 12px; overflow: hidden;
-box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
 }
 
-.bp-seg { padding: 14px 16px; border-bottom: 2px dashed var(–border); }
+.bp-seg { padding: 14px 16px; border-bottom: 2px dashed var(--border); }
 .bp-seg:last-of-type { border-bottom: none; }
 
 .bp-seg-lbl {
-font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
-color: var(–muted); margin-bottom: 10px;
-display: flex; align-items: center; gap: 7px;
+  font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 10px;
+  display: flex; align-items: center; gap: 7px;
 }
 .bp-seg-num {
-font-size: 10px; font-weight: 700; color: #fff; background: var(–blue);
-border-radius: 50%; width: 18px; height: 18px;
-display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 700; color: #fff; background: var(--blue);
+  border-radius: 50%; width: 18px; height: 18px;
+  display: flex; align-items: center; justify-content: center;
 }
 
 .bp-route {
-display: flex; align-items: center; justify-content: space-between;
-gap: 8px; margin-bottom: 14px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 8px; margin-bottom: 14px;
 }
 .bp-apt { text-align: center; }
-.bp-code { font-size: 26px; font-weight: 700; color: var(–dark); letter-spacing: -1px; }
-.bp-city { font-size: 9px; color: var(–muted); font-weight: 700; text-transform: uppercase; }
-.bp-time { font-size: 12px; font-weight: 700; color: var(–dark); margin-top: 4px; }
-.bp-date { font-size: 9px; color: var(–muted); }
+.bp-code { font-size: 26px; font-weight: 700; color: var(--dark); letter-spacing: -1px; }
+.bp-city { font-size: 9px; color: var(--muted); font-weight: 700; text-transform: uppercase; }
+.bp-time { font-size: 12px; font-weight: 700; color: var(--dark); margin-top: 4px; }
+.bp-date { font-size: 9px; color: var(--muted); }
 
 .bp-mid { flex: 1; text-align: center; }
-.bp-line { height: 1px; background: var(–border); margin: 5px 0; }
-.bp-dur { font-size: 10px; color: var(–muted); }
+.bp-line { height: 1px; background: var(--border); margin: 5px 0; }
+.bp-dur { font-size: 10px; color: var(--muted); }
 
 .bp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-.bp-field label { font-size: 9px; font-weight: 700; text-transform: uppercase; color: var(–muted); display: block; margin-bottom: 2px; }
-.bp-field span { font-size: 12px; font-weight: 700; color: var(–dark); }
+.bp-field label { font-size: 9px; font-weight: 700; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 2px; }
+.bp-field span { font-size: 12px; font-weight: 700; color: var(--dark); }
 
 .bp-foot {
-padding: 12px 16px; background: var(–card2);
-display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 16px; background: var(--card2);
+  display: flex; align-items: center; justify-content: space-between;
 }
 .bp-barcode { display: flex; gap: 3px; align-items: flex-end; }
-.bp-bar { background: var(–dark); border-radius: 1px; }
+.bp-bar { background: var(--dark); border-radius: 1px; }
 .bp-seat { text-align: right; }
-.bp-seat span { display: block; font-size: 9px; color: var(–muted); font-weight: 700; text-transform: uppercase; }
-.bp-seat strong { font-size: 36px; font-weight: 700; color: var(–blue); line-height: 1; }
+.bp-seat span { display: block; font-size: 9px; color: var(--muted); font-weight: 700; text-transform: uppercase; }
+.bp-seat strong { font-size: 36px; font-weight: 700; color: var(--blue); line-height: 1; }
 
 /* ── MILES ── */
 .miles-card {
-background: var(–card); border: 1px solid var(–border);
-border-radius: 12px; padding: 16px;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px;
 }
-.miles-num { font-size: 28px; font-weight: 700; color: var(–dark); }
-.miles-sub { font-size: 12px; color: var(–muted); }
-.miles-bar { height: 8px; background: var(–border); border-radius: 4px; overflow: hidden; margin: 10px 0 6px; }
-.miles-fill { height: 100%; background: var(–plat); border-radius: 4px; transition: width 1.5s ease; }
-.miles-lbls { display: flex; justify-content: space-between; font-size: 11px; color: var(–muted); }
-.miles-next { font-size: 12px; color: var(–text); margin-top: 10px; }
-.miles-next strong { color: var(–plat); }
+.miles-num { font-size: 28px; font-weight: 700; color: var(--dark); }
+.miles-sub { font-size: 12px; color: var(--muted); }
+.miles-bar { height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; margin: 10px 0 6px; }
+.miles-fill { height: 100%; background: var(--plat); border-radius: 4px; transition: width 1.5s ease; }
+.miles-lbls { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); }
+.miles-next { font-size: 12px; color: var(--text); margin-top: 10px; }
+.miles-next strong { color: var(--plat); }
 .miles-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px; }
 
 /* ── CHECKLIST ── */
 .checklist-card {
-background: var(–card); border: 1px solid var(–border);
-border-radius: 12px; padding: 16px;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px;
 }
 .checklist { display: flex; flex-direction: column; gap: 12px; }
 .ci { display: flex; align-items: center; gap: 10px; min-height: 36px; }
 .ci-icon {
-width: 22px; height: 22px; border-radius: 5px; flex-shrink: 0;
-display: flex; align-items: center; justify-content: center;
-font-size: 11px; font-weight: 700;
+  width: 22px; height: 22px; border-radius: 5px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700;
 }
-.ci-icon.done { background: var(–green); color: #fff; }
-.ci-icon.warn { background: var(–amber); color: #fff; }
-.ci-icon.todo { background: var(–card); border: 2px solid var(–border); color: var(–border); }
-.ci-label { flex: 1; font-size: 13px; font-weight: 500; color: var(–dark); }
-.ci-label.done { text-decoration: line-through; color: var(–muted); }
-.ci-action { font-size: 12px; color: var(–blue); font-weight: 700; cursor: pointer; padding: 4px 6px; -webkit-tap-highlight-color: transparent; }
+.ci-icon.done { background: var(--green); color: #fff; }
+.ci-icon.warn { background: var(--amber); color: #fff; }
+.ci-icon.todo { background: var(--card); border: 2px solid var(--border); color: var(--border); }
+.ci-label { flex: 1; font-size: 13px; font-weight: 500; color: var(--dark); }
+.ci-label.done { text-decoration: line-through; color: var(--muted); }
+.ci-action { font-size: 12px; color: var(--blue); font-weight: 700; cursor: pointer; padding: 4px 6px; -webkit-tap-highlight-color: transparent; }
 
 /* ── TABS ── */
 .tab-bar {
-display: flex; border-bottom: 2px solid var(–border);
-margin-bottom: 14px;
-overflow-x: auto; scrollbar-width: none;
+  display: flex; border-bottom: 2px solid var(--border);
+  margin-bottom: 14px;
+  overflow-x: auto; scrollbar-width: none;
 }
 .tab-bar::-webkit-scrollbar { display: none; }
 .tab {
-padding: 10px 16px; font-size: 13px; font-weight: 700;
-color: var(–muted); cursor: pointer; white-space: nowrap;
-border-bottom: 3px solid transparent; margin-bottom: -2px;
--webkit-tap-highlight-color: transparent;
+  padding: 10px 16px; font-size: 13px; font-weight: 700;
+  color: var(--muted); cursor: pointer; white-space: nowrap;
+  border-bottom: 3px solid transparent; margin-bottom: -2px;
+  -webkit-tap-highlight-color: transparent;
 }
-.tab.active { color: var(–blue); border-bottom-color: var(–blue); }
+.tab.active { color: var(--blue); border-bottom-color: var(--blue); }
 .tab-content { display: none; }
 .tab-content.active { display: block; }
 
 .tli {
-display: flex; align-items: center; gap: 12px;
-background: var(–card); border: 1px solid var(–border);
-padding: 13px 14px; margin-bottom: 9px; border-radius: 10px;
-cursor: pointer;
--webkit-tap-highlight-color: transparent;
+  display: flex; align-items: center; gap: 12px;
+  background: var(--card); border: 1px solid var(--border);
+  padding: 13px 14px; margin-bottom: 9px; border-radius: 10px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
-.tli:active { background: var(–light-blue); border-color: var(–blue); }
+.tli:active { background: var(--light-blue); border-color: var(--blue); }
 .tl-date { text-align: center; min-width: 40px; flex-shrink: 0; }
-.tl-day { font-size: 20px; font-weight: 700; color: var(–dark); line-height: 1; }
-.tl-mo { font-size: 10px; color: var(–muted); font-weight: 700; text-transform: uppercase; margin-top: 3px; }
+.tl-day { font-size: 20px; font-weight: 700; color: var(--dark); line-height: 1; }
+.tl-mo { font-size: 10px; color: var(--muted); font-weight: 700; text-transform: uppercase; margin-top: 3px; }
 .tl-info { flex: 1; min-width: 0; }
-.tl-route { font-size: 13px; font-weight: 700; color: var(–dark); margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.tl-detail { font-size: 11px; color: var(–muted); }
+.tl-route { font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tl-detail { font-size: 11px; color: var(--muted); }
 .tl-badge { font-size: 10px; font-weight: 700; text-transform: uppercase; padding: 4px 9px; border-radius: 4px; white-space: nowrap; flex-shrink: 0; }
-.b-up { background: var(–light-blue); color: var(–blue); }
-.b-done { background: var(–green-bg); color: var(–green); }
-.b-can { background: #FEE2E2; color: var(–red); }
-.tab-empty { padding: 28px 0; text-align: center; color: var(–muted); font-size: 13px; }
+.b-up { background: var(--light-blue); color: var(--blue); }
+.b-done { background: var(--green-bg); color: var(--green); }
+.b-can { background: #FEE2E2; color: var(--red); }
+.tab-empty { padding: 28px 0; text-align: center; color: var(--muted); font-size: 13px; }
 
 /* ── MODAL ── */
 .modal-overlay {
-position: fixed; inset: 0; z-index: 300;
-background: rgba(17,24,39,0.72);
-display: flex; align-items: flex-end; justify-content: center;
-opacity: 0; pointer-events: none;
-transition: opacity 0.25s;
+  position: fixed; inset: 0; z-index: 300;
+  background: rgba(17,24,39,0.72);
+  display: flex; align-items: flex-end; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.25s;
 }
 .modal-overlay.open { opacity: 1; pointer-events: all; }
 
 .modal {
-background: var(–card);
-border-radius: 16px 16px 0 0;
-width: 100%; max-width: 580px;
-max-height: 92vh; overflow-y: auto;
--webkit-overflow-scrolling: touch;
-transform: translateY(100%);
-transition: transform 0.3s cubic-bezier(.4,0,.2,1);
-padding-bottom: var(–safe-b);
+  background: var(--card);
+  border-radius: 16px 16px 0 0;
+  width: 100%; max-width: 580px;
+  max-height: 92vh; overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+  padding-bottom: var(--safe-b);
 }
 .modal-overlay.open .modal { transform: translateY(0); }
 
-.modal-handle { width: 36px; height: 4px; background: var(–border); border-radius: 2px; margin: 12px auto 0; }
+.modal-handle { width: 36px; height: 4px; background: var(--border); border-radius: 2px; margin: 12px auto 0; }
 
 .modal-header {
-padding: 14px 18px 14px;
-border-bottom: 1px solid var(–border);
-display: flex; align-items: center; justify-content: space-between;
-position: sticky; top: 0; background: var(–card); z-index: 1;
+  padding: 14px 18px 14px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  position: sticky; top: 0; background: var(--card); z-index: 1;
 }
-.modal-title { font-size: 17px; font-weight: 700; color: var(–dark); }
+.modal-title { font-size: 17px; font-weight: 700; color: var(--dark); }
 .modal-close {
-background: var(–card2); border: none; width: 32px; height: 32px;
-border-radius: 50%; font-size: 14px; font-weight: 700; color: var(–muted);
-display: flex; align-items: center; justify-content: center; cursor: pointer;
--webkit-tap-highlight-color: transparent;
+  background: var(--card2); border: none; width: 32px; height: 32px;
+  border-radius: 50%; font-size: 14px; font-weight: 700; color: var(--muted);
+  display: flex; align-items: center; justify-content: center; cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .modal-body { padding: 18px; }
@@ -532,813 +531,793 @@ display: flex; align-items: center; justify-content: center; cursor: pointer;
 .cancel-step.active { display: block; }
 
 .modal-info-box {
-background: var(–light-blue); border: 1px solid var(–blue);
-border-radius: 8px; padding: 12px 14px; margin-bottom: 14px;
-font-size: 13px; color: #003F7D; line-height: 1.5;
+  background: var(--light-blue); border: 1px solid var(--blue);
+  border-radius: 8px; padding: 12px 14px; margin-bottom: 14px;
+  font-size: 13px; color: #003F7D; line-height: 1.5;
 }
 .reason-list { display: flex; flex-direction: column; gap: 9px; margin-bottom: 18px; }
 .reason-opt {
-display: flex; align-items: flex-start; gap: 10px;
-padding: 13px 14px; border: 1.5px solid var(–border);
-border-radius: 10px; cursor: pointer;
--webkit-tap-highlight-color: transparent;
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 13px 14px; border: 1.5px solid var(--border);
+  border-radius: 10px; cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
-.reason-opt input { margin-top: 2px; flex-shrink: 0; width: 18px; height: 18px; accent-color: var(–blue); }
-.reason-opt.selected { border-color: var(–blue); background: var(–light-blue); }
-.ro-lbl { font-size: 13px; font-weight: 700; color: var(–dark); margin-bottom: 2px; }
-.ro-sub { font-size: 11px; color: var(–muted); }
+.reason-opt input { margin-top: 2px; flex-shrink: 0; width: 18px; height: 18px; accent-color: var(--blue); }
+.reason-opt.selected { border-color: var(--blue); background: var(--light-blue); }
+.ro-lbl { font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 2px; }
+.ro-sub { font-size: 11px; color: var(--muted); }
 
-.refund-box { background: var(–card2); border: 1px solid var(–border); border-radius: 8px; padding: 14px; margin-bottom: 14px; }
-.refund-row { display: flex; justify-content: space-between; font-size: 13px; padding: 5px 0; color: var(–text); }
-.refund-row.total { border-top: 1px solid var(–border); margin-top: 8px; padding-top: 10px; font-weight: 700; font-size: 15px; color: var(–dark); }
-.refund-row.total .val { color: var(–green); }
+.refund-box { background: var(--card2); border: 1px solid var(--border); border-radius: 8px; padding: 14px; margin-bottom: 14px; }
+.refund-row { display: flex; justify-content: space-between; font-size: 13px; padding: 5px 0; color: var(--text); }
+.refund-row.total { border-top: 1px solid var(--border); margin-top: 8px; padding-top: 10px; font-weight: 700; font-size: 15px; color: var(--dark); }
+.refund-row.total .val { color: var(--green); }
 
 .elite-box {
-background: var(–green-bg); border: 1px solid #86EFAC;
-border-radius: 8px; padding: 12px 14px; margin-bottom: 14px;
-font-size: 12px; color: #166534;
-display: flex; gap: 8px; align-items: flex-start;
+  background: var(--green-bg); border: 1px solid #86EFAC;
+  border-radius: 8px; padding: 12px 14px; margin-bottom: 14px;
+  font-size: 12px; color: #166534;
+  display: flex; gap: 8px; align-items: flex-start;
 }
 
 .conf-view { text-align: center; padding: 4px 0 10px; }
 .conf-icon {
-width: 58px; height: 58px; border-radius: 50%; background: var(–green-bg);
-display: flex; align-items: center; justify-content: center;
-font-size: 24px; margin: 0 auto 14px;
+  width: 58px; height: 58px; border-radius: 50%; background: var(--green-bg);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; margin: 0 auto 14px;
 }
-.conf-title { font-size: 19px; font-weight: 700; color: var(–dark); margin-bottom: 6px; }
-.conf-sub { font-size: 13px; color: var(–muted); margin-bottom: 18px; line-height: 1.6; }
-.conf-detail { background: var(–card2); border: 1px solid var(–border); border-radius: 8px; padding: 14px; margin-bottom: 18px; text-align: left; }
-.cd-row { display: flex; justify-content: space-between; font-size: 13px; padding: 4px 0; color: var(–text); }
-.cd-row strong { color: var(–dark); font-weight: 700; }
+.conf-title { font-size: 19px; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+.conf-sub { font-size: 13px; color: var(--muted); margin-bottom: 18px; line-height: 1.6; }
+.conf-detail { background: var(--card2); border: 1px solid var(--border); border-radius: 8px; padding: 14px; margin-bottom: 18px; text-align: left; }
+.cd-row { display: flex; justify-content: space-between; font-size: 13px; padding: 4px 0; color: var(--text); }
+.cd-row strong { color: var(--dark); font-weight: 700; }
 
 .modal-actions { display: flex; gap: 10px; }
 .modal-actions .btn { flex: 1; }
 </style>
-
 </head>
 <body>
 
 <!-- NAV -->
-
 <nav>
-  <a href="#" class="nav-logo">
-    <div class="nav-logo-icon"></div>
-    American <span class="aa-badge">oneworld</span>
-  </a>
-  <div style="display:flex;align-items:center;gap:10px;">
-    <div class="member-avatar" onclick="openDrawer()" style="cursor:pointer;">KT</div>
-    <button class="hamburger" onclick="openDrawer()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon"></div>
+    American <span class="aa-badge">oneworld</span>
+  </a>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <div class="member-avatar" onclick="openDrawer()" style="cursor:pointer;">KT</div>
+    <button class="hamburger" onclick="openDrawer()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 
 <!-- DRAWER -->
-
 <div class="drawer" id="drawer">
-  <div class="drawer-bg" onclick="closeDrawer()"></div>
-  <div class="drawer-panel">
-    <div class="drawer-head">
-      <div class="nav-logo" style="font-size:15px;">
-        <div class="nav-logo-icon"></div>
-        American Airlines
-      </div>
-      <button class="drawer-close" onclick="closeDrawer()">✕</button>
-    </div>
-    <div class="drawer-member">
-      <div class="member-avatar" style="width:38px;height:38px;font-size:13px;">KT</div>
-      <div class="drawer-member-info">
-        <div class="mn">Kenneth Tupea</div>
-        <div class="mt">Executive Platinum · #X0AJ642</div>
-      </div>
-    </div>
-    <ul class="drawer-links">
-      <li><a href="#" class="active">Manage trips</a></li>
-      <li><a href="#">Book a flight</a></li>
-      <li><a href="#">Check in</a></li>
-      <li><a href="#">Flight status</a></li>
-      <li><a href="#">AAdvantage</a></li>
-    </ul>
-  </div>
+  <div class="drawer-bg" onclick="closeDrawer()"></div>
+  <div class="drawer-panel">
+    <div class="drawer-head">
+      <div class="nav-logo" style="font-size:15px;">
+        <div class="nav-logo-icon"></div>
+        American Airlines
+      </div>
+      <button class="drawer-close" onclick="closeDrawer()">✕</button>
+    </div>
+    <div class="drawer-member">
+      <div class="member-avatar" style="width:38px;height:38px;font-size:13px;">KT</div>
+      <div class="drawer-member-info">
+        <div class="mn">Kenneth Tupea</div>
+        <div class="mt">Executive Platinum · #X0AJ642</div>
+      </div>
+    </div>
+    <ul class="drawer-links">
+      <li><a href="#" class="active">Manage trips</a></li>
+      <li><a href="#">Book a flight</a></li>
+      <li><a href="#">Check in</a></li>
+      <li><a href="#">Flight status</a></li>
+      <li><a href="#">AAdvantage</a></li>
+    </ul>
+  </div>
 </div>
 
 <!-- HERO -->
-
 <div class="hero">
-  <div class="hero-greeting">Welcome back</div>
-  <div class="hero-name">Kenneth Tupea</div>
-  <div class="hero-sub">AAdvantage <strong>X0AJ642</strong> &nbsp;·&nbsp; <strong>Executive Platinum</strong></div>
-  <div class="hero-stats">
-    <div class="stat"><div class="stat-val">142,800</div><div class="stat-label">Lifetime Miles</div></div>
-    <div class="stat"><div class="stat-val">87,430</div><div class="stat-label">Available Miles</div></div>
-    <div class="stat"><div class="stat-val" id="upcomingCount">2</div><div class="stat-label">Upcoming trips</div></div>
-    <div class="stat"><div class="stat-val">Jun 17</div><div class="stat-label">Next departure</div></div>
-  </div>
+  <div class="hero-greeting">Welcome back</div>
+  <div class="hero-name">Kenneth Tupea</div>
+  <div class="hero-sub">AAdvantage <strong>X0AJ642</strong> &nbsp;·&nbsp; <strong>Executive Platinum</strong></div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-val">142,800</div><div class="stat-label">Lifetime Miles</div></div>
+    <div class="stat"><div class="stat-val">87,430</div><div class="stat-label">Available Miles</div></div>
+    <div class="stat"><div class="stat-val" id="upcomingCount">2</div><div class="stat-label">Upcoming trips</div></div>
+    <div class="stat"><div class="stat-val">Jun 17</div><div class="stat-label">Next departure</div></div>
+  </div>
 </div>
 
 <!-- MAIN -->
-
 <div class="wrap">
 
-  <div class="section-title">Upcoming trips</div>
+  <div class="section-title">Upcoming trips</div>
 
-  <!-- SWITCHER -->
+  <!-- SWITCHER -->
+  <div class="trip-switcher">
+    <div class="trip-pill active" onclick="showTrip('outbound', this)">
+      <div class="pill-dot dot-out"></div>
+      Jun 17 · MEM → SYD
+    </div>
+    <div class="trip-pill" onclick="showTrip('return', this)">
+      <div class="pill-dot dot-ret"></div>
+      Jun 19 · SYD → MEM
+    </div>
+  </div>
 
-  <div class="trip-switcher">
-    <div class="trip-pill active" onclick="showTrip('outbound', this)">
-      <div class="pill-dot dot-out"></div>
-      Jun 17 · MEM → SYD
-    </div>
-    <div class="trip-pill" onclick="showTrip('return', this)">
-      <div class="pill-dot dot-ret"></div>
-      Jun 19 · SYD → MEM
-    </div>
-  </div>
+  <!-- ═══════════ TRIP 1: OUTBOUND ═══════════ -->
+  <div class="trip-view active" id="view-outbound">
 
-  <!-- ═══════════ TRIP 1: OUTBOUND ═══════════ -->
+    <div class="trip-card" id="card-outbound">
+      <div class="cancelled-ribbon">Trip Cancelled</div>
+      <div class="trip-head">
+        <div>
+          <div class="trip-recno">VNYZPT &nbsp;·&nbsp; AA 1884 / QF 8</div>
+          <div class="trip-route">MEM <span class="arr">→</span> DFW <span class="arr">→</span> SYD</div>
+          <div class="trip-sub">Wed Jun 17 · Memphis to Sydney · 2 segments · ~22h total</div>
+        </div>
+        <div class="badge badge-green">ON TIME</div>
+      </div>
 
-  <div class="trip-view active" id="view-outbound">
+      <div class="trip-legs">
+        <div class="leg">
+          <div class="leg-apt">
+            <div class="leg-code">MEM</div>
+            <div class="leg-city">Memphis, TN</div>
+            <div class="leg-time">4:45 PM</div>
+            <div class="leg-date">Wed Jun 17</div>
+          </div>
+          <div class="leg-mid">
+            <div class="leg-line"><span class="leg-dot"></span></div>
+            <div class="leg-dur">1h 45m</div>
+            <div class="leg-info">AA 1884 · Airbus A319</div>
+            <div class="leg-info">Terminal B · Gate B6</div>
+            <div class="leg-tag tag-green">✓ On time</div>
+          </div>
+          <div class="leg-apt">
+            <div class="leg-code">DFW</div>
+            <div class="leg-city">Dallas/Fort Worth</div>
+            <div class="leg-time">6:30 PM</div>
+            <div class="leg-date">Wed Jun 17</div>
+          </div>
+        </div>
 
-```
-<div class="trip-card" id="card-outbound">
-  <div class="cancelled-ribbon">Trip Cancelled</div>
-  <div class="trip-head">
-    <div>
-      <div class="trip-recno">VNYZPT &nbsp;·&nbsp; AA 1884 / QF 8</div>
-      <div class="trip-route">MEM <span class="arr">→</span> DFW <span class="arr">→</span> SYD</div>
-      <div class="trip-sub">Wed Jun 17 · Memphis to Sydney · 2 segments · ~22h total</div>
-    </div>
-    <div class="badge badge-green">ON TIME</div>
-  </div>
+        <div class="layover">
+          <div class="layover-dot"></div>
+          <div class="layover-text"><strong>4h 25m layover</strong> at DFW · Terminal D &mdash; Connection protected</div>
+        </div>
 
-  <div class="trip-legs">
-    <div class="leg">
-      <div class="leg-apt">
-        <div class="leg-code">MEM</div>
-        <div class="leg-city">Memphis, TN</div>
-        <div class="leg-time">4:45 PM</div>
-        <div class="leg-date">Wed Jun 17</div>
-      </div>
-      <div class="leg-mid">
-        <div class="leg-line"><span class="leg-dot"></span></div>
-        <div class="leg-dur">1h 45m</div>
-        <div class="leg-info">AA 1884 · Airbus A319</div>
-        <div class="leg-info">Terminal B · Gate B6</div>
-        <div class="leg-tag tag-green">✓ On time</div>
-      </div>
-      <div class="leg-apt">
-        <div class="leg-code">DFW</div>
-        <div class="leg-city">Dallas/Fort Worth</div>
-        <div class="leg-time">6:30 PM</div>
-        <div class="leg-date">Wed Jun 17</div>
-      </div>
-    </div>
+        <div class="leg">
+          <div class="leg-apt">
+            <div class="leg-code">DFW</div>
+            <div class="leg-city">Dallas/Fort Worth</div>
+            <div class="leg-time">10:55 PM</div>
+            <div class="leg-date">Wed Jun 17</div>
+          </div>
+          <div class="leg-mid">
+            <div class="leg-line"><span class="leg-dot"></span></div>
+            <div class="leg-dur">17h 00m</div>
+            <div class="leg-info">QF 8 (AA 7262) · A380</div>
+            <div class="leg-info">Terminal D, Gate D16</div>
+            <div class="leg-tag tag-green">✓ On time · Protected</div>
+          </div>
+          <div class="leg-apt">
+            <div class="leg-code">SYD</div>
+            <div class="leg-city">Sydney, AU</div>
+            <div class="leg-time">6:55 AM</div>
+            <div class="leg-date">Fri Jun 19</div>
+          </div>
+        </div>
+      </div>
 
-    <div class="layover">
-      <div class="layover-dot"></div>
-      <div class="layover-text"><strong>4h 25m layover</strong> at DFW · Terminal D &mdash; Connection protected</div>
-    </div>
+      <div class="trip-actions">
+        <button class="btn btn-danger" onclick="openCancelModal('outbound')">Cancel / Refund</button>
+        <button class="btn btn-outline" onclick="alert('Boarding passes added to Apple Wallet')">Add to Wallet</button>
+        <button class="btn btn-outline" onclick="alert('Seat 2A (AA) & 1A (QF) confirmed')">Change Seats</button>
+        <button class="btn btn-primary" onclick="alert('Check-in opens Jun 16 at 4:45 PM CT')">Check in</button>
+      </div>
+    </div>
 
-    <div class="leg">
-      <div class="leg-apt">
-        <div class="leg-code">DFW</div>
-        <div class="leg-city">Dallas/Fort Worth</div>
-        <div class="leg-time">10:55 PM</div>
-        <div class="leg-date">Wed Jun 17</div>
-      </div>
-      <div class="leg-mid">
-        <div class="leg-line"><span class="leg-dot"></span></div>
-        <div class="leg-dur">17h 00m</div>
-        <div class="leg-info">QF 8 (AA 7262) · A380</div>
-        <div class="leg-info">Terminal D, Gate D16</div>
-        <div class="leg-tag tag-green">✓ On time · Protected</div>
-      </div>
-      <div class="leg-apt">
-        <div class="leg-code">SYD</div>
-        <div class="leg-city">Sydney, AU</div>
-        <div class="leg-time">6:55 AM</div>
-        <div class="leg-date">Fri Jun 19</div>
-      </div>
-    </div>
-  </div>
+    <!-- TRACKER – outbound -->
+    <div class="section-title" style="margin-top:20px;">Flight information</div>
+    <div class="tracker-card">
+      <div class="tracker-head">
+        <div>
+          <div class="tracker-title">AA 1884 · MEM→DFW &nbsp;|&nbsp; QF 8 · DFW→SYD</div>
+          <div class="tracker-sub">Departs MEM 4:45 PM CT · Arrives SYD 6:55 AM AEST (Fri Jun 19)</div>
+        </div>
+        <div class="status-row">
+          <div class="sdot sched"></div>
+          <div class="stext sched">Scheduled</div>
+        </div>
+      </div>
 
-  <div class="trip-actions">
-    <button class="btn btn-danger" onclick="openCancelModal('outbound')">Cancel / Refund</button>
-    <button class="btn btn-outline" onclick="alert('Boarding passes added to Apple Wallet')">Add to Wallet</button>
-    <button class="btn btn-outline" onclick="alert('Seat 2A (AA) & 1A (QF) confirmed')">Change Seats</button>
-    <button class="btn btn-primary" onclick="alert('Check-in opens Jun 16 at 4:45 PM CT')">Check in</button>
-  </div>
-</div>
+      <div style="background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:10px 12px;margin-bottom:14px;font-size:11px;color:var(--muted);line-height:1.7;">
+        Live tracking begins after departure on <strong style="color:var(--dark);">Wed Jun 17 at 4:45 PM CT</strong>. Arrives Sydney <strong style="color:var(--dark);">Fri Jun 19 at 6:55 AM AEST</strong>.
+      </div>
 
-<!-- TRACKER – outbound -->
-<div class="section-title" style="margin-top:20px;">Flight information</div>
-<div class="tracker-card">
-  <div class="tracker-head">
-    <div>
-      <div class="tracker-title">AA 1884 · MEM→DFW &nbsp;|&nbsp; QF 8 · DFW→SYD</div>
-      <div class="tracker-sub">Departs MEM 4:45 PM CT · Arrives SYD 6:55 AM AEST (Fri Jun 19)</div>
-    </div>
-    <div class="status-row">
-      <div class="sdot sched"></div>
-      <div class="stext sched">Scheduled</div>
-    </div>
-  </div>
+      <div class="map-box">
+        <div class="map-line"></div>
+        <div class="mdot a"></div>
+        <div class="mdot b"></div>
+        <div class="mdot c"></div>
+        <span class="mlbl la">MEM</span>
+        <span class="mlbl lb">DFW</span>
+        <span class="mlbl lc">SYD</span>
+      </div>
 
-  <div style="background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:10px 12px;margin-bottom:14px;font-size:11px;color:var(--muted);line-height:1.7;">
-    Live tracking begins after departure on <strong style="color:var(--dark);">Wed Jun 17 at 4:45 PM CT</strong>. Arrives Sydney <strong style="color:var(--dark);">Fri Jun 19 at 6:55 AM AEST</strong>.
-  </div>
+      <div class="tracker-meta">
+        <div><div class="tm-label">Leg 1</div><div class="tm-val">AA 1884</div></div>
+        <div><div class="tm-label">Aircraft</div><div class="tm-val">A319</div></div>
+        <div><div class="tm-label">Gate MEM</div><div class="tm-val blue">B6</div></div>
+        <div><div class="tm-label">Seat (AA)</div><div class="tm-val blue">2A <span style="font-size:10px;color:var(--muted);font-weight:400;">First</span></div></div>
+        <div><div class="tm-label">Leg 2</div><div class="tm-val">QF 8</div></div>
+        <div><div class="tm-label">Aircraft</div><div class="tm-val">A380</div></div>
+        <div><div class="tm-label">Gate DFW</div><div class="tm-val blue">D16</div></div>
+        <div><div class="tm-label">Seat (QF)</div><div class="tm-val blue">1A <span style="font-size:10px;color:var(--muted);font-weight:400;">Business</span></div></div>
+        <div><div class="tm-label">Boarding</div><div class="tm-val green">4:20 PM</div></div>
+      </div>
+    </div>
 
-  <div class="map-box">
-    <div class="map-line"></div>
-    <div class="mdot a"></div>
-    <div class="mdot b"></div>
-    <div class="mdot c"></div>
-    <span class="mlbl la">MEM</span>
-    <span class="mlbl lb">DFW</span>
-    <span class="mlbl lc">SYD</span>
-  </div>
+    <!-- BOARDING PASSES – outbound -->
+    <div class="section-title" style="margin-top:20px;">Boarding passes</div>
+    <div class="bp-card">
+      <div class="bp-seg">
+        <div class="bp-seg-lbl"><div class="bp-seg-num">1</div> American Airlines · AA 1884</div>
+        <div class="bp-route">
+          <div class="bp-apt">
+            <div class="bp-code">MEM</div><div class="bp-city">Memphis</div>
+            <div class="bp-time">4:45 PM</div><div class="bp-date">Wed Jun 17</div>
+          </div>
+          <div class="bp-mid">
+            <div class="bp-line"></div>
+            <div class="bp-dur">1h 45m · Nonstop</div>
+          </div>
+          <div class="bp-apt">
+            <div class="bp-code">DFW</div><div class="bp-city">Dallas</div>
+            <div class="bp-time">6:30 PM</div><div class="bp-date">Wed Jun 17</div>
+          </div>
+        </div>
+        <div class="bp-grid">
+          <div class="bp-field"><label>Passenger</label><span>K. Tupea</span></div>
+          <div class="bp-field"><label>Flight</label><span>AA 1884</span></div>
+          <div class="bp-field"><label>Class</label><span>First</span></div>
+          <div class="bp-field"><label>Date</label><span>Jun 17</span></div>
+          <div class="bp-field"><label>Boarding</label><span>4:20 PM</span></div>
+          <div class="bp-field"><label>Group</label><span>1 (Exec)</span></div>
+        </div>
+      </div>
+      <div class="bp-seg">
+        <div class="bp-seg-lbl"><div class="bp-seg-num">2</div> Qantas · QF 8 (AA 7262 codeshare)</div>
+        <div class="bp-route">
+          <div class="bp-apt">
+            <div class="bp-code">DFW</div><div class="bp-city">Dallas</div>
+            <div class="bp-time">10:55 PM</div><div class="bp-date">Wed Jun 17</div>
+          </div>
+          <div class="bp-mid">
+            <div class="bp-line"></div>
+            <div class="bp-dur">17h 00m · Nonstop</div>
+          </div>
+          <div class="bp-apt">
+            <div class="bp-code">SYD</div><div class="bp-city">Sydney</div>
+            <div class="bp-time">6:55 AM</div><div class="bp-date">Fri Jun 19</div>
+          </div>
+        </div>
+        <div class="bp-grid">
+          <div class="bp-field"><label>Passenger</label><span>K. Tupea</span></div>
+          <div class="bp-field"><label>Flight</label><span>QF 8</span></div>
+          <div class="bp-field"><label>Class</label><span>Business</span></div>
+          <div class="bp-field"><label>Date</label><span>Jun 17</span></div>
+          <div class="bp-field"><label>Boarding</label><span>10:25 PM</span></div>
+          <div class="bp-field"><label>Group</label><span>1 (Exec)</span></div>
+        </div>
+      </div>
+      <div class="bp-foot">
+        <div class="bp-barcode">
+          <div class="bp-bar" style="width:2px;height:34px;"></div><div class="bp-bar" style="width:1px;height:26px;"></div>
+          <div class="bp-bar" style="width:3px;height:34px;"></div><div class="bp-bar" style="width:1px;height:22px;"></div>
+          <div class="bp-bar" style="width:2px;height:34px;"></div><div class="bp-bar" style="width:1px;height:29px;"></div>
+          <div class="bp-bar" style="width:3px;height:34px;"></div><div class="bp-bar" style="width:1px;height:24px;"></div>
+          <div class="bp-bar" style="width:2px;height:34px;"></div><div class="bp-bar" style="width:2px;height:20px;"></div>
+          <div class="bp-bar" style="width:1px;height:34px;"></div><div class="bp-bar" style="width:3px;height:28px;"></div>
+          <div class="bp-bar" style="width:1px;height:34px;"></div><div class="bp-bar" style="width:2px;height:32px;"></div>
+          <div class="bp-bar" style="width:1px;height:34px;"></div>
+        </div>
+        <div class="bp-seat"><span>Seat (QF 8)</span><strong>1A</strong></div>
+      </div>
+    </div>
 
-  <div class="tracker-meta">
-    <div><div class="tm-label">Leg 1</div><div class="tm-val">AA 1884</div></div>
-    <div><div class="tm-label">Aircraft</div><div class="tm-val">A319</div></div>
-    <div><div class="tm-label">Gate MEM</div><div class="tm-val blue">B6</div></div>
-    <div><div class="tm-label">Seat (AA)</div><div class="tm-val blue">2A <span style="font-size:10px;color:var(--muted);font-weight:400;">First</span></div></div>
-    <div><div class="tm-label">Leg 2</div><div class="tm-val">QF 8</div></div>
-    <div><div class="tm-label">Aircraft</div><div class="tm-val">A380</div></div>
-    <div><div class="tm-label">Gate DFW</div><div class="tm-val blue">D16</div></div>
-    <div><div class="tm-label">Seat (QF)</div><div class="tm-val blue">1A <span style="font-size:10px;color:var(--muted);font-weight:400;">Business</span></div></div>
-    <div><div class="tm-label">Boarding</div><div class="tm-val green">4:20 PM</div></div>
-  </div>
-</div>
+  </div><!-- /view-outbound -->
 
-<!-- BOARDING PASSES – outbound -->
-<div class="section-title" style="margin-top:20px;">Boarding passes</div>
-<div class="bp-card">
-  <div class="bp-seg">
-    <div class="bp-seg-lbl"><div class="bp-seg-num">1</div> American Airlines · AA 1884</div>
-    <div class="bp-route">
-      <div class="bp-apt">
-        <div class="bp-code">MEM</div><div class="bp-city">Memphis</div>
-        <div class="bp-time">4:45 PM</div><div class="bp-date">Wed Jun 17</div>
-      </div>
-      <div class="bp-mid">
-        <div class="bp-line"></div>
-        <div class="bp-dur">1h 45m · Nonstop</div>
-      </div>
-      <div class="bp-apt">
-        <div class="bp-code">DFW</div><div class="bp-city">Dallas</div>
-        <div class="bp-time">6:30 PM</div><div class="bp-date">Wed Jun 17</div>
-      </div>
-    </div>
-    <div class="bp-grid">
-      <div class="bp-field"><label>Passenger</label><span>K. Tupea</span></div>
-      <div class="bp-field"><label>Flight</label><span>AA 1884</span></div>
-      <div class="bp-field"><label>Class</label><span>First</span></div>
-      <div class="bp-field"><label>Date</label><span>Jun 17</span></div>
-      <div class="bp-field"><label>Boarding</label><span>4:20 PM</span></div>
-      <div class="bp-field"><label>Group</label><span>1 (Exec)</span></div>
-    </div>
-  </div>
-  <div class="bp-seg">
-    <div class="bp-seg-lbl"><div class="bp-seg-num">2</div> Qantas · QF 8 (AA 7262 codeshare)</div>
-    <div class="bp-route">
-      <div class="bp-apt">
-        <div class="bp-code">DFW</div><div class="bp-city">Dallas</div>
-        <div class="bp-time">10:55 PM</div><div class="bp-date">Wed Jun 17</div>
-      </div>
-      <div class="bp-mid">
-        <div class="bp-line"></div>
-        <div class="bp-dur">17h 00m · Nonstop</div>
-      </div>
-      <div class="bp-apt">
-        <div class="bp-code">SYD</div><div class="bp-city">Sydney</div>
-        <div class="bp-time">6:55 AM</div><div class="bp-date">Fri Jun 19</div>
-      </div>
-    </div>
-    <div class="bp-grid">
-      <div class="bp-field"><label>Passenger</label><span>K. Tupea</span></div>
-      <div class="bp-field"><label>Flight</label><span>QF 8</span></div>
-      <div class="bp-field"><label>Class</label><span>Business</span></div>
-      <div class="bp-field"><label>Date</label><span>Jun 17</span></div>
-      <div class="bp-field"><label>Boarding</label><span>10:25 PM</span></div>
-      <div class="bp-field"><label>Group</label><span>1 (Exec)</span></div>
-    </div>
-  </div>
-  <div class="bp-foot">
-    <div class="bp-barcode">
-      <div class="bp-bar" style="width:2px;height:34px;"></div><div class="bp-bar" style="width:1px;height:26px;"></div>
-      <div class="bp-bar" style="width:3px;height:34px;"></div><div class="bp-bar" style="width:1px;height:22px;"></div>
-      <div class="bp-bar" style="width:2px;height:34px;"></div><div class="bp-bar" style="width:1px;height:29px;"></div>
-      <div class="bp-bar" style="width:3px;height:34px;"></div><div class="bp-bar" style="width:1px;height:24px;"></div>
-      <div class="bp-bar" style="width:2px;height:34px;"></div><div class="bp-bar" style="width:2px;height:20px;"></div>
-      <div class="bp-bar" style="width:1px;height:34px;"></div><div class="bp-bar" style="width:3px;height:28px;"></div>
-      <div class="bp-bar" style="width:1px;height:34px;"></div><div class="bp-bar" style="width:2px;height:32px;"></div>
-      <div class="bp-bar" style="width:1px;height:34px;"></div>
-    </div>
-    <div class="bp-seat"><span>Seat (QF 8)</span><strong>1A</strong></div>
-  </div>
-</div>
-```
+  <!-- ═══════════ TRIP 2: RETURN ═══════════ -->
+  <div class="trip-view" id="view-return">
 
-  </div><!-- /view-outbound -->
+    <div class="trip-card" id="card-return">
+      <div class="cancelled-ribbon">Trip Cancelled</div>
+      <div class="trip-head">
+        <div>
+          <div class="trip-recno">VNYZRT &nbsp;·&nbsp; QF 7 / AA 1893</div>
+          <div class="trip-route">SYD <span class="arr">→</span> DFW <span class="arr">→</span> MEM</div>
+          <div class="trip-sub">Thu Jun 19 · Sydney to Memphis · 2 segments · ~22h total</div>
+        </div>
+        <div class="badge badge-blue">SCHEDULED</div>
+      </div>
 
-  <!-- ═══════════ TRIP 2: RETURN ═══════════ -->
+      <div class="trip-legs">
+        <div class="leg">
+          <div class="leg-apt">
+            <div class="leg-code">SYD</div>
+            <div class="leg-city">Sydney, AU</div>
+            <div class="leg-time">2:30 PM</div>
+            <div class="leg-date">Thu Jun 19</div>
+          </div>
+          <div class="leg-mid">
+            <div class="leg-line"><span class="leg-dot"></span></div>
+            <div class="leg-dur">16h 50m</div>
+            <div class="leg-info">QF 7 (AA 7263) · A380</div>
+            <div class="leg-info">Terminal 1 · Gate 8</div>
+            <div class="leg-tag tag-green">✓ Scheduled</div>
+          </div>
+          <div class="leg-apt">
+            <div class="leg-code">DFW</div>
+            <div class="leg-city">Dallas/Fort Worth</div>
+            <div class="leg-time">1:20 PM</div>
+            <div class="leg-date">Thu Jun 19</div>
+          </div>
+        </div>
 
-  <div class="trip-view" id="view-return">
+        <div class="layover">
+          <div class="layover-dot"></div>
+          <div class="layover-text"><strong>2h 40m layover</strong> at DFW · Terminal D &mdash; Connection protected</div>
+        </div>
 
-```
-<div class="trip-card" id="card-return">
-  <div class="cancelled-ribbon">Trip Cancelled</div>
-  <div class="trip-head">
-    <div>
-      <div class="trip-recno">VNYZRT &nbsp;·&nbsp; QF 7 / AA 1893</div>
-      <div class="trip-route">SYD <span class="arr">→</span> DFW <span class="arr">→</span> MEM</div>
-      <div class="trip-sub">Thu Jun 19 · Sydney to Memphis · 2 segments · ~22h total</div>
-    </div>
-    <div class="badge badge-blue">SCHEDULED</div>
-  </div>
+        <div class="leg">
+          <div class="leg-apt">
+            <div class="leg-code">DFW</div>
+            <div class="leg-city">Dallas/Fort Worth</div>
+            <div class="leg-time">4:00 PM</div>
+            <div class="leg-date">Thu Jun 19</div>
+          </div>
+          <div class="leg-mid">
+            <div class="leg-line"><span class="leg-dot"></span></div>
+            <div class="leg-dur">1h 55m</div>
+            <div class="leg-info">AA 1893 · Airbus A319</div>
+            <div class="leg-info">Terminal B · Gate B12</div>
+            <div class="leg-tag tag-green">✓ Scheduled</div>
+          </div>
+          <div class="leg-apt">
+            <div class="leg-code">MEM</div>
+            <div class="leg-city">Memphis, TN</div>
+            <div class="leg-time">5:55 PM</div>
+            <div class="leg-date">Thu Jun 19</div>
+          </div>
+        </div>
+      </div>
 
-  <div class="trip-legs">
-    <div class="leg">
-      <div class="leg-apt">
-        <div class="leg-code">SYD</div>
-        <div class="leg-city">Sydney, AU</div>
-        <div class="leg-time">2:30 PM</div>
-        <div class="leg-date">Thu Jun 19</div>
-      </div>
-      <div class="leg-mid">
-        <div class="leg-line"><span class="leg-dot"></span></div>
-        <div class="leg-dur">16h 50m</div>
-        <div class="leg-info">QF 7 (AA 7263) · A380</div>
-        <div class="leg-info">Terminal 1 · Gate 8</div>
-        <div class="leg-tag tag-green">✓ Scheduled</div>
-      </div>
-      <div class="leg-apt">
-        <div class="leg-code">DFW</div>
-        <div class="leg-city">Dallas/Fort Worth</div>
-        <div class="leg-time">1:20 PM</div>
-        <div class="leg-date">Thu Jun 19</div>
-      </div>
-    </div>
+      <div class="trip-actions">
+        <button class="btn btn-danger" onclick="openCancelModal('return')">Cancel / Refund</button>
+        <button class="btn btn-outline" onclick="alert('Boarding passes added to Apple Wallet')">Add to Wallet</button>
+        <button class="btn btn-outline" onclick="alert('Seat 1A (QF) & 2A (AA) confirmed')">Change Seats</button>
+        <button class="btn btn-primary" onclick="alert('Check-in opens Jun 18 at 2:30 PM AEST')">Check in</button>
+      </div>
+    </div>
 
-    <div class="layover">
-      <div class="layover-dot"></div>
-      <div class="layover-text"><strong>2h 40m layover</strong> at DFW · Terminal D &mdash; Connection protected</div>
-    </div>
+    <!-- TRACKER – return -->
+    <div class="section-title" style="margin-top:20px;">Flight information</div>
+    <div class="tracker-card">
+      <div class="tracker-head">
+        <div>
+          <div class="tracker-title">QF 7 · SYD→DFW &nbsp;|&nbsp; AA 1893 · DFW→MEM</div>
+          <div class="tracker-sub">Departs SYD 2:30 PM AEST · Arrives MEM 5:55 PM CT (Thu Jun 19)</div>
+        </div>
+        <div class="status-row">
+          <div class="sdot sched"></div>
+          <div class="stext sched">Scheduled</div>
+        </div>
+      </div>
 
-    <div class="leg">
-      <div class="leg-apt">
-        <div class="leg-code">DFW</div>
-        <div class="leg-city">Dallas/Fort Worth</div>
-        <div class="leg-time">4:00 PM</div>
-        <div class="leg-date">Thu Jun 19</div>
-      </div>
-      <div class="leg-mid">
-        <div class="leg-line"><span class="leg-dot"></span></div>
-        <div class="leg-dur">1h 55m</div>
-        <div class="leg-info">AA 1893 · Airbus A319</div>
-        <div class="leg-info">Terminal B · Gate B12</div>
-        <div class="leg-tag tag-green">✓ Scheduled</div>
-      </div>
-      <div class="leg-apt">
-        <div class="leg-code">MEM</div>
-        <div class="leg-city">Memphis, TN</div>
-        <div class="leg-time">5:55 PM</div>
-        <div class="leg-date">Thu Jun 19</div>
-      </div>
-    </div>
-  </div>
+      <div style="background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:10px 12px;margin-bottom:14px;font-size:11px;color:var(--muted);line-height:1.7;">
+        Live tracking begins after departure on <strong style="color:var(--dark);">Thu Jun 19 at 2:30 PM AEST</strong>. Arrives Memphis <strong style="color:var(--dark);">Thu Jun 19 at 5:55 PM CT</strong>.
+      </div>
 
-  <div class="trip-actions">
-    <button class="btn btn-danger" onclick="openCancelModal('return')">Cancel / Refund</button>
-    <button class="btn btn-outline" onclick="alert('Boarding passes added to Apple Wallet')">Add to Wallet</button>
-    <button class="btn btn-outline" onclick="alert('Seat 1A (QF) & 2A (AA) confirmed')">Change Seats</button>
-    <button class="btn btn-primary" onclick="alert('Check-in opens Jun 18 at 2:30 PM AEST')">Check in</button>
-  </div>
-</div>
+      <div class="map-box">
+        <div class="map-line"></div>
+        <div class="mdot c" style="left:12%;right:auto;background:var(--blue);margin-top:-3px;"></div>
+        <div class="mdot b" style="left:47%;"></div>
+        <div class="mdot a" style="left:auto;right:12%;background:var(--red);"></div>
+        <span class="mlbl" style="left:10%;bottom:26px;">SYD</span>
+        <span class="mlbl" style="left:45%;bottom:26px;">DFW</span>
+        <span class="mlbl" style="right:9%;bottom:26px;">MEM</span>
+      </div>
 
-<!-- TRACKER – return -->
-<div class="section-title" style="margin-top:20px;">Flight information</div>
-<div class="tracker-card">
-  <div class="tracker-head">
-    <div>
-      <div class="tracker-title">QF 7 · SYD→DFW &nbsp;|&nbsp; AA 1893 · DFW→MEM</div>
-      <div class="tracker-sub">Departs SYD 2:30 PM AEST · Arrives MEM 5:55 PM CT (Thu Jun 19)</div>
-    </div>
-    <div class="status-row">
-      <div class="sdot sched"></div>
-      <div class="stext sched">Scheduled</div>
-    </div>
-  </div>
+      <div class="tracker-meta">
+        <div><div class="tm-label">Leg 1</div><div class="tm-val">QF 7</div></div>
+        <div><div class="tm-label">Aircraft</div><div class="tm-val">A380</div></div>
+        <div><div class="tm-label">Gate SYD</div><div class="tm-val blue">Gate 8</div></div>
+        <div><div class="tm-label">Seat (QF)</div><div class="tm-val blue">1A <span style="font-size:10px;color:var(--muted);font-weight:400;">Business</span></div></div>
+        <div><div class="tm-label">Leg 2</div><div class="tm-val">AA 1893</div></div>
+        <div><div class="tm-label">Aircraft</div><div class="tm-val">A319</div></div>
+        <div><div class="tm-label">Gate DFW</div><div class="tm-val blue">B12</div></div>
+        <div><div class="tm-label">Seat (AA)</div><div class="tm-val blue">2A <span style="font-size:10px;color:var(--muted);font-weight:400;">First</span></div></div>
+        <div><div class="tm-label">Boarding</div><div class="tm-val green">2:00 PM</div></div>
+      </div>
+    </div>
 
-  <div style="background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:10px 12px;margin-bottom:14px;font-size:11px;color:var(--muted);line-height:1.7;">
-    Live tracking begins after departure on <strong style="color:var(--dark);">Thu Jun 19 at 2:30 PM AEST</strong>. Arrives Memphis <strong style="color:var(--dark);">Thu Jun 19 at 5:55 PM CT</strong>.
-  </div>
+    <!-- BOARDING PASSES – return -->
+    <div class="section-title" style="margin-top:20px;">Boarding passes</div>
+    <div class="bp-card">
+      <div class="bp-seg">
+        <div class="bp-seg-lbl"><div class="bp-seg-num">1</div> Qantas · QF 7 (AA 7263 codeshare)</div>
+        <div class="bp-route">
+          <div class="bp-apt">
+            <div class="bp-code">SYD</div><div class="bp-city">Sydney</div>
+            <div class="bp-time">2:30 PM</div><div class="bp-date">Thu Jun 19</div>
+          </div>
+          <div class="bp-mid">
+            <div class="bp-line"></div>
+            <div class="bp-dur">16h 50m · Nonstop</div>
+          </div>
+          <div class="bp-apt">
+            <div class="bp-code">DFW</div><div class="bp-city">Dallas</div>
+            <div class="bp-time">1:20 PM</div><div class="bp-date">Thu Jun 19</div>
+          </div>
+        </div>
+        <div class="bp-grid">
+          <div class="bp-field"><label>Passenger</label><span>K. Tupea</span></div>
+          <div class="bp-field"><label>Flight</label><span>QF 7</span></div>
+          <div class="bp-field"><label>Class</label><span>Business</span></div>
+          <div class="bp-field"><label>Date</label><span>Jun 19</span></div>
+          <div class="bp-field"><label>Boarding</label><span>2:00 PM</span></div>
+          <div class="bp-field"><label>Group</label><span>1 (Exec)</span></div>
+        </div>
+      </div>
+      <div class="bp-seg">
+        <div class="bp-seg-lbl"><div class="bp-seg-num">2</div> American Airlines · AA 1893</div>
+        <div class="bp-route">
+          <div class="bp-apt">
+            <div class="bp-code">DFW</div><div class="bp-city">Dallas</div>
+            <div class="bp-time">4:00 PM</div><div class="bp-date">Thu Jun 19</div>
+          </div>
+          <div class="bp-mid">
+            <div class="bp-line"></div>
+            <div class="bp-dur">1h 55m · Nonstop</div>
+          </div>
+          <div class="bp-apt">
+            <div class="bp-code">MEM</div><div class="bp-city">Memphis</div>
+            <div class="bp-time">5:55 PM</div><div class="bp-date">Thu Jun 19</div>
+          </div>
+        </div>
+        <div class="bp-grid">
+          <div class="bp-field"><label>Passenger</label><span>K. Tupea</span></div>
+          <div class="bp-field"><label>Flight</label><span>AA 1893</span></div>
+          <div class="bp-field"><label>Class</label><span>First</span></div>
+          <div class="bp-field"><label>Date</label><span>Jun 19</span></div>
+          <div class="bp-field"><label>Boarding</label><span>3:30 PM</span></div>
+          <div class="bp-field"><label>Group</label><span>1 (Exec)</span></div>
+        </div>
+      </div>
+      <div class="bp-foot">
+        <div class="bp-barcode">
+          <div class="bp-bar" style="width:2px;height:34px;"></div><div class="bp-bar" style="width:1px;height:26px;"></div>
+          <div class="bp-bar" style="width:3px;height:34px;"></div><div class="bp-bar" style="width:1px;height:22px;"></div>
+          <div class="bp-bar" style="width:2px;height:34px;"></div><div class="bp-bar" style="width:1px;height:30px;"></div>
+          <div class="bp-bar" style="width:3px;height:34px;"></div><div class="bp-bar" style="width:1px;height:24px;"></div>
+          <div class="bp-bar" style="width:2px;height:34px;"></div><div class="bp-bar" style="width:2px;height:20px;"></div>
+          <div class="bp-bar" style="width:1px;height:34px;"></div><div class="bp-bar" style="width:3px;height:27px;"></div>
+          <div class="bp-bar" style="width:1px;height:34px;"></div><div class="bp-bar" style="width:2px;height:31px;"></div>
+          <div class="bp-bar" style="width:1px;height:34px;"></div>
+        </div>
+        <div class="bp-seat"><span>Seat (AA 1893)</span><strong>2A</strong></div>
+      </div>
+    </div>
 
-  <div class="map-box">
-    <div class="map-line"></div>
-    <div class="mdot c" style="left:12%;right:auto;background:var(--blue);margin-top:-3px;"></div>
-    <div class="mdot b" style="left:47%;"></div>
-    <div class="mdot a" style="left:auto;right:12%;background:var(--red);"></div>
-    <span class="mlbl" style="left:10%;bottom:26px;">SYD</span>
-    <span class="mlbl" style="left:45%;bottom:26px;">DFW</span>
-    <span class="mlbl" style="right:9%;bottom:26px;">MEM</span>
-  </div>
+  </div><!-- /view-return -->
 
-  <div class="tracker-meta">
-    <div><div class="tm-label">Leg 1</div><div class="tm-val">QF 7</div></div>
-    <div><div class="tm-label">Aircraft</div><div class="tm-val">A380</div></div>
-    <div><div class="tm-label">Gate SYD</div><div class="tm-val blue">Gate 8</div></div>
-    <div><div class="tm-label">Seat (QF)</div><div class="tm-val blue">1A <span style="font-size:10px;color:var(--muted);font-weight:400;">Business</span></div></div>
-    <div><div class="tm-label">Leg 2</div><div class="tm-val">AA 1893</div></div>
-    <div><div class="tm-label">Aircraft</div><div class="tm-val">A319</div></div>
-    <div><div class="tm-label">Gate DFW</div><div class="tm-val blue">B12</div></div>
-    <div><div class="tm-label">Seat (AA)</div><div class="tm-val blue">2A <span style="font-size:10px;color:var(--muted);font-weight:400;">First</span></div></div>
-    <div><div class="tm-label">Boarding</div><div class="tm-val green">2:00 PM</div></div>
-  </div>
-</div>
+  <!-- MILES -->
+  <div class="section-title" style="margin-top:22px;">AAdvantage account</div>
+  <div class="miles-card">
+    <div class="miles-num">87,430</div>
+    <div class="miles-sub">Available miles</div>
+    <div class="miles-bar"><div class="miles-fill" id="milesFill"></div></div>
+    <div class="miles-lbls"><span>Executive Platinum</span><span>87K / 100K LP</span></div>
+    <div class="miles-next">Earn <strong>12,570 Loyalty Points</strong> to keep Executive Platinum status.</div>
+    <div class="miles-btns">
+      <button class="btn btn-outline" style="font-size:13px;">Redeem miles</button>
+      <button class="btn btn-outline" style="font-size:13px;">View activity</button>
+    </div>
+  </div>
 
-<!-- BOARDING PASSES – return -->
-<div class="section-title" style="margin-top:20px;">Boarding passes</div>
-<div class="bp-card">
-  <div class="bp-seg">
-    <div class="bp-seg-lbl"><div class="bp-seg-num">1</div> Qantas · QF 7 (AA 7263 codeshare)</div>
-    <div class="bp-route">
-      <div class="bp-apt">
-        <div class="bp-code">SYD</div><div class="bp-city">Sydney</div>
-        <div class="bp-time">2:30 PM</div><div class="bp-date">Thu Jun 19</div>
-      </div>
-      <div class="bp-mid">
-        <div class="bp-line"></div>
-        <div class="bp-dur">16h 50m · Nonstop</div>
-      </div>
-      <div class="bp-apt">
-        <div class="bp-code">DFW</div><div class="bp-city">Dallas</div>
-        <div class="bp-time">1:20 PM</div><div class="bp-date">Thu Jun 19</div>
-      </div>
-    </div>
-    <div class="bp-grid">
-      <div class="bp-field"><label>Passenger</label><span>K. Tupea</span></div>
-      <div class="bp-field"><label>Flight</label><span>QF 7</span></div>
-      <div class="bp-field"><label>Class</label><span>Business</span></div>
-      <div class="bp-field"><label>Date</label><span>Jun 19</span></div>
-      <div class="bp-field"><label>Boarding</label><span>2:00 PM</span></div>
-      <div class="bp-field"><label>Group</label><span>1 (Exec)</span></div>
-    </div>
-  </div>
-  <div class="bp-seg">
-    <div class="bp-seg-lbl"><div class="bp-seg-num">2</div> American Airlines · AA 1893</div>
-    <div class="bp-route">
-      <div class="bp-apt">
-        <div class="bp-code">DFW</div><div class="bp-city">Dallas</div>
-        <div class="bp-time">4:00 PM</div><div class="bp-date">Thu Jun 19</div>
-      </div>
-      <div class="bp-mid">
-        <div class="bp-line"></div>
-        <div class="bp-dur">1h 55m · Nonstop</div>
-      </div>
-      <div class="bp-apt">
-        <div class="bp-code">MEM</div><div class="bp-city">Memphis</div>
-        <div class="bp-time">5:55 PM</div><div class="bp-date">Thu Jun 19</div>
-      </div>
-    </div>
-    <div class="bp-grid">
-      <div class="bp-field"><label>Passenger</label><span>K. Tupea</span></div>
-      <div class="bp-field"><label>Flight</label><span>AA 1893</span></div>
-      <div class="bp-field"><label>Class</label><span>First</span></div>
-      <div class="bp-field"><label>Date</label><span>Jun 19</span></div>
-      <div class="bp-field"><label>Boarding</label><span>3:30 PM</span></div>
-      <div class="bp-field"><label>Group</label><span>1 (Exec)</span></div>
-    </div>
-  </div>
-  <div class="bp-foot">
-    <div class="bp-barcode">
-      <div class="bp-bar" style="width:2px;height:34px;"></div><div class="bp-bar" style="width:1px;height:26px;"></div>
-      <div class="bp-bar" style="width:3px;height:34px;"></div><div class="bp-bar" style="width:1px;height:22px;"></div>
-      <div class="bp-bar" style="width:2px;height:34px;"></div><div class="bp-bar" style="width:1px;height:30px;"></div>
-      <div class="bp-bar" style="width:3px;height:34px;"></div><div class="bp-bar" style="width:1px;height:24px;"></div>
-      <div class="bp-bar" style="width:2px;height:34px;"></div><div class="bp-bar" style="width:2px;height:20px;"></div>
-      <div class="bp-bar" style="width:1px;height:34px;"></div><div class="bp-bar" style="width:3px;height:27px;"></div>
-      <div class="bp-bar" style="width:1px;height:34px;"></div><div class="bp-bar" style="width:2px;height:31px;"></div>
-      <div class="bp-bar" style="width:1px;height:34px;"></div>
-    </div>
-    <div class="bp-seat"><span>Seat (AA 1893)</span><strong>2A</strong></div>
-  </div>
-</div>
-```
+  <!-- TRIPS TABS -->
+  <div class="section-title" style="margin-top:22px;">All trips</div>
+  <div class="tab-bar">
+    <div class="tab active" onclick="switchTab(this,'tab-up')">Upcoming</div>
+    <div class="tab" onclick="switchTab(this,'tab-past')">Past</div>
+    <div class="tab" onclick="switchTab(this,'tab-can')">Canceled</div>
+  </div>
 
-  </div><!-- /view-return -->
+  <div id="tab-up" class="tab-content active">
+    <div class="tli" onclick="showTrip('outbound', document.querySelector('.trip-pill:first-child')); scrollToTop()">
+      <div class="tl-date"><div class="tl-day">17</div><div class="tl-mo">Jun</div></div>
+      <div class="tl-info">
+        <div class="tl-route">Memphis → Sydney (via Dallas)</div>
+        <div class="tl-detail">AA 1884 / QF 8 · First + Business · ✓ On time</div>
+      </div>
+      <div class="tl-badge b-up">Upcoming</div>
+    </div>
+    <div id="returnListItem" class="tli" onclick="showTrip('return', document.querySelectorAll('.trip-pill')[1]); scrollToTop()">
+      <div class="tl-date"><div class="tl-day">19</div><div class="tl-mo">Jun</div></div>
+      <div class="tl-info">
+        <div class="tl-route">Sydney → Memphis (via Dallas)</div>
+        <div class="tl-detail">QF 7 / AA 1893 · Business + First · Scheduled</div>
+      </div>
+      <div class="tl-badge b-up">Upcoming</div>
+    </div>
+  </div>
 
-  <!-- MILES -->
+  <div id="tab-past" class="tab-content">
+    <div class="tli">
+      <div class="tl-date"><div class="tl-day">02</div><div class="tl-mo">Jun</div></div>
+      <div class="tl-info">
+        <div class="tl-route">Salt Lake City → Dallas</div>
+        <div class="tl-detail">AA 1428 · Main Cabin · +4,210 miles earned</div>
+      </div>
+      <div class="tl-badge b-done">Completed</div>
+    </div>
+  </div>
 
-  <div class="section-title" style="margin-top:22px;">AAdvantage account</div>
-  <div class="miles-card">
-    <div class="miles-num">87,430</div>
-    <div class="miles-sub">Available miles</div>
-    <div class="miles-bar"><div class="miles-fill" id="milesFill"></div></div>
-    <div class="miles-lbls"><span>Executive Platinum</span><span>87K / 100K LP</span></div>
-    <div class="miles-next">Earn <strong>12,570 Loyalty Points</strong> to keep Executive Platinum status.</div>
-    <div class="miles-btns">
-      <button class="btn btn-outline" style="font-size:13px;">Redeem miles</button>
-      <button class="btn btn-outline" style="font-size:13px;">View activity</button>
-    </div>
-  </div>
+  <div id="tab-can" class="tab-content">
+    <div id="cancelledEmpty" class="tab-empty">No canceled trips to display.</div>
+    <div id="cancelledOutbound" style="display:none;" class="tli">
+      <div class="tl-date"><div class="tl-day">17</div><div class="tl-mo">Jun</div></div>
+      <div class="tl-info">
+        <div class="tl-route">Memphis → Sydney (via Dallas)</div>
+        <div class="tl-detail">AA 1884 / QF 8 · Cancelled Jun 16 · Credit $3,892.00</div>
+      </div>
+      <div class="tl-badge b-can">Cancelled</div>
+    </div>
+    <div id="cancelledReturn" style="display:none;" class="tli">
+      <div class="tl-date"><div class="tl-day">19</div><div class="tl-mo">Jun</div></div>
+      <div class="tl-info">
+        <div class="tl-route">Sydney → Memphis (via Dallas)</div>
+        <div class="tl-detail">QF 7 / AA 1893 · Cancelled · Credit $3,892.00</div>
+      </div>
+      <div class="tl-badge b-can">Cancelled</div>
+    </div>
+  </div>
 
-  <!-- TRIPS TABS -->
-
-  <div class="section-title" style="margin-top:22px;">All trips</div>
-  <div class="tab-bar">
-    <div class="tab active" onclick="switchTab(this,'tab-up')">Upcoming</div>
-    <div class="tab" onclick="switchTab(this,'tab-past')">Past</div>
-    <div class="tab" onclick="switchTab(this,'tab-can')">Canceled</div>
-  </div>
-
-  <div id="tab-up" class="tab-content active">
-    <div class="tli" onclick="showTrip('outbound', document.querySelector('.trip-pill:first-child')); scrollToTop()">
-      <div class="tl-date"><div class="tl-day">17</div><div class="tl-mo">Jun</div></div>
-      <div class="tl-info">
-        <div class="tl-route">Memphis → Sydney (via Dallas)</div>
-        <div class="tl-detail">AA 1884 / QF 8 · First + Business · ✓ On time</div>
-      </div>
-      <div class="tl-badge b-up">Upcoming</div>
-    </div>
-    <div id="returnListItem" class="tli" onclick="showTrip('return', document.querySelectorAll('.trip-pill')[1]); scrollToTop()">
-      <div class="tl-date"><div class="tl-day">19</div><div class="tl-mo">Jun</div></div>
-      <div class="tl-info">
-        <div class="tl-route">Sydney → Memphis (via Dallas)</div>
-        <div class="tl-detail">QF 7 / AA 1893 · Business + First · Scheduled</div>
-      </div>
-      <div class="tl-badge b-up">Upcoming</div>
-    </div>
-  </div>
-
-  <div id="tab-past" class="tab-content">
-    <div class="tli">
-      <div class="tl-date"><div class="tl-day">02</div><div class="tl-mo">Jun</div></div>
-      <div class="tl-info">
-        <div class="tl-route">Salt Lake City → Dallas</div>
-        <div class="tl-detail">AA 1428 · Main Cabin · +4,210 miles earned</div>
-      </div>
-      <div class="tl-badge b-done">Completed</div>
-    </div>
-  </div>
-
-  <div id="tab-can" class="tab-content">
-    <div id="cancelledEmpty" class="tab-empty">No canceled trips to display.</div>
-    <div id="cancelledOutbound" style="display:none;" class="tli">
-      <div class="tl-date"><div class="tl-day">17</div><div class="tl-mo">Jun</div></div>
-      <div class="tl-info">
-        <div class="tl-route">Memphis → Sydney (via Dallas)</div>
-        <div class="tl-detail">AA 1884 / QF 8 · Cancelled Jun 16 · Credit $3,892.00</div>
-      </div>
-      <div class="tl-badge b-can">Cancelled</div>
-    </div>
-    <div id="cancelledReturn" style="display:none;" class="tli">
-      <div class="tl-date"><div class="tl-day">19</div><div class="tl-mo">Jun</div></div>
-      <div class="tl-info">
-        <div class="tl-route">Sydney → Memphis (via Dallas)</div>
-        <div class="tl-detail">QF 7 / AA 1893 · Cancelled · Credit $3,892.00</div>
-      </div>
-      <div class="tl-badge b-can">Cancelled</div>
-    </div>
-  </div>
-
-  <!-- CHECKLIST -->
-
-  <div class="section-title" style="margin-top:22px;">Trip checklist</div>
-  <div class="checklist-card">
-    <div class="checklist">
-      <div class="ci">
-        <div class="ci-icon done">✓</div>
-        <div class="ci-label done">Passport valid · Australia ETA approved</div>
-      </div>
-      <div class="ci">
-        <div class="ci-icon done">✓</div>
-        <div class="ci-label done">Seats selected · 2A First (AA) · 1A Business (QF)</div>
-      </div>
-      <div class="ci">
-        <div class="ci-icon done">✓</div>
-        <div class="ci-label done">oneworld connection confirmed at DFW Terminal D</div>
-      </div>
-      <div class="ci">
-        <div class="ci-icon warn">!</div>
-        <div class="ci-label">Check-in opens <strong>Jun 16 at 4:45 PM CT</strong></div>
-      </div>
-      <div class="ci">
-        <div class="ci-icon todo"></div>
-        <div class="ci-label">Add Known Traveler Number</div>
-        <div class="ci-action">Add</div>
-      </div>
-      <div class="ci">
-        <div class="ci-icon todo"></div>
-        <div class="ci-label">Add both passes to Apple Wallet</div>
-        <div class="ci-action">Add</div>
-      </div>
-    </div>
-  </div>
+  <!-- CHECKLIST -->
+  <div class="section-title" style="margin-top:22px;">Trip checklist</div>
+  <div class="checklist-card">
+    <div class="checklist">
+      <div class="ci">
+        <div class="ci-icon done">✓</div>
+        <div class="ci-label done">Passport valid · Australia ETA approved</div>
+      </div>
+      <div class="ci">
+        <div class="ci-icon done">✓</div>
+        <div class="ci-label done">Seats selected · 2A First (AA) · 1A Business (QF)</div>
+      </div>
+      <div class="ci">
+        <div class="ci-icon done">✓</div>
+        <div class="ci-label done">oneworld connection confirmed at DFW Terminal D</div>
+      </div>
+      <div class="ci">
+        <div class="ci-icon warn">!</div>
+        <div class="ci-label">Check-in opens <strong>Jun 16 at 4:45 PM CT</strong></div>
+      </div>
+      <div class="ci">
+        <div class="ci-icon todo"></div>
+        <div class="ci-label">Add Known Traveler Number</div>
+        <div class="ci-action">Add</div>
+      </div>
+      <div class="ci">
+        <div class="ci-icon todo"></div>
+        <div class="ci-label">Add both passes to Apple Wallet</div>
+        <div class="ci-action">Add</div>
+      </div>
+    </div>
+  </div>
 
 </div><!-- /wrap -->
 
 <!-- CANCEL MODAL -->
-
 <div class="modal-overlay" id="cancelModal" onclick="closeModalOutside(event)">
-  <div class="modal">
-    <div class="modal-handle"></div>
-    <div class="modal-header">
-      <div class="modal-title" id="modalTitle">Cancel trip</div>
-      <button class="modal-close" onclick="closeModal()" id="modalCloseBtn">✕</button>
-    </div>
-    <div class="modal-body">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-header">
+      <div class="modal-title" id="modalTitle">Cancel trip</div>
+      <button class="modal-close" onclick="closeModal()" id="modalCloseBtn">✕</button>
+    </div>
+    <div class="modal-body">
 
-```
-  <div class="cancel-step active" id="stepReason">
-    <div class="modal-info-box">
-      As an <strong>Executive Platinum</strong> member, your cancellation fee is <strong>waived</strong>. Full trip credit will be issued to AAdvantage <strong>X0AJ642</strong>.
-    </div>
-    <div style="font-size:13px;font-weight:700;color:var(--dark);margin-bottom:10px;">Why are you canceling?</div>
-    <div class="reason-list">
-      <label class="reason-opt">
-        <input type="radio" name="cr" value="plans" onchange="selectReason(this)">
-        <div><div class="ro-lbl">Change of plans</div><div class="ro-sub">Trip credit valid 12 months from today</div></div>
-      </label>
-      <label class="reason-opt">
-        <input type="radio" name="cr" value="emergency" onchange="selectReason(this)">
-        <div><div class="ro-lbl">Personal / family emergency</div><div class="ro-sub">May qualify for bereavement exception</div></div>
-      </label>
-      <label class="reason-opt">
-        <input type="radio" name="cr" value="other" onchange="selectReason(this)">
-        <div><div class="ro-lbl">Other reason</div><div class="ro-sub">Standard trip credit policy applies</div></div>
-      </label>
-    </div>
-    <div class="modal-actions">
-      <button class="btn btn-outline" onclick="closeModal()">Never mind</button>
-      <button class="btn btn-primary" id="step1Next" onclick="goToStep2()" disabled style="opacity:0.5;">Continue →</button>
-    </div>
-  </div>
+      <div class="cancel-step active" id="stepReason">
+        <div class="modal-info-box">
+          As an <strong>Executive Platinum</strong> member, your cancellation fee is <strong>waived</strong>. Full trip credit will be issued to AAdvantage <strong>X0AJ642</strong>.
+        </div>
+        <div style="font-size:13px;font-weight:700;color:var(--dark);margin-bottom:10px;">Why are you canceling?</div>
+        <div class="reason-list">
+          <label class="reason-opt">
+            <input type="radio" name="cr" value="plans" onchange="selectReason(this)">
+            <div><div class="ro-lbl">Change of plans</div><div class="ro-sub">Trip credit valid 12 months from today</div></div>
+          </label>
+          <label class="reason-opt">
+            <input type="radio" name="cr" value="emergency" onchange="selectReason(this)">
+            <div><div class="ro-lbl">Personal / family emergency</div><div class="ro-sub">May qualify for bereavement exception</div></div>
+          </label>
+          <label class="reason-opt">
+            <input type="radio" name="cr" value="other" onchange="selectReason(this)">
+            <div><div class="ro-lbl">Other reason</div><div class="ro-sub">Standard trip credit policy applies</div></div>
+          </label>
+        </div>
+        <div class="modal-actions">
+          <button class="btn btn-outline" onclick="closeModal()">Never mind</button>
+          <button class="btn btn-primary" id="step1Next" onclick="goToStep2()" disabled style="opacity:0.5;">Continue →</button>
+        </div>
+      </div>
 
-  <div class="cancel-step" id="stepReview">
-    <div class="elite-box">
-      <span>✅</span>
-      <span>No cancellation fee. Full trip credit to AAdvantage <strong>X0AJ642</strong> within 24 hours.</span>
-    </div>
-    <div class="refund-box">
-      <div class="refund-row"><span>Base fare (First + Business)</span><span>$3,240.00</span></div>
-      <div class="refund-row"><span>Taxes &amp; international fees</span><span>$521.00</span></div>
-      <div class="refund-row"><span>Seat upgrades</span><span>$131.00</span></div>
-      <div class="refund-row"><span>Cancellation fee</span><span style="color:var(--green);font-weight:700;">WAIVED</span></div>
-      <div class="refund-row total"><span>Total trip credit</span><span class="val">$3,892.00</span></div>
-    </div>
-    <div style="font-size:12px;color:var(--muted);margin-bottom:16px;line-height:1.6;">
-      Credit applied within 24 hours to <strong>X0AJ642</strong>. Valid 12 months. Rebook any AA or oneworld itinerary via app or website.
-    </div>
-    <div class="modal-actions">
-      <button class="btn btn-outline" onclick="goToStep1()">← Back</button>
-      <button class="btn btn-danger" onclick="confirmCancel()">Confirm cancellation</button>
-    </div>
-  </div>
+      <div class="cancel-step" id="stepReview">
+        <div class="elite-box">
+          <span>✅</span>
+          <span>No cancellation fee. Full trip credit to AAdvantage <strong>X0AJ642</strong> within 24 hours.</span>
+        </div>
+        <div class="refund-box">
+          <div class="refund-row"><span>Base fare (First + Business)</span><span>$3,240.00</span></div>
+          <div class="refund-row"><span>Taxes &amp; international fees</span><span>$521.00</span></div>
+          <div class="refund-row"><span>Seat upgrades</span><span>$131.00</span></div>
+          <div class="refund-row"><span>Cancellation fee</span><span style="color:var(--green);font-weight:700;">WAIVED</span></div>
+          <div class="refund-row total"><span>Total trip credit</span><span class="val">$3,892.00</span></div>
+        </div>
+        <div style="font-size:12px;color:var(--muted);margin-bottom:16px;line-height:1.6;">
+          Credit applied within 24 hours to <strong>X0AJ642</strong>. Valid 12 months. Rebook any AA or oneworld itinerary via app or website.
+        </div>
+        <div class="modal-actions">
+          <button class="btn btn-outline" onclick="goToStep1()">← Back</button>
+          <button class="btn btn-danger" onclick="confirmCancel()">Confirm cancellation</button>
+        </div>
+      </div>
 
-  <div class="cancel-step" id="stepConfirmed">
-    <div class="conf-view">
-      <div class="conf-icon">✓</div>
-      <div class="conf-title">Trip cancelled</div>
-      <div class="conf-sub" id="confSubText">Trip credit of <strong>$3,892.00</strong> has been issued to your account.</div>
-      <div class="conf-detail">
-        <div class="cd-row"><span>Trip credit</span><strong style="color:var(--green);">$3,892.00</strong></div>
-        <div class="cd-row"><span>Account</span><strong>X0AJ642</strong></div>
-        <div class="cd-row"><span>Valid until</span><strong>Jun 16, 2027</strong></div>
-        <div class="cd-row"><span>Confirmation</span><strong id="confCode">CNCL-VNYZPT-0616</strong></div>
-      </div>
-      <button class="btn btn-primary" style="width:100%;" onclick="closeModal()">Done</button>
-    </div>
-  </div>
+      <div class="cancel-step" id="stepConfirmed">
+        <div class="conf-view">
+          <div class="conf-icon">✓</div>
+          <div class="conf-title">Trip cancelled</div>
+          <div class="conf-sub" id="confSubText">Trip credit of <strong>$3,892.00</strong> has been issued to your account.</div>
+          <div class="conf-detail">
+            <div class="cd-row"><span>Trip credit</span><strong style="color:var(--green);">$3,892.00</strong></div>
+            <div class="cd-row"><span>Account</span><strong>X0AJ642</strong></div>
+            <div class="cd-row"><span>Valid until</span><strong>Jun 16, 2027</strong></div>
+            <div class="cd-row"><span>Confirmation</span><strong id="confCode">CNCL-VNYZPT-0616</strong></div>
+          </div>
+          <button class="btn btn-primary" style="width:100%;" onclick="closeModal()">Done</button>
+        </div>
+      </div>
 
-</div>
-```
-
-  </div>
+    </div>
+  </div>
 </div>
 
 <script>
-  // Miles bar
-  window.addEventListener('DOMContentLoaded', function() {
-    setTimeout(function() {
-      var f = document.getElementById('milesFill');
-      if (f) f.style.width = '87%';
-    }, 500);
-  });
+  // Miles bar
+  window.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+      var f = document.getElementById('milesFill');
+      if (f) f.style.width = '87%';
+    }, 500);
+  });
 
-  // Drawer
-  function openDrawer() {
-    document.getElementById('drawer').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeDrawer() {
-    document.getElementById('drawer').classList.remove('open');
-    document.body.style.overflow = '';
-  }
+  // Drawer
+  function openDrawer() {
+    document.getElementById('drawer').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeDrawer() {
+    document.getElementById('drawer').classList.remove('open');
+    document.body.style.overflow = '';
+  }
 
-  // Trip switcher
-  function showTrip(id, pill) {
-    document.querySelectorAll('.trip-view').forEach(function(v) { v.classList.remove('active'); });
-    document.querySelectorAll('.trip-pill').forEach(function(p) { p.classList.remove('active'); });
-    document.getElementById('view-' + id).classList.add('active');
-    if (pill) pill.classList.add('active');
-  }
+  // Trip switcher
+  function showTrip(id, pill) {
+    document.querySelectorAll('.trip-view').forEach(function(v) { v.classList.remove('active'); });
+    document.querySelectorAll('.trip-pill').forEach(function(p) { p.classList.remove('active'); });
+    document.getElementById('view-' + id).classList.add('active');
+    if (pill) pill.classList.add('active');
+  }
 
-  function scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
-  // Tabs
-  function switchTab(el, id) {
-    document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
-    document.querySelectorAll('.tab-content').forEach(function(t) { t.classList.remove('active'); });
-    el.classList.add('active');
-    document.getElementById(id).classList.add('active');
-  }
+  // Tabs
+  function switchTab(el, id) {
+    document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
+    document.querySelectorAll('.tab-content').forEach(function(t) { t.classList.remove('active'); });
+    el.classList.add('active');
+    document.getElementById(id).classList.add('active');
+  }
 
-  // Modal
-  var selectedReason = null;
-  var cancellingTrip = null;
+  // Modal
+  var selectedReason = null;
+  var cancellingTrip = null;
 
-  function openCancelModal(tripId) {
-    cancellingTrip = tripId;
-    document.getElementById('cancelModal').classList.add('open');
-    document.body.style.overflow = 'hidden';
-    showStep('stepReason');
-    document.getElementById('modalTitle').textContent = 'Cancel trip';
-    document.getElementById('modalCloseBtn').style.display = 'flex';
-    selectedReason = null;
-    document.querySelectorAll('input[name="cr"]').forEach(function(r) { r.checked = false; });
-    document.querySelectorAll('.reason-opt').forEach(function(e) { e.classList.remove('selected'); });
-    var btn = document.getElementById('step1Next');
-    btn.disabled = true; btn.style.opacity = '0.5';
-  }
+  function openCancelModal(tripId) {
+    cancellingTrip = tripId;
+    document.getElementById('cancelModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    showStep('stepReason');
+    document.getElementById('modalTitle').textContent = 'Cancel trip';
+    document.getElementById('modalCloseBtn').style.display = 'flex';
+    selectedReason = null;
+    document.querySelectorAll('input[name="cr"]').forEach(function(r) { r.checked = false; });
+    document.querySelectorAll('.reason-opt').forEach(function(e) { e.classList.remove('selected'); });
+    var btn = document.getElementById('step1Next');
+    btn.disabled = true; btn.style.opacity = '0.5';
+  }
 
-  function closeModal() {
-    document.getElementById('cancelModal').classList.remove('open');
-    document.body.style.overflow = '';
-  }
+  function closeModal() {
+    document.getElementById('cancelModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
 
-  function closeModalOutside(e) { if (e.target.id === 'cancelModal') closeModal(); }
+  function closeModalOutside(e) { if (e.target.id === 'cancelModal') closeModal(); }
 
-  function showStep(id) {
-    document.querySelectorAll('.cancel-step').forEach(function(e) { e.classList.remove('active'); });
-    document.getElementById(id).classList.add('active');
-  }
+  function showStep(id) {
+    document.querySelectorAll('.cancel-step').forEach(function(e) { e.classList.remove('active'); });
+    document.getElementById(id).classList.add('active');
+  }
 
-  function selectReason(radio) {
-    selectedReason = radio.value;
-    document.querySelectorAll('.reason-opt').forEach(function(e) { e.classList.remove('selected'); });
-    radio.closest('.reason-opt').classList.add('selected');
-    var btn = document.getElementById('step1Next');
-    btn.disabled = false; btn.style.opacity = '1';
-  }
+  function selectReason(radio) {
+    selectedReason = radio.value;
+    document.querySelectorAll('.reason-opt').forEach(function(e) { e.classList.remove('selected'); });
+    radio.closest('.reason-opt').classList.add('selected');
+    var btn = document.getElementById('step1Next');
+    btn.disabled = false; btn.style.opacity = '1';
+  }
 
-  function goToStep2() {
-    if (!selectedReason) return;
-    showStep('stepReview');
-    document.getElementById('modalTitle').textContent = 'Review cancellation';
-  }
+  function goToStep2() {
+    if (!selectedReason) return;
+    showStep('stepReview');
+    document.getElementById('modalTitle').textContent = 'Review cancellation';
+  }
 
-  function goToStep1() {
-    showStep('stepReason');
-    document.getElementById('modalTitle').textContent = 'Cancel trip';
-  }
+  function goToStep1() {
+    showStep('stepReason');
+    document.getElementById('modalTitle').textContent = 'Cancel trip';
+  }
 
-  function confirmCancel() {
-    showStep('stepConfirmed');
-    document.getElementById('modalTitle').textContent = 'Cancelled';
-    document.getElementById('modalCloseBtn').style.display = 'none';
+  function confirmCancel() {
+    showStep('stepConfirmed');
+    document.getElementById('modalTitle').textContent = 'Cancelled';
+    document.getElementById('modalCloseBtn').style.display = 'none';
 
-    var code = cancellingTrip === 'return' ? 'CNCL-VNYZRT-0616' : 'CNCL-VNYZPT-0616';
-    document.getElementById('confCode').textContent = code;
+    var code = cancellingTrip === 'return' ? 'CNCL-VNYZRT-0616' : 'CNCL-VNYZPT-0616';
+    document.getElementById('confCode').textContent = code;
 
-    var route = cancellingTrip === 'return' ? 'SYD → DFW → MEM' : 'MEM → DFW → SYD';
-    document.getElementById('confSubText').innerHTML = route + ' has been cancelled.<br>Trip credit of <strong>$3,892.00</strong> has been issued.';
+    var route = cancellingTrip === 'return' ? 'SYD → DFW → MEM' : 'MEM → DFW → SYD';
+    document.getElementById('confSubText').innerHTML = route + ' has been cancelled.<br>Trip credit of <strong>$3,892.00</strong> has been issued.';
 
-    // Mark card
-    var card = document.getElementById('card-' + cancellingTrip);
-    if (card) card.classList.add('cancelled-state');
+    // Mark card
+    var card = document.getElementById('card-' + cancellingTrip);
+    if (card) card.classList.add('cancelled-state');
 
-    // Update upcoming count
-    var countEl = document.getElementById('upcomingCount');
-    var currentCount = parseInt(countEl.textContent, 10);
-    countEl.textContent = Math.max(0, currentCount - 1);
+    // Update upcoming count
+    var countEl = document.getElementById('upcomingCount');
+    var currentCount = parseInt(countEl.textContent, 10);
+    countEl.textContent = Math.max(0, currentCount - 1);
 
-    // Move to cancelled tab
-    document.getElementById('cancelledEmpty').style.display = 'none';
-    var cancelEl = document.getElementById('cancelled' + (cancellingTrip === 'outbound' ? 'Outbound' : 'Return'));
-    if (cancelEl) cancelEl.style.display = 'flex';
+    // Move to cancelled tab
+    document.getElementById('cancelledEmpty').style.display = 'none';
+    var cancelEl = document.getElementById('cancelled' + (cancellingTrip === 'outbound' ? 'Outbound' : 'Return'));
+    if (cancelEl) cancelEl.style.display = 'flex';
 
-    // Remove from upcoming list
-    if (cancellingTrip === 'return') {
-      var ri = document.getElementById('returnListItem');
-      if (ri) ri.style.display = 'none';
-    }
-  }
+    // Remove from upcoming list
+    if (cancellingTrip === 'return') {
+      var ri = document.getElementById('returnListItem');
+      if (ri) ri.style.display = 'none';
+    }
+  }
 </script>
-
 </body>
 </html>
